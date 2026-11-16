@@ -1,0 +1,1428 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Journey Within: landing page</title>
+<script src="./vendor/react.js"></script>
+<script src="./vendor/react-dom.js"></script>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600&amp;family=Montserrat:ital,wght@0,300;0,500;0,700;1,500&amp;display=swap">
+<style>
+body{margin:0}
+html{scroll-behavior:smooth}
+a{color:#567542}a:hover{color:#40461c}
+.wrap{max-width:1200px;margin:0 auto;padding-left:24px;padding-right:24px}
+.sec{padding-top:96px;padding-bottom:96px;scroll-margin-top:72px}
+.navlinks{display:flex;align-items:center;gap:4px;overflow-x:auto;scrollbar-width:none;justify-content:flex-end}
+.navlinks::-webkit-scrollbar{display:none}
+.navlinks a{white-space:nowrap;color:#ffffff;text-decoration:none;font-size:14px;font-weight:500;padding:10px 14px;border-radius:999px;transition:background-color .25s ease,color .25s ease}
+.navlinks a:hover{background:rgba(255,255,255,.16);color:#ffffff}
+.navlinks a.on{background:#ffffff;color:#40461c;font-weight:700}
+.rail{display:grid;gap:22px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.menu-btn{display:none}
+.cta-bottom{display:none}
+.logo{width:150px}
+.hero{min-height:640px}
+.card{transition:transform .25s ease,box-shadow .25s ease}
+.card:hover{transform:translateY(-5px);box-shadow:0 16px 32px rgba(64,70,28,.16)}
+.btn{transition:transform .15s ease,box-shadow .2s ease}
+.btn:hover{transform:translateY(-2px);box-shadow:0 8px 18px rgba(0,0,0,.18)}
+.fade{animation:jwfade .4s ease both}
+.drift{animation:jwdrift 26s ease-in-out infinite alternate}
+@keyframes jwfade{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@keyframes jwdrift{from{transform:scale(1)}to{transform:scale(1.09)}}
+.rv-on .rv{opacity:0;transform:translateY(30px);transition:opacity .75s ease,transform .75s ease}
+.rv-on .rv.in{opacity:1;transform:none}
+@media (max-width:980px){
+.menu-btn{display:flex}
+.navlinks{display:none;order:5;flex:1 1 100%;flex-direction:column;align-items:stretch;justify-content:flex-start;gap:2px;padding:6px 0 10px;overflow:visible}
+.navlinks.open{display:flex}
+.navlinks a{padding:14px 14px;font-size:16px;border-radius:10px}
+.sec{scroll-margin-top:64px}
+.rail{grid-template-columns:repeat(2,minmax(0,1fr)) !important}
+}
+@media (max-width:720px){
+.wrap{padding-left:18px;padding-right:18px}
+.sec{padding-top:64px;padding-bottom:64px}
+.hero{min-height:560px}
+.logo{width:128px}
+.cta-top{display:none}
+.cta-bottom{display:block}
+.rail{grid-template-columns:minmax(0,1fr) !important;gap:16px}
+.chips{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
+.foot{padding-bottom:78px}
+}
+@media (prefers-reduced-motion:reduce){
+html{scroll-behavior:auto}
+.rv-on .rv{opacity:1;transform:none;transition:none}
+.drift,.fade{animation:none}
+}
+</style>
+</helmet>
+<div style="background: #fcf8f3; font-family: Montserrat, sans-serif; color: #40461c; font-size: 16px; line-height: 1.6">
+
+<!-- Sticky navigation -->
+<div style="position: sticky; top: 0; z-index: 20; background: #567542; color: #ffffff; box-shadow: 0 2px 14px rgba(0, 0, 0, 0.18)">
+<div class="wrap" style="display: flex; flex-wrap: wrap; align-items: center; gap: 4px 18px; padding-top: 10px; padding-bottom: 10px">
+<a href="#top" onClick="{{ nav.top }}" aria-label="Journey Within, back to the main page" style="display: block; flex: 0 0 auto"><img class="logo" src="./assets/e79d0f060f8726f419298de42ebc769a.png" alt="Journey Within: Restore, Relate, Reveal" style="height: auto; display: block"></a>
+<button class="menu-btn" type="button" onClick="{{ toggleMenu }}" aria-expanded="{{ menuOpen }}" aria-controls="site-nav" style="flex: 0 1 auto; min-width: 0; margin-left: auto; align-items: center; gap: 10px; min-height: 44px; padding: 8px 16px; border-radius: 999px; border: 2px solid #ffffff; background: none; color: #ffffff; font-family: Montserrat, sans-serif; font-size: 14px; font-weight: 700; cursor: pointer">
+<svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.4" stroke-linecap="round"><path d="M4 6.5h16"></path><path d="M4 12h16"></path><path d="M4 17.5h16"></path></svg>
+<span id="nav-now" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap">Menu</span>
+</button>
+<nav id="site-nav" class="navlinks {{ menuCls }}" aria-label="Sections" style="flex: 1 1 auto; min-width: 0">
+<a href="#why" data-spy="why" onClick="{{ nav.why }}">Why we travel</a>
+<a href="#science" data-spy="science" onClick="{{ nav.science }}">The science</a>
+<a href="#restore" class="{{ navc.restore }}" onClick="{{ go.restore }}">Private journeys</a>
+<a href="#journeys" class="{{ navc.relate }}" onClick="{{ go.relate }}">Small group journeys</a>
+<a href="#partners" class="{{ navc.partners }}" onClick="{{ go.partners }}">Partner journeys</a>
+<a href="#stories" data-spy="stories" onClick="{{ nav.stories }}">Stories</a>
+</nav>
+<a class="btn cta-top" href="https://wa.me/6581290908?text=Hi,%20I%27d%20like%20to%20find%20out%20more%20about%20Journey%20Within." style="flex: 0 0 auto; background: #ffffff; color: #40461c; text-decoration: none; font-weight: 700; font-size: 14px; padding: 11px 20px; border-radius: 999px">WhatsApp us</a>
+</div>
+</div>
+
+<sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
+<!-- Hero -->
+<section id="top" aria-label="Journey Within" style="position: relative; overflow: hidden; background: #07080c; color: #ffffff">
+<img class="drift" src="./assets/173a80ef1c37a8e13fe4327bbf3c5cc7.jpg" alt="A lone figure looks up at the Milky Way" style="position: absolute; left: 0; top: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 72%">
+<div style="position: absolute; left: 0; top: 0; width: 100%; height: 100%; background: rgba(6, 8, 14, 0.42)"></div>
+<div class="wrap hero" style="position: relative; display: flex; flex-direction: column; justify-content: flex-end; gap: 20px; padding-top: 96px; padding-bottom: 64px">
+<p class="fade" style="margin: 0; font-size: 13px; font-weight: 700; letter-spacing: 3px">JOURNEY WITHIN · 心旅</p>
+<h1 class="fade" style="margin: 0; max-width: 820px; font-weight: 500; font-size: clamp(38px, 6vw, 76px); line-height: 1.05; text-wrap: balance">A meaningful way to travel.</h1>
+<p class="fade" style="margin: 0; max-width: 600px; font-size: clamp(17px, 1.7vw, 21px); font-weight: 500; line-height: 1.5">Journeys designed around what matters to you, with the science of a meaningful life.</p>
+</div>
+</section>
+
+<!-- Media -->
+<section aria-label="Media coverage" style="background: #ffffff; border-bottom: 1px solid #dcd3bf">
+<div class="wrap rv" style="padding-top: 30px; padding-bottom: 30px; display: flex; flex-direction: column; align-items: center; gap: 16px; text-align: center">
+<p style="margin: 0; font-size: 12px; font-weight: 700; letter-spacing: 3px; color: #7a6222">AS FEATURED IN</p>
+<div style="display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 12px 14px">
+<a class="card" href="https://cnalifestyle.channelnewsasia.com/travel/chan-brothers-journey-within-japan-bhutan-585166" aria-label="Read the CNA Lifestyle article" style="display: flex; align-items: center; justify-content: center; width: 150px; height: 72px; background: #ffffff; border: 1px solid #dcd3bf; border-radius: 12px; padding: 10px 14px; box-sizing: border-box"><img src="./assets/79964ec254606f66b131261074634fff.png" alt="CNA Lifestyle" style="width: 100%; height: 100%; object-fit: contain"></a>
+<a class="card" href="https://www.herworld.com/life/singaporeans-slow-travel-bhutan-japan-chan-brothers" aria-label="Read the Her World article" style="display: flex; align-items: center; justify-content: center; width: 150px; height: 72px; background: #ffffff; border: 1px solid #dcd3bf; border-radius: 12px; padding: 10px 14px; box-sizing: border-box"><img src="./assets/1aec55d21382c075405973afadb2d8ee.png" alt="Her World" style="width: 100%; height: 100%; object-fit: contain"></a>
+<a class="card" href="https://www.ttgasia.com/2026/10/01/chan-brothers-turns-to-positive-psychology-for-new-travel-series/" aria-label="Read the TTG Asia article" style="display: flex; align-items: center; justify-content: center; width: 150px; height: 72px; background: #ffffff; border: 1px solid #dcd3bf; border-radius: 12px; padding: 10px 14px; box-sizing: border-box"><img src="./assets/be38d6907140e27fd7263be8d4d887f1.png" alt="TTG Asia" style="width: 100%; height: 100%; object-fit: contain"></a>
+<a class="card" href="https://vibes.8world.com/travel/chan-brothers-travel-science-led-travel-series-journey-within-3193946" aria-label="Read the vibes by 8world article" style="display: flex; align-items: center; justify-content: center; width: 150px; height: 72px; background: #ffffff; border: 1px solid #dcd3bf; border-radius: 12px; padding: 10px 14px; box-sizing: border-box"><img src="./assets/210c527e3c34ce25000a412e3fc7e34c.png" alt="vibes by 8world" style="width: 100%; height: 100%; object-fit: contain"></a>
+<a class="card" href="https://www.channelnewsasia.com/listen/destination-anywhere/find-your-way-better-wellbeing-one-destination-time-6402441" aria-label="Listen to the CNA938 Destination Anywhere podcast" style="display: flex; align-items: center; justify-content: center; width: 150px; height: 72px; background: #ffffff; border: 1px solid #dcd3bf; border-radius: 12px; padding: 10px 14px; box-sizing: border-box"><img src="./assets/c31292c91088bbe7113018d2eddb680e.png" alt="CNA938" style="width: 100%; height: 100%; object-fit: contain"></a>
+</div>
+<p style="margin: 0; font-size: 14px; color: #5a5d3c">Our preview, <a href="https://www.instagram.com/s/aGlnaGxpZ2h0OjE4MDg2MDkxODg0NDQyMzAy?story_media_id=3934182030229864896&amp;igsh=N3Q3aXJ2b3pzdmRi" style="font-weight: 700">as seen by ICON, NÜYOU and The Peak</a>.</p>
+</div>
+</section>
+
+<!-- 01 Why we travel -->
+<section id="why" class="sec" aria-labelledby="why-h" style="background: #fcf8f3">
+<div class="wrap" style="display: flex; flex-direction: column; gap: 36px">
+<div class="rv" aria-hidden="true" style="display: flex; justify-content: center"><img src="./assets/df2c1c183a890cde663cb29c278421ed.png" alt="" style="width: min(360px, 80%); height: auto; display: block"></div>
+<div class="rv" style="display: flex; flex-direction: column; gap: 12px; max-width: 720px">
+<p style="margin: 0; display: flex; align-items: center; gap: 12px; font-size: 12px; font-weight: 700; letter-spacing: 3px; color: #7a6222"><span style="font-size: 24px; font-weight: 300; letter-spacing: 0">01</span><span style="width: 40px; height: 2px; background: #8d722b"></span>MEANING IS PERSONAL</p>
+<h2 id="why-h" style="margin: 0; font-weight: 500; font-size: clamp(30px, 3.6vw, 46px); line-height: 1.15">Why do you travel?</h2>
+<p style="margin: 0; font-size: 18px; line-height: 1.55">Everyone has a different answer. We ask first, then design the journey around yours.</p>
+</div>
+<div class="rail rv" style="grid-template-columns: repeat(3, minmax(0, 1fr))">
+
+<div class="card" style="background: #ffffff; border: 1px solid #dcd3bf; border-radius: 14px; padding: 28px 24px 30px; display: flex; flex-direction: column; gap: 14px">
+<svg aria-hidden="true" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#8d722b" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"></path></svg>
+<p style="margin: 0; font-family: Caveat, cursive; font-size: 24px; line-height: 1; color: #567542">I travel</p>
+<h3 style="margin: 0; font-size: 22px; font-weight: 700; line-height: 1.25">To sleep well again.</h3>
+<p style="margin: 0; font-size: 15px; line-height: 1.55; color: #5a5d3c">Days and nights designed for deep rest.</p>
+</div>
+
+<div class="card" style="background: #ffffff; border: 1px solid #dcd3bf; border-radius: 14px; padding: 28px 24px 30px; display: flex; flex-direction: column; gap: 14px">
+<svg aria-hidden="true" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#8d722b" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 19.5 9 7l4 7 2.5-4 6 9.5z"></path><circle cx="17.5" cy="5.5" r="1.6"></circle></svg>
+<p style="margin: 0; font-family: Caveat, cursive; font-size: 24px; line-height: 1; color: #567542">I travel</p>
+<h3 style="margin: 0; font-size: 22px; font-weight: 700; line-height: 1.25">To feel small before something vast.</h3>
+<p style="margin: 0; font-size: 15px; line-height: 1.55; color: #5a5d3c">Mountains, temples and open sky that change how you see things.</p>
+</div>
+
+<div class="card" style="background: #ffffff; border: 1px solid #dcd3bf; border-radius: 14px; padding: 28px 24px 30px; display: flex; flex-direction: column; gap: 14px">
+<svg aria-hidden="true" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#8d722b" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21V3.5"></path><path d="M5 4.5h13.5l-2.5 4.5 2.5 4.5H5"></path><path d="M9.5 4.5v9"></path><path d="M14 4.5v9"></path><path d="M5 9h11"></path></svg>
+<p style="margin: 0; font-family: Caveat, cursive; font-size: 24px; line-height: 1; color: #567542">I travel</p>
+<h3 style="margin: 0; font-size: 22px; font-weight: 700; line-height: 1.25">To feel my heart race.</h3>
+<p style="margin: 0; font-size: 15px; line-height: 1.55; color: #5a5d3c">Race day at Suzuka, trackside, with people who love speed as much as you do.</p>
+</div>
+
+<div class="card" style="background: #ffffff; border: 1px solid #dcd3bf; border-radius: 14px; padding: 28px 24px 30px; display: flex; flex-direction: column; gap: 14px">
+<svg aria-hidden="true" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#8d722b" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="5.5" r="2.4"></circle><path d="M4 21v-7a4 4 0 0 1 8 0v7"></path><circle cx="17" cy="11" r="1.8"></circle><path d="M14 21v-4a3 3 0 0 1 6 0v4"></path></svg>
+<p style="margin: 0; font-family: Caveat, cursive; font-size: 24px; line-height: 1; color: #567542">I travel</p>
+<h3 style="margin: 0; font-size: 22px; font-weight: 700; line-height: 1.25">To be fully there for my child.</h3>
+<p style="margin: 0; font-size: 15px; line-height: 1.55; color: #5a5d3c">A few days together, with nothing else asking for your attention.</p>
+</div>
+
+<div class="card" style="background: #ffffff; border: 1px solid #dcd3bf; border-radius: 14px; padding: 28px 24px 30px; display: flex; flex-direction: column; gap: 14px">
+<svg aria-hidden="true" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#8d722b" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20.5s-7.5-4.6-7.5-10.2A4.3 4.3 0 0 1 12 7.6a4.3 4.3 0 0 1 7.5 2.7c0 5.6-7.5 10.2-7.5 10.2z"></path></svg>
+<p style="margin: 0; font-family: Caveat, cursive; font-size: 24px; line-height: 1; color: #567542">I travel</p>
+<h3 style="margin: 0; font-size: 22px; font-weight: 700; line-height: 1.25">To take Mum where she has always dreamed of going.</h3>
+<p style="margin: 0; font-size: 15px; line-height: 1.55; color: #5a5d3c">The place at the top of her list, made easy for her, while you can still go together.</p>
+</div>
+
+<div class="card" style="background: #ffffff; border: 1px solid #dcd3bf; border-radius: 14px; padding: 28px 24px 30px; display: flex; flex-direction: column; gap: 14px">
+<svg aria-hidden="true" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#8d722b" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="5"></circle><path d="M12 13v6"></path><path d="M12 19l-4.5 2.5"></path><path d="M12 19l4.5 2.5"></path><path d="M12 19v3"></path></svg>
+<p style="margin: 0; font-family: Caveat, cursive; font-size: 24px; line-height: 1; color: #567542">I travel</p>
+<h3 style="margin: 0; font-size: 22px; font-weight: 700; line-height: 1.25">To stand where my family’s story began.</h3>
+<p style="margin: 0; font-size: 15px; line-height: 1.55; color: #5a5d3c">寻根. Walk the village your grandparents left, and meet the family who stayed.</p>
+</div>
+
+</div>
+</div>
+</section>
+
+<!-- 02 Science -->
+<section id="science" class="sec" aria-labelledby="sci-h" style="background: #567542; color: #ffffff">
+<div class="wrap" style="display: flex; flex-direction: column; gap: 40px">
+<div class="rv" aria-hidden="true" style="display: flex; justify-content: center"><img src="./assets/9defadeff7cf6cc744c0fa64f3fb464b.png" alt="" style="width: min(360px, 80%); height: auto; display: block"></div>
+<div class="rv" style="display: flex; flex-direction: column; gap: 14px; max-width: 760px">
+<p style="margin: 0; display: flex; align-items: center; gap: 12px; font-size: 12px; font-weight: 700; letter-spacing: 3px"><span style="font-size: 24px; font-weight: 300; letter-spacing: 0">02</span><span style="width: 40px; height: 2px; background: #ffffff"></span>DESIGNED WITH SCIENCE</p>
+<h2 id="sci-h" style="margin: 0; font-weight: 500; font-size: clamp(30px, 3.6vw, 46px); line-height: 1.15">You feel it. We do the work.</h2>
+<p style="margin: 0; font-size: 18px; line-height: 1.55">Decades of research show what makes an experience stay with us: awe, gratitude, rest and real connection. We build these into the journey.</p>
+</div>
+<div class="rv" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); gap: 24px">
+<div style="border-top: 2px solid #ffffff; padding-top: 18px; display: flex; flex-direction: column; gap: 8px">
+<p style="margin: 0; font-size: 34px; font-weight: 300; line-height: 1">1</p>
+<h3 style="margin: 0; font-size: 21px; font-weight: 700">We listen</h3>
+<p style="margin: 0; font-size: 16px; line-height: 1.55">We start with why you want to travel.</p>
+</div>
+<div style="border-top: 2px solid #ffffff; padding-top: 18px; display: flex; flex-direction: column; gap: 8px">
+<p style="margin: 0; font-size: 34px; font-weight: 300; line-height: 1">2</p>
+<h3 style="margin: 0; font-size: 21px; font-weight: 700">We design</h3>
+<p style="margin: 0; font-size: 16px; line-height: 1.55">Research shapes where each moment sits, from the first quiet morning to the last evening.</p>
+</div>
+<div style="border-top: 2px solid #ffffff; padding-top: 18px; display: flex; flex-direction: column; gap: 8px">
+<p style="margin: 0; font-size: 34px; font-weight: 300; line-height: 1">3</p>
+<h3 style="margin: 0; font-size: 21px; font-weight: 700">We check</h3>
+<p style="margin: 0; font-size: 16px; line-height: 1.55">We use science-backed methods to assess each journey, so we know it did what it was designed to do.</p>
+</div>
+</div>
+<p class="rv" style="margin: 0; font-size: 14px; line-height: 1.5">Grounded in peer-reviewed positive psychology research from leading universities.</p>
+</div>
+</section>
+
+<!-- 03 Three ways to travel -->
+<section id="ways" class="sec" aria-labelledby="ways-h" style="background: #f1eadb; border-top: 1px solid #dcd3bf; border-bottom: 1px solid #dcd3bf">
+<div class="wrap" style="display: flex; flex-direction: column; gap: 30px">
+<div class="rv" aria-hidden="true" style="display: flex; justify-content: center"><img src="./assets/df2c1c183a890cde663cb29c278421ed.png" alt="" style="width: min(360px, 80%); height: auto; display: block"></div>
+<div class="rv" style="display: flex; flex-direction: column; gap: 12px; max-width: 720px">
+<p style="margin: 0; display: flex; align-items: center; gap: 12px; font-size: 12px; font-weight: 700; letter-spacing: 3px; color: #7a6222"><span style="font-size: 24px; font-weight: 300; letter-spacing: 0">03</span><span style="width: 40px; height: 2px; background: #8d722b"></span>THREE WAYS TO TRAVEL</p>
+<h2 id="ways-h" style="margin: 0; font-weight: 500; font-size: clamp(30px, 3.6vw, 46px); line-height: 1.15">Who are you travelling with?</h2>
+<p style="margin: 0; font-size: 18px; line-height: 1.55">Choose one to see the journeys.</p>
+</div>
+
+<div class="rv" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 18px">
+<button class="card" type="button" onClick="{{ go.restore }}" style="text-align: left; font-family: Montserrat, sans-serif; color: #40461c; cursor: pointer; background: #ffffff; border: 1px solid #dcd3bf; border-radius: 14px; padding: 26px 24px 24px; display: flex; flex-direction: column; gap: 10px">
+<span style="font-size: 12px; font-weight: 700; letter-spacing: 2px; color: #7a6222">JUST US</span>
+<span style="font-family: Caveat, cursive; font-size: 52px; line-height: 0.95; color: #567542">Restore</span>
+<span style="font-size: 21px; font-weight: 500; line-height: 1.25">Your people. Your dates. Your reason.</span>
+<span style="font-size: 16px; line-height: 1.55">A private journey for couples, families and friends.</span>
+<span style="margin-top: auto; padding-top: 10px; font-size: 16px; font-weight: 700; color: #567542; text-decoration: underline">See 26 private journeys</span>
+</button>
+<button class="card" type="button" onClick="{{ go.relate }}" style="text-align: left; font-family: Montserrat, sans-serif; color: #40461c; cursor: pointer; background: #ffffff; border: 1px solid #dcd3bf; border-radius: 14px; padding: 26px 24px 24px; display: flex; flex-direction: column; gap: 10px">
+<span style="font-size: 12px; font-weight: 700; letter-spacing: 2px; color: #7a6222">A SMALL GROUP</span>
+<span style="font-family: Caveat, cursive; font-size: 52px; line-height: 0.95; color: #567542">Relate</span>
+<span style="font-size: 21px; font-weight: 500; line-height: 1.25">Good company makes the journey.</span>
+<span style="font-size: 16px; line-height: 1.55">A set departure, led by a trained Tour Leader.</span>
+<span style="margin-top: auto; padding-top: 10px; font-size: 16px; font-weight: 700; color: #567542; text-decoration: underline">See 2027 Small Group Journeys</span>
+</button>
+<button class="card" type="button" onClick="{{ go.partners }}" style="text-align: left; font-family: Montserrat, sans-serif; color: #40461c; cursor: pointer; background: #ffffff; border: 1px solid #dcd3bf; border-radius: 14px; padding: 26px 24px 24px; display: flex; flex-direction: column; gap: 10px">
+<span style="font-size: 12px; font-weight: 700; letter-spacing: 2px; color: #7a6222">MY ORGANISATION</span>
+<span style="font-family: Caveat, cursive; font-size: 52px; line-height: 0.95; color: #567542">Reveal</span>
+<span style="font-size: 21px; font-weight: 500; line-height: 1.25">One purpose. Your people.</span>
+<span style="font-size: 16px; line-height: 1.55">A journey designed with your community or company.</span>
+<span style="margin-top: auto; padding-top: 10px; font-size: 16px; font-weight: 700; color: #567542; text-decoration: underline">See partner journeys</span>
+</button>
+</div>
+
+</div>
+</section>
+</sc-if>
+
+<!-- 04 2027 calendar -->
+<sc-if value="{{ isRelatePage }}" hint-placeholder-val="{{ false }}">
+<section id="journeys" class="sec" aria-labelledby="cal-h" style="background: #fcf8f3">
+<div class="wrap" style="display: flex; flex-direction: column; gap: 26px">
+<button type="button" onClick="{{ go.home }}" style="align-self: flex-start; font-family: Montserrat, sans-serif; font-size: 15px; font-weight: 700; cursor: pointer; min-height: 44px; padding: 8px 0; border: none; background: none; color: #567542; text-decoration: underline">Back to Journey Within</button>
+<div class="rv" aria-hidden="true" style="display: flex; justify-content: center"><img src="./assets/df2c1c183a890cde663cb29c278421ed.png" alt="" style="width: min(360px, 80%); height: auto; display: block"></div>
+<div class="rv" style="display: flex; flex-direction: column; gap: 12px; max-width: 720px">
+<p style="margin: 0; display: flex; align-items: center; gap: 12px; font-size: 12px; font-weight: 700; letter-spacing: 3px; color: #7a6222"><span style="width: 40px; height: 2px; background: #8d722b"></span>RELATE · WITH A TOUR LEADER</p>
+<h2 id="cal-h" style="margin: 0; font-weight: 500; font-size: clamp(30px, 3.6vw, 46px); line-height: 1.15">2027 Small Group Journeys</h2>
+<p style="margin: 0; font-size: 18px; line-height: 1.55">Join a small group, led by a Tour Leader trained in Journey Within. Every journey begins with one line: why we travel there. Pick a month or a region to see what departs.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 12px; margin-top: 8px">
+<a class="btn" href="https://wa.me/6581290908?text=Hi,%20I%27m%20interested%20in%20Journey%20Within%20Relate%20(small%20group)." style="background: #567542; color: #ffffff; text-decoration: none; font-weight: 700; font-size: 16px; padding: 14px 26px; border-radius: 999px">WhatsApp us about Relate</a>
+</div>
+</div>
+
+<!-- Month filter -->
+<div class="chips rv" role="group" aria-label="Filter journeys by month">
+<button class="btn" type="button" onClick="{{ fb.all.pick }}" aria-pressed="{{ fb.all.on }}" style="flex: 0 0 auto; min-width: 104px; min-height: 66px; text-align: left; font-family: Montserrat, sans-serif; cursor: pointer; border-radius: 12px; padding: 10px 14px; display: flex; flex-direction: column; gap: 4px; border: 2px solid {{ fb.all.border }}; background: {{ fb.all.bg }}; color: {{ fb.all.fg }}"><span style="font-size: 13px; font-weight: 700; letter-spacing: 1.5px">ALL 2027</span><span style="font-size: 13px; font-weight: 500; line-height: 1.3">11 journeys</span></button>
+<button class="btn" type="button" onClick="{{ fb.mar.pick }}" aria-pressed="{{ fb.mar.on }}" style="flex: 0 0 auto; min-width: 104px; min-height: 66px; text-align: left; font-family: Montserrat, sans-serif; cursor: pointer; border-radius: 12px; padding: 10px 14px; display: flex; flex-direction: column; gap: 4px; border: 2px solid {{ fb.mar.border }}; background: {{ fb.mar.bg }}; color: {{ fb.mar.fg }}"><span style="font-size: 13px; font-weight: 700; letter-spacing: 1.5px">MAR</span><span style="font-size: 13px; font-weight: 500; line-height: 1.3">Bhutan</span></button>
+<button class="btn" type="button" onClick="{{ fb.apr.pick }}" aria-pressed="{{ fb.apr.on }}" style="flex: 0 0 auto; min-width: 104px; min-height: 66px; text-align: left; font-family: Montserrat, sans-serif; cursor: pointer; border-radius: 12px; padding: 10px 14px; display: flex; flex-direction: column; gap: 4px; border: 2px solid {{ fb.apr.border }}; background: {{ fb.apr.bg }}; color: {{ fb.apr.fg }}"><span style="font-size: 13px; font-weight: 700; letter-spacing: 1.5px">APR</span><span style="font-size: 13px; font-weight: 500; line-height: 1.3">Sri Lanka · Pu’er</span></button>
+<button class="btn" type="button" onClick="{{ fb.may.pick }}" aria-pressed="{{ fb.may.on }}" style="flex: 0 0 auto; min-width: 104px; min-height: 66px; text-align: left; font-family: Montserrat, sans-serif; cursor: pointer; border-radius: 12px; padding: 10px 14px; display: flex; flex-direction: column; gap: 4px; border: 2px solid {{ fb.may.border }}; background: {{ fb.may.bg }}; color: {{ fb.may.fg }}"><span style="font-size: 13px; font-weight: 700; letter-spacing: 1.5px">MAY</span><span style="font-size: 13px; font-weight: 500; line-height: 1.3">Three Gorges</span></button>
+<button class="btn" type="button" onClick="{{ fb.jun.pick }}" aria-pressed="{{ fb.jun.on }}" style="flex: 0 0 auto; min-width: 104px; min-height: 66px; text-align: left; font-family: Montserrat, sans-serif; cursor: pointer; border-radius: 12px; padding: 10px 14px; display: flex; flex-direction: column; gap: 4px; border: 2px solid {{ fb.jun.border }}; background: {{ fb.jun.bg }}; color: {{ fb.jun.fg }}"><span style="font-size: 13px; font-weight: 700; letter-spacing: 1.5px">JUN</span><span style="font-size: 13px; font-weight: 500; line-height: 1.3">Switzerland</span></button>
+<button class="btn" type="button" onClick="{{ fb.sep.pick }}" aria-pressed="{{ fb.sep.on }}" style="flex: 0 0 auto; min-width: 104px; min-height: 66px; text-align: left; font-family: Montserrat, sans-serif; cursor: pointer; border-radius: 12px; padding: 10px 14px; display: flex; flex-direction: column; gap: 4px; border: 2px solid {{ fb.sep.border }}; background: {{ fb.sep.bg }}; color: {{ fb.sep.fg }}"><span style="font-size: 13px; font-weight: 700; letter-spacing: 1.5px">SEP</span><span style="font-size: 13px; font-weight: 500; line-height: 1.3">Hokkaido · Norway</span></button>
+<button class="btn" type="button" onClick="{{ fb.oct.pick }}" aria-pressed="{{ fb.oct.on }}" style="flex: 0 0 auto; min-width: 104px; min-height: 66px; text-align: left; font-family: Montserrat, sans-serif; cursor: pointer; border-radius: 12px; padding: 10px 14px; display: flex; flex-direction: column; gap: 4px; border: 2px solid {{ fb.oct.border }}; background: {{ fb.oct.bg }}; color: {{ fb.oct.fg }}"><span style="font-size: 13px; font-weight: 700; letter-spacing: 1.5px">OCT</span><span style="font-size: 13px; font-weight: 500; line-height: 1.3">Jiangxi · New Zealand</span></button>
+<button class="btn" type="button" onClick="{{ fb.nov.pick }}" aria-pressed="{{ fb.nov.on }}" style="flex: 0 0 auto; min-width: 104px; min-height: 66px; text-align: left; font-family: Montserrat, sans-serif; cursor: pointer; border-radius: 12px; padding: 10px 14px; display: flex; flex-direction: column; gap: 4px; border: 2px solid {{ fb.nov.border }}; background: {{ fb.nov.bg }}; color: {{ fb.nov.fg }}"><span style="font-size: 13px; font-weight: 700; letter-spacing: 1.5px">NOV</span><span style="font-size: 13px; font-weight: 500; line-height: 1.3">Jeolla · Fujian</span></button>
+</div>
+
+<!-- Region filter and status -->
+<div class="rv" style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px">
+<span style="font-size: 14px; font-weight: 700; color: #5a5d3c">Or by region</span>
+<div role="group" aria-label="Filter journeys by region" style="display: flex; flex-wrap: wrap; gap: 8px">
+<button type="button" onClick="{{ fb.nea.pick }}" aria-pressed="{{ fb.nea.on }}" style="font-family: Montserrat, sans-serif; font-size: 14px; font-weight: 700; cursor: pointer; min-height: 44px; padding: 8px 18px; border-radius: 999px; border: 2px solid {{ fb.nea.border }}; background: {{ fb.nea.bg }}; color: {{ fb.nea.fg }}">North East Asia</button>
+<button type="button" onClick="{{ fb.him.pick }}" aria-pressed="{{ fb.him.on }}" style="font-family: Montserrat, sans-serif; font-size: 14px; font-weight: 700; cursor: pointer; min-height: 44px; padding: 8px 18px; border-radius: 999px; border: 2px solid {{ fb.him.border }}; background: {{ fb.him.bg }}; color: {{ fb.him.fg }}">Himalayan &amp; Indian Subcontinent</button>
+<button type="button" onClick="{{ fb.eur.pick }}" aria-pressed="{{ fb.eur.on }}" style="font-family: Montserrat, sans-serif; font-size: 14px; font-weight: 700; cursor: pointer; min-height: 44px; padding: 8px 18px; border-radius: 999px; border: 2px solid {{ fb.eur.border }}; background: {{ fb.eur.bg }}; color: {{ fb.eur.fg }}">Europe</button>
+<button type="button" onClick="{{ fb.oce.pick }}" aria-pressed="{{ fb.oce.on }}" style="font-family: Montserrat, sans-serif; font-size: 14px; font-weight: 700; cursor: pointer; min-height: 44px; padding: 8px 18px; border-radius: 999px; border: 2px solid {{ fb.oce.border }}; background: {{ fb.oce.bg }}; color: {{ fb.oce.fg }}">Oceania</button>
+</div>
+<p aria-live="polite" style="margin: 0 0 0 auto; font-size: 14px; font-weight: 700; color: #5a5d3c">{{ countLabel }}</p>
+<sc-if value="{{ filtered }}" hint-placeholder-val="{{ false }}">
+<button type="button" onClick="{{ fb.all.pick }}" style="font-family: Montserrat, sans-serif; font-size: 14px; font-weight: 700; cursor: pointer; min-height: 44px; padding: 8px 4px; border: none; background: none; color: #567542; text-decoration: underline">Show all</button>
+</sc-if>
+</div>
+
+<!-- Journey cards -->
+<div class="rail rv" style="grid-template-columns: repeat(auto-fill, minmax(320px, 1fr))">
+
+<article class="card" style="display: {{ sBhutan }}; flex-direction: column; background: #ffffff; border: 1px solid #dcd3bf; border-radius: 14px; overflow: hidden">
+<img src="./assets/7616e37eb93f2e2bf9a6a29f9c2aca36.jpg" alt="Tiger’s Nest monastery on its cliff in Bhutan" style="width: 100%; height: 210px; object-fit: cover; display: block">
+<div style="padding: 22px 24px 20px; display: flex; flex-direction: column; gap: 10px; flex: 1 1 auto">
+<p style="margin: 0; font-size: 12px; font-weight: 700; letter-spacing: 2px; color: #7a6222">MAR 2027 · HIMALAYAN &amp; INDIAN SUBCONTINENT · 7 DAYS</p>
+<h3 style="margin: 0; font-size: 26px; font-weight: 700; line-height: 1.2">Bhutan</h3>
+<p style="margin: 0; font-size: 17px; font-style: italic; font-weight: 500; line-height: 1.5; color: #567542">“We travel to see how a kingdom measures what truly matters, and to come home closer to ourselves.”</p>
+<button type="button" onClick="{{ open.bhutan }}" style="margin: auto 0 0; min-height: 44px; padding: 8px 0 0; border: none; background: none; text-align: left; font-family: Montserrat, sans-serif; font-size: 15px; font-weight: 700; color: #567542; text-decoration: underline; cursor: pointer">View itinerary</button>
+</div>
+</article>
+
+<article class="card" style="display: {{ sSriLanka }}; flex-direction: column; background: #ffffff; border: 1px solid #dcd3bf; border-radius: 14px; overflow: hidden">
+<img src="./assets/2d6b391cb32adbe29c8cab904b8ea4d5.jpg" alt="Tea estates covering the hills of Sri Lanka, with a red earth road winding through" style="width: 100%; height: 210px; object-fit: cover; display: block">
+<div style="padding: 22px 24px 20px; display: flex; flex-direction: column; gap: 10px; flex: 1 1 auto">
+<p style="margin: 0; font-size: 12px; font-weight: 700; letter-spacing: 2px; color: #7a6222">APR 2027 · HIMALAYAN &amp; INDIAN SUBCONTINENT · 9 DAYS</p>
+<h3 style="margin: 0; font-size: 26px; font-weight: 700; line-height: 1.2">Sri Lanka</h3>
+<p style="margin: 0; font-size: 17px; font-style: italic; font-weight: 500; line-height: 1.5; color: #567542">“We travel because we want to feel alive again, and nature is where that begins.”</p>
+<button type="button" onClick="{{ open.srilanka }}" style="margin: auto 0 0; min-height: 44px; padding: 8px 0 0; border: none; background: none; text-align: left; font-family: Montserrat, sans-serif; font-size: 15px; font-weight: 700; color: #567542; text-decoration: underline; cursor: pointer">View itinerary</button>
+</div>
+</article>
+
+<article class="card" style="display: {{ sPuer }}; flex-direction: column; background: #ffffff; border: 1px solid #dcd3bf; border-radius: 14px; overflow: hidden">
+<img src="./assets/b7fb53f45e1e53d160a6f94898d94553.jpg" alt="Green mountains and terraced slopes above a river valley in Pu’er, Yunnan" style="width: 100%; height: 210px; object-fit: cover; object-position: 50% 60%; display: block">
+<div style="padding: 22px 24px 20px; display: flex; flex-direction: column; gap: 10px; flex: 1 1 auto">
+<p style="margin: 0; font-size: 12px; font-weight: 700; letter-spacing: 2px; color: #7a6222">LATE APR 2027 · NORTH EAST ASIA</p>
+<h3 style="margin: 0; font-size: 26px; font-weight: 700; line-height: 1.2">Pu’er · Jingmai Mountain</h3>
+<p style="margin: 0; font-size: 17px; font-style: italic; font-weight: 500; line-height: 1.5; color: #567542">“We travel because we want to drink tea where it has grown for a thousand years, with the families who tend it.”</p>
+<p style="margin: auto 0 0; padding-top: 18px; font-size: 15px; font-weight: 700; color: #5a5d3c">Itinerary coming soon</p>
+</div>
+</article>
+
+<article class="card" style="display: {{ sGorges }}; flex-direction: column; background: #ffffff; border: 1px solid #dcd3bf; border-radius: 14px; overflow: hidden">
+<img src="./assets/ca308bbcd32ca87e5c43fbcda76ffd4f.jpg" alt="River cruise ships between the golden cliffs of the Three Gorges, mirrored in still water" style="width: 100%; height: 210px; object-fit: cover; object-position: 50% 58%; display: block">
+<div style="padding: 22px 24px 20px; display: flex; flex-direction: column; gap: 10px; flex: 1 1 auto">
+<p style="margin: 0; font-size: 12px; font-weight: 700; letter-spacing: 2px; color: #7a6222">MAY 2027 · NORTH EAST ASIA · MOTHER’S DAY</p>
+<h3 style="margin: 0; font-size: 26px; font-weight: 700; line-height: 1.2">Three Gorges · Century Cruise</h3>
+<p style="margin: 0; font-size: 17px; font-style: italic; font-weight: 500; line-height: 1.5; color: #567542">“We travel because we want time with Mum, and the stories we never asked her for.”</p>
+<p style="margin: auto 0 0; padding-top: 18px; font-size: 15px; font-weight: 700; color: #5a5d3c">Itinerary coming soon</p>
+</div>
+</article>
+
+<article class="card" style="display: {{ sSwiss }}; flex-direction: column; background: #ffffff; border: 1px solid #dcd3bf; border-radius: 14px; overflow: hidden">
+<img src="./assets/fa2c8f325b890216dc4c72879e5a1ad4.jpg" alt="The Matterhorn reflected in a small alpine lake near Zermatt" style="width: 100%; height: 210px; object-fit: cover; object-position: 50% 40%; display: block">
+<div style="padding: 22px 24px 20px; display: flex; flex-direction: column; gap: 10px; flex: 1 1 auto">
+<p style="margin: 0; font-size: 12px; font-weight: 700; letter-spacing: 2px; color: #7a6222">JUN TO SEP 2027 · EUROPE · 11 DAYS</p>
+<h3 style="margin: 0; font-size: 26px; font-weight: 700; line-height: 1.2">Switzerland · The Alps</h3>
+<p style="margin: 0; font-size: 17px; font-style: italic; font-weight: 500; line-height: 1.5; color: #567542">“We travel because we want to breathe mountain air, walk among the Alps, and come home refreshed.”</p>
+<p style="margin: auto 0 0; padding-top: 18px; font-size: 15px; font-weight: 700; color: #5a5d3c">Itinerary coming soon</p>
+</div>
+</article>
+
+<article class="card" style="display: {{ sHokkaido }}; flex-direction: column; background: #ffffff; border: 1px solid #dcd3bf; border-radius: 14px; overflow: hidden">
+<img src="./assets/5e608e668ca09e9cb0289a73a8424a8c.jpg" alt="The Blue Pond in Hokkaido in autumn, red larches reflected in turquoise water" style="width: 100%; height: 210px; object-fit: cover; display: block">
+<div style="padding: 22px 24px 20px; display: flex; flex-direction: column; gap: 10px; flex: 1 1 auto">
+<p style="margin: 0; font-size: 12px; font-weight: 700; letter-spacing: 2px; color: #7a6222">LATE SEP 2027 · NORTH EAST ASIA · 8 DAYS</p>
+<h3 style="margin: 0; font-size: 26px; font-weight: 700; line-height: 1.2">Hokkaido · Akan &amp; Tokachi</h3>
+<p style="margin: 0; font-size: 17px; font-style: italic; font-weight: 500; line-height: 1.5; color: #567542">“We travel to soak in nature’s warm springs, see how Japan tends the land and one another, and come home grateful.”</p>
+<button type="button" onClick="{{ open.hokkaido }}" style="margin: auto 0 0; min-height: 44px; padding: 8px 0 0; border: none; background: none; text-align: left; font-family: Montserrat, sans-serif; font-size: 15px; font-weight: 700; color: #567542; text-decoration: underline; cursor: pointer">View itinerary</button>
+</div>
+</article>
+
+<article class="card" style="display: {{ sNorway }}; flex-direction: column; background: #ffffff; border: 1px solid #dcd3bf; border-radius: 14px; overflow: hidden">
+<img src="./assets/fa71060c42ae52a4c839600f3152e41e.jpg" alt="A Norwegian fjord winding between green mountains, with a small village on the shore" style="width: 100%; height: 210px; object-fit: cover; display: block">
+<div style="padding: 22px 24px 20px; display: flex; flex-direction: column; gap: 10px; flex: 1 1 auto">
+<p style="margin: 0; font-size: 12px; font-weight: 700; letter-spacing: 2px; color: #7a6222">SEP 2027 · EUROPE · 11 DAYS</p>
+<h3 style="margin: 0; font-size: 26px; font-weight: 700; line-height: 1.2">Norway · The Fjords</h3>
+<p style="margin: 0; font-size: 17px; font-style: italic; font-weight: 500; line-height: 1.5; color: #567542">“We travel because we want space and silence, and the fjords have plenty of both.”</p>
+<p style="margin: auto 0 0; padding-top: 18px; font-size: 15px; font-weight: 700; color: #5a5d3c">Itinerary coming soon</p>
+</div>
+</article>
+
+<article class="card" style="display: {{ sWuyuan }}; flex-direction: column; background: #ffffff; border: 1px solid #dcd3bf; border-radius: 14px; overflow: hidden">
+<img src="./assets/47250ad7f02a307e7a285644196ddf38.jpg" alt="Carved grey eaves and a white wall of an old Huizhou house, with spring leaves in front" style="width: 100%; height: 210px; object-fit: cover; object-position: 50% 45%; display: block">
+<div style="padding: 22px 24px 20px; display: flex; flex-direction: column; gap: 10px; flex: 1 1 auto">
+<p style="margin: 0; font-size: 12px; font-weight: 700; letter-spacing: 2px; color: #7a6222">OCT 2027 · NORTH EAST ASIA · 8 DAYS</p>
+<h3 style="margin: 0; font-size: 26px; font-weight: 700; line-height: 1.2">Jiangxi · Wuyuan</h3>
+<p style="margin: 0; font-size: 17px; font-style: italic; font-weight: 500; line-height: 1.5; color: #567542">“We travel because the true beauty of life is found in patience, simplicity and reverence.”</p>
+<button type="button" onClick="{{ open.jiangxi }}" style="margin: auto 0 0; min-height: 44px; padding: 8px 0 0; border: none; background: none; text-align: left; font-family: Montserrat, sans-serif; font-size: 15px; font-weight: 700; color: #567542; text-decoration: underline; cursor: pointer">View itinerary</button>
+</div>
+</article>
+
+<article class="card" style="display: {{ sNz }}; flex-direction: column; background: #ffffff; border: 1px solid #dcd3bf; border-radius: 14px; overflow: hidden">
+<img src="./assets/7316f9bbcbcdbb7cbfa76d4e4706e76d.jpg" alt="A small stone church beside the turquoise water of Lake Tekapo, with snow-capped mountains behind" style="width: 100%; height: 210px; object-fit: cover; object-position: 55% 45%; display: block">
+<div style="padding: 22px 24px 20px; display: flex; flex-direction: column; gap: 10px; flex: 1 1 auto">
+<p style="margin: 0; font-size: 12px; font-weight: 700; letter-spacing: 2px; color: #7a6222">FROM OCT 2027 · OCEANIA · 13 DAYS</p>
+<h3 style="margin: 0; font-size: 26px; font-weight: 700; line-height: 1.2">New Zealand · South Island Self-Drive</h3>
+<p style="margin: 0; font-size: 17px; font-style: italic; font-weight: 500; line-height: 1.5; color: #567542">“We travel because we want the open road, a sky full of stars, and room to think.”</p>
+<p style="margin: auto 0 0; padding-top: 18px; font-size: 15px; font-weight: 700; color: #5a5d3c">Itinerary coming soon</p>
+</div>
+</article>
+
+<article class="card" style="display: {{ sJeolla }}; flex-direction: column; background: #ffffff; border: 1px solid #dcd3bf; border-radius: 14px; overflow: hidden">
+<img src="./assets/e3ae085151e2bc4a8e749756ff601f4b.jpg" alt="Red maple leaves over a pond, with a blue-roofed pavilion behind, in autumn in Korea" style="width: 100%; height: 210px; object-fit: cover; object-position: 50% 45%; display: block">
+<div style="padding: 22px 24px 20px; display: flex; flex-direction: column; gap: 10px; flex: 1 1 auto">
+<p style="margin: 0; font-size: 12px; font-weight: 700; letter-spacing: 2px; color: #7a6222">EARLY NOV 2027 · NORTH EAST ASIA</p>
+<h3 style="margin: 0; font-size: 26px; font-weight: 700; line-height: 1.2">Korea · Jeolla</h3>
+<p style="margin: 0; font-size: 17px; font-style: italic; font-weight: 500; line-height: 1.5; color: #567542">“We travel because we want a night in a mountain temple, and a clearer mind in the morning.”</p>
+<p style="margin: auto 0 0; padding-top: 18px; font-size: 15px; font-weight: 700; color: #5a5d3c">Itinerary coming soon</p>
+</div>
+</article>
+
+<article class="card" style="display: {{ sFujian }}; flex-direction: column; background: #ffffff; border: 1px solid #dcd3bf; border-radius: 14px; overflow: hidden">
+<img src="./assets/39cf55678d733396fef8474b4fcdabc2.jpg" alt="An old riverside town in southern Fujian at dusk, lights reflected in the water" style="width: 100%; height: 210px; object-fit: cover; object-position: 50% 55%; display: block">
+<div style="padding: 22px 24px 20px; display: flex; flex-direction: column; gap: 10px; flex: 1 1 auto">
+<p style="margin: 0; font-size: 12px; font-weight: 700; letter-spacing: 2px; color: #7a6222">NOV 2027 · NORTH EAST ASIA · 8 DAYS</p>
+<h3 style="margin: 0; font-size: 26px; font-weight: 700; line-height: 1.2">Fujian · Chaoshan</h3>
+<p style="margin: 0; font-size: 17px; font-style: italic; font-weight: 500; line-height: 1.5; color: #567542">“We travel not to go to more places, but to sit together again.”</p>
+<button type="button" onClick="{{ open.fujian }}" style="margin: auto 0 0; min-height: 44px; padding: 8px 0 0; border: none; background: none; text-align: left; font-family: Montserrat, sans-serif; font-size: 15px; font-weight: 700; color: #567542; text-decoration: underline; cursor: pointer">View itinerary</button>
+</div>
+</article>
+
+</div>
+<p class="rv" style="margin: 0; font-size: 15px; color: #5a5d3c">Prefer your own dates? <a href="#ways" style="font-weight: 700">Travel privately</a>, any time of year.</p>
+</div>
+</section>
+</sc-if>
+
+<!-- 05 Partner journeys -->
+<sc-if value="{{ isPartnersPage }}" hint-placeholder-val="{{ false }}">
+<section id="partners" class="sec" aria-labelledby="par-h" style="background: #f1eadb; border-top: 1px solid #dcd3bf; border-bottom: 1px solid #dcd3bf">
+<div class="wrap" style="display: flex; flex-direction: column; gap: 32px">
+<button type="button" onClick="{{ go.home }}" style="align-self: flex-start; font-family: Montserrat, sans-serif; font-size: 15px; font-weight: 700; cursor: pointer; min-height: 44px; padding: 8px 0; border: none; background: none; color: #567542; text-decoration: underline">Back to Journey Within</button>
+<div class="rv" aria-hidden="true" style="display: flex; justify-content: center"><img src="./assets/df2c1c183a890cde663cb29c278421ed.png" alt="" style="width: min(360px, 80%); height: auto; display: block"></div>
+<div class="rv" style="display: flex; flex-direction: column; gap: 12px; max-width: 720px">
+<p style="margin: 0; display: flex; align-items: center; gap: 12px; font-size: 12px; font-weight: 700; letter-spacing: 3px; color: #7a6222"><span style="width: 40px; height: 2px; background: #8d722b"></span>REVEAL · PARTNER JOURNEYS</p>
+<h2 id="par-h" style="margin: 0; font-weight: 500; font-size: clamp(30px, 3.6vw, 46px); line-height: 1.15">Built around a shared purpose.</h2>
+<p style="margin: 0; font-size: 18px; line-height: 1.55">For schools, charities, interest groups and companies. We design the journey with you, around a purpose your people share.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 12px; margin-top: 8px">
+<a class="btn" href="https://wa.me/6581290908?text=Hi,%20I%27m%20interested%20in%20Journey%20Within%20Reveal%20(for%20my%20organisation)." style="background: #567542; color: #ffffff; text-decoration: none; font-weight: 700; font-size: 16px; padding: 14px 26px; border-radius: 999px">WhatsApp us about Reveal</a>
+</div>
+</div>
+<div class="rail rv" style="grid-template-columns: repeat(auto-fill, minmax(258px, 1fr))">
+
+<article class="card" style="display: flex; flex-direction: column; background: #ffffff; border: 1px solid #dcd3bf; border-radius: 14px; overflow: hidden">
+<img src="./assets/bec3746234cef857884e34acd2673dcc.jpg" alt="A hand lifting a fresh sheet of paper from the press at a paper mill in Puli, Taiwan" style="width: 100%; height: 190px; object-fit: cover; display: block">
+<div style="padding: 20px 22px 18px; display: flex; flex-direction: column; gap: 8px; flex: 1 1 auto">
+<p style="margin: 0; font-size: 12px; font-weight: 700; letter-spacing: 2px; color: #7a6222">FATHER &amp; CHILD EDITION</p>
+<h3 style="margin: 0; font-size: 21px; font-weight: 700; line-height: 1.25">Taiwan, for Dad and child</h3>
+<p style="margin: 0; font-size: 15px; line-height: 1.55; color: #5a5d3c">With Centre for Fathering. Five days for a father and a child who has just finished Primary 6.</p>
+<button type="button" onClick="{{ open.taiwan }}" style="margin: auto 0 0; min-height: 44px; padding: 8px 0 0; border: none; background: none; text-align: left; font-family: Montserrat, sans-serif; font-size: 15px; font-weight: 700; color: #567542; text-decoration: underline; cursor: pointer">View itinerary</button>
+</div>
+</article>
+
+<article class="card" style="display: flex; flex-direction: column; background: #ffffff; border: 1px solid #dcd3bf; border-radius: 14px; overflow: hidden">
+<img src="./assets/5a3af4a646f62a94b4903c9a9804b4b6.jpg" alt="A craftsman painting blue-and-white designs onto porcelain bowls in Jingdezhen" style="width: 100%; height: 190px; object-fit: cover; object-position: 50% 32%; display: block">
+<div style="padding: 20px 22px 18px; display: flex; flex-direction: column; gap: 8px; flex: 1 1 auto">
+<p style="margin: 0; font-size: 12px; font-weight: 700; letter-spacing: 2px; color: #7a6222">ART &amp; HERITAGE EDITION</p>
+<h3 style="margin: 0; font-size: 21px; font-weight: 700; line-height: 1.25">Jingdezhen, where porcelain began</h3>
+<p style="margin: 0; font-size: 15px; line-height: 1.55; color: #5a5d3c">Designed for museum docents. Kilns, studios and the imperial porcelain sites.</p>
+<button type="button" onClick="{{ open.jingdezhen }}" style="margin: auto 0 0; min-height: 44px; padding: 8px 0 0; border: none; background: none; text-align: left; font-family: Montserrat, sans-serif; font-size: 15px; font-weight: 700; color: #567542; text-decoration: underline; cursor: pointer">View itinerary</button>
+</div>
+</article>
+
+<article class="card" style="display: flex; flex-direction: column; background: #ffffff; border: 1px solid #dcd3bf; border-radius: 14px; overflow: hidden">
+<img src="./assets/f0dc110eee0601f65bc4bef8e47dcdbe.jpg" alt="A lone tree against a glowing sky at first light" style="width: 100%; height: 190px; object-fit: cover; object-position: 50% 62%; display: block">
+<div style="padding: 20px 22px 18px; display: flex; flex-direction: column; gap: 8px; flex: 1 1 auto">
+<p style="margin: 0; font-size: 12px; font-weight: 700; letter-spacing: 2px; color: #7a6222">FOOTSTEPS EDITION</p>
+<h3 style="margin: 0; font-size: 21px; font-weight: 700; line-height: 1.25">Japan, in the footsteps of a teacher</h3>
+<p style="margin: 0; font-size: 15px; line-height: 1.55; color: #5a5d3c">This journey follows a life, chapter by chapter, in the places where it happened.</p>
+<button type="button" onClick="{{ open.footsteps }}" style="margin: auto 0 0; min-height: 44px; padding: 8px 0 0; border: none; background: none; text-align: left; font-family: Montserrat, sans-serif; font-size: 15px; font-weight: 700; color: #567542; text-decoration: underline; cursor: pointer">View itinerary</button>
+</div>
+</article>
+
+<article class="card" style="display: flex; flex-direction: column; background: #ffffff; border: 1px solid #dcd3bf; border-radius: 14px; overflow: hidden">
+<img src="./assets/7ca58654392f7843047bb7568aff41d1.jpg" alt="A wooden jetty leading out to a red hut over the sea at sunrise in Penang" style="width: 100%; height: 190px; object-fit: cover; object-position: 50% 40%; display: block">
+<div style="padding: 20px 22px 18px; display: flex; flex-direction: column; gap: 8px; flex: 1 1 auto">
+<p style="margin: 0; font-size: 12px; font-weight: 700; letter-spacing: 2px; color: #7a6222">TEAM EDITION</p>
+<h3 style="margin: 0; font-size: 21px; font-weight: 700; line-height: 1.25">Penang, for your team</h3>
+<p style="margin: 0; font-size: 15px; line-height: 1.55; color: #5a5d3c">A company trip with time to rest, to talk, and to think about the mark each person wants to leave.</p>
+<button type="button" onClick="{{ open.penang }}" style="margin: auto 0 0; min-height: 44px; padding: 8px 0 0; border: none; background: none; text-align: left; font-family: Montserrat, sans-serif; font-size: 15px; font-weight: 700; color: #567542; text-decoration: underline; cursor: pointer">View itinerary</button>
+</div>
+</article>
+
+<article class="card" style="display: flex; flex-direction: column; background: #ffffff; border: 1px solid #dcd3bf; border-radius: 14px; overflow: hidden">
+<div style="position: relative">
+<img src="./assets/e8c97222109cd7ae0bc30a6b3c4c9c00.jpg" alt="A striped hammock in a garden in warm afternoon light" style="width: 100%; height: 190px; object-fit: cover; display: block">
+<span style="position: absolute; left: 12px; top: 12px; background: #40461c; color: #ffffff; font-size: 11px; font-weight: 700; letter-spacing: 1.5px; padding: 6px 10px; border-radius: 999px">IN THE WORKS</span>
+</div>
+<div style="padding: 20px 22px 22px; display: flex; flex-direction: column; gap: 8px; flex: 1 1 auto">
+<p style="margin: 0; font-size: 12px; font-weight: 700; letter-spacing: 2px; color: #7a6222">NIGHTINGALE EDITION</p>
+<h3 style="margin: 0; font-size: 21px; font-weight: 700; line-height: 1.25">For those who care for others</h3>
+<p style="margin: 0; font-size: 15px; line-height: 1.55; color: #5a5d3c">The gift of recovery for nurses: a few days to be cared for, after caring for everyone else.</p>
+</div>
+</article>
+
+<article class="card" style="display: flex; flex-direction: column; background: #ffffff; border: 1px solid #dcd3bf; border-radius: 14px; overflow: hidden">
+<div style="position: relative">
+<img src="./assets/d6d75376d3324a4826674f3cb8b165de.jpg" alt="Someone resting under white bedding, glasses still in hand" style="width: 100%; height: 190px; object-fit: cover; object-position: 50% 42%; display: block">
+<span style="position: absolute; left: 12px; top: 12px; background: #40461c; color: #ffffff; font-size: 11px; font-weight: 700; letter-spacing: 1.5px; padding: 6px 10px; border-radius: 999px">IN THE WORKS</span>
+</div>
+<div style="padding: 20px 22px 22px; display: flex; flex-direction: column; gap: 8px; flex: 1 1 auto">
+<p style="margin: 0; font-size: 12px; font-weight: 700; letter-spacing: 2px; color: #7a6222">SLEEP EDITION</p>
+<h3 style="margin: 0; font-size: 21px; font-weight: 700; line-height: 1.25">A journey to rest well</h3>
+<p style="margin: 0; font-size: 15px; line-height: 1.55; color: #5a5d3c">Built on the science of sleep, with a partner who knows it well.</p>
+</div>
+</article>
+
+<article class="card" style="display: flex; flex-direction: column; background: #ffffff; border: 1px solid #dcd3bf; border-radius: 14px; overflow: hidden">
+<div style="position: relative">
+<img src="./assets/92a5f4a14ea63e4cf9d2907934f4af64.jpg" alt="Four small children’s chairs with smiling faces, set out on a lawn" style="width: 100%; height: 190px; object-fit: cover; display: block">
+<span style="position: absolute; left: 12px; top: 12px; background: #40461c; color: #ffffff; font-size: 11px; font-weight: 700; letter-spacing: 1.5px; padding: 6px 10px; border-radius: 999px">IN THE WORKS</span>
+</div>
+<div style="padding: 20px 22px 22px; display: flex; flex-direction: column; gap: 8px; flex: 1 1 auto">
+<p style="margin: 0; font-size: 12px; font-weight: 700; letter-spacing: 2px; color: #7a6222">EDUCATION EDITION</p>
+<h3 style="margin: 0; font-size: 21px; font-weight: 700; line-height: 1.25">A learning journey</h3>
+<p style="margin: 0; font-size: 15px; line-height: 1.55; color: #5a5d3c">With a partner in early education, for a community that learns together.</p>
+</div>
+</article>
+
+<article class="card" style="display: flex; flex-direction: column; background: #ffffff; border: 1px solid #dcd3bf; border-radius: 14px; overflow: hidden">
+<div style="position: relative">
+<img src="./assets/8b837fd9bf8102fd29d79c7950886cbf.jpg" alt="Two racing motorcycles at speed on a wet track, spray rising behind them" style="width: 100%; height: 190px; object-fit: cover; object-position: 45% 70%; display: block">
+<span style="position: absolute; left: 12px; top: 12px; background: #40461c; color: #ffffff; font-size: 11px; font-weight: 700; letter-spacing: 1.5px; padding: 6px 10px; border-radius: 999px">IN THE WORKS</span>
+</div>
+<div style="padding: 20px 22px 22px; display: flex; flex-direction: column; gap: 8px; flex: 1 1 auto">
+<p style="margin: 0; font-size: 12px; font-weight: 700; letter-spacing: 2px; color: #7a6222">ADRENALINE EDITION</p>
+<h3 style="margin: 0; font-size: 21px; font-weight: 700; line-height: 1.25">Race day at Suzuka</h3>
+<p style="margin: 0; font-size: 15px; line-height: 1.55; color: #5a5d3c">Trackside with a racing team, for people who share a love of speed.</p>
+</div>
+</article>
+
+</div>
+<p class="rv" style="margin: 0; font-size: 17px; font-weight: 500">Have a group in mind? <a href="https://wa.me/6581290908?text=Hi,%20I%27m%20interested%20in%20Journey%20Within%20Reveal%20(for%20my%20organisation)." style="font-weight: 700">Start a conversation</a>.</p>
+</div>
+</section>
+</sc-if>
+
+<!-- 06 Guest stories -->
+<!-- Restore: private journeys (own page) -->
+<sc-if value="{{ isRestorePage }}" hint-placeholder-val="{{ false }}">
+<section id="restore" class="sec" aria-labelledby="res-h" style="background: #fcf8f3">
+<div class="wrap fade" style="display: flex; flex-direction: column; gap: 26px">
+<button type="button" onClick="{{ go.home }}" style="align-self: flex-start; font-family: Montserrat, sans-serif; font-size: 15px; font-weight: 700; cursor: pointer; min-height: 44px; padding: 8px 0; border: none; background: none; color: #567542; text-decoration: underline">Back to Journey Within</button>
+<div aria-hidden="true" style="display: flex; justify-content: center"><img src="./assets/df2c1c183a890cde663cb29c278421ed.png" alt="" style="width: min(360px, 80%); height: auto; display: block"></div>
+<div style="display: flex; flex-direction: column; gap: 12px; max-width: 760px">
+<p style="margin: 0; display: flex; align-items: center; gap: 12px; font-size: 12px; font-weight: 700; letter-spacing: 3px; color: #7a6222"><span style="width: 40px; height: 2px; background: #8d722b"></span>RESTORE · A PRIVATE JOURNEY</p>
+<h2 id="res-h" style="margin: 0; font-weight: 500; font-size: clamp(30px, 3.6vw, 46px); line-height: 1.15">Your people. Your dates. Your reason.</h2>
+<p style="margin: 0; font-size: 18px; line-height: 1.55">A private journey for couples, families and friends, anywhere you can dream of, at any time of year. These are sample journeys. Tell us what you hope for, and we shape every day around it.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 12px; margin-top: 8px">
+<a class="btn" href="https://wa.me/6581290908?text=Hi,%20I%27m%20interested%20in%20Journey%20Within%20Restore%20(private%20journey)." style="background: #567542; color: #ffffff; text-decoration: none; font-weight: 700; font-size: 16px; padding: 14px 26px; border-radius: 999px">WhatsApp us about Restore</a>
+</div>
+</div>
+
+<!-- Region filter and status -->
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px">
+<div role="group" aria-label="Filter private journeys by region" style="display: flex; flex-wrap: wrap; gap: 8px">
+<sc-for list="{{ rChips }}" as="c" hint-placeholder-count="7">
+<button type="button" onClick="{{ c.pick }}" aria-pressed="{{ c.on }}" style="font-family: Montserrat, sans-serif; font-size: 14px; font-weight: 700; cursor: pointer; min-height: 44px; padding: 8px 18px; border-radius: 999px; border: 2px solid {{ c.border }}; background: {{ c.bg }}; color: {{ c.fg }}">{{ c.label }}</button>
+</sc-for>
+</div>
+<p aria-live="polite" style="margin: 0 0 0 auto; font-size: 14px; font-weight: 700; color: #5a5d3c">{{ rCount }}</p>
+</div>
+
+<!-- Private journey cards -->
+<div class="rail" style="grid-template-columns: repeat(auto-fill, minmax(320px, 1fr))">
+<article class="card" style="display: {{ rs.hangzhou }}; flex-direction: column; background: #ffffff; border: 1px solid #dcd3bf; border-radius: 14px; overflow: hidden">
+<img loading="lazy" src="./assets/851df095254c31ddf28bb6ef31a218ee.jpg" alt="Hangzhou, Wuzhen &amp; Shanghai, a Journey Within Restore private journey" style="width: 100%; height: 210px; object-fit: cover; display: block; background: #f1eadb">
+<div style="padding: 22px 24px 20px; display: flex; flex-direction: column; gap: 10px; flex: 1 1 auto">
+<p style="margin: 0; font-size: 12px; font-weight: 700; letter-spacing: 2px; color: #7a6222">NORTH EAST ASIA · 8 DAYS</p>
+<h3 style="margin: 0; font-size: 26px; font-weight: 700; line-height: 1.2">Hangzhou, Wuzhen &amp; Shanghai</h3>
+<div style="margin: auto 0 0; padding-top: 8px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0 16px">
+<button type="button" onClick="{{ open.hangzhou }}" style="min-height: 44px; padding: 0; border: none; background: none; text-align: left; font-family: Montserrat, sans-serif; font-size: 15px; font-weight: 700; color: #567542; text-decoration: underline; cursor: pointer">View itinerary</button>
+<p style="margin: 0 0 0 auto; font-size: 15px; font-weight: 500; line-height: 1.4; color: #5a5d3c; text-align: right">From S$2,510*</p>
+</div>
+</div>
+</article>
+
+<article class="card" style="display: {{ rs.busan }}; flex-direction: column; background: #ffffff; border: 1px solid #dcd3bf; border-radius: 14px; overflow: hidden">
+<img loading="lazy" src="./assets/a63ef19a845b899ea85122e3eef32322.jpg" alt="Busan &amp; Gyeongju, a Journey Within Restore private journey" style="width: 100%; height: 210px; object-fit: cover; display: block; background: #f1eadb">
+<div style="padding: 22px 24px 20px; display: flex; flex-direction: column; gap: 10px; flex: 1 1 auto">
+<p style="margin: 0; font-size: 12px; font-weight: 700; letter-spacing: 2px; color: #7a6222">NORTH EAST ASIA · 7 DAYS</p>
+<h3 style="margin: 0; font-size: 26px; font-weight: 700; line-height: 1.2">Busan &amp; Gyeongju</h3>
+<div style="margin: auto 0 0; padding-top: 8px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0 16px">
+<button type="button" onClick="{{ open.busan }}" style="min-height: 44px; padding: 0; border: none; background: none; text-align: left; font-family: Montserrat, sans-serif; font-size: 15px; font-weight: 700; color: #567542; text-decoration: underline; cursor: pointer">View itinerary</button>
+<p style="margin: 0 0 0 auto; font-size: 15px; font-weight: 500; line-height: 1.4; color: #5a5d3c; text-align: right">From S$3,110*</p>
+</div>
+</div>
+</article>
+
+<article class="card" style="display: {{ rs.yichun }}; flex-direction: column; background: #ffffff; border: 1px solid #dcd3bf; border-radius: 14px; overflow: hidden">
+<img loading="lazy" src="./assets/6bfbaa5bebee62d6328860d21d22550c.jpg" alt="Harbin &amp; Yichun, a Journey Within Restore private journey" style="width: 100%; height: 210px; object-fit: cover; display: block; background: #f1eadb">
+<div style="padding: 22px 24px 20px; display: flex; flex-direction: column; gap: 10px; flex: 1 1 auto">
+<p style="margin: 0; font-size: 12px; font-weight: 700; letter-spacing: 2px; color: #7a6222">NORTH EAST ASIA · 8 DAYS</p>
+<h3 style="margin: 0; font-size: 26px; font-weight: 700; line-height: 1.2">Harbin &amp; Yichun</h3>
+<div style="margin: auto 0 0; padding-top: 8px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0 16px">
+<button type="button" onClick="{{ open.yichun }}" style="min-height: 44px; padding: 0; border: none; background: none; text-align: left; font-family: Montserrat, sans-serif; font-size: 15px; font-weight: 700; color: #567542; text-decoration: underline; cursor: pointer">View itinerary</button>
+<p style="margin: 0 0 0 auto; font-size: 15px; font-weight: 500; line-height: 1.4; color: #5a5d3c; text-align: right">From S$3,560*</p>
+</div>
+</div>
+</article>
+
+<article class="card" style="display: {{ rs.fenghuang }}; flex-direction: column; background: #ffffff; border: 1px solid #dcd3bf; border-radius: 14px; overflow: hidden">
+<img loading="lazy" src="./assets/65db202485b7b4fb8c47a044195ca787.jpg" alt="Fenghuang &amp; Zhangjiajie, a Journey Within Restore private journey" style="width: 100%; height: 210px; object-fit: cover; display: block; background: #f1eadb">
+<div style="padding: 22px 24px 20px; display: flex; flex-direction: column; gap: 10px; flex: 1 1 auto">
+<p style="margin: 0; font-size: 12px; font-weight: 700; letter-spacing: 2px; color: #7a6222">NORTH EAST ASIA · 9 DAYS</p>
+<h3 style="margin: 0; font-size: 26px; font-weight: 700; line-height: 1.2">Fenghuang &amp; Zhangjiajie</h3>
+<div style="margin: auto 0 0; padding-top: 8px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0 16px">
+<button type="button" onClick="{{ open.fenghuang }}" style="min-height: 44px; padding: 0; border: none; background: none; text-align: left; font-family: Montserrat, sans-serif; font-size: 15px; font-weight: 700; color: #567542; text-decoration: underline; cursor: pointer">View itinerary</button>
+<p style="margin: 0 0 0 auto; font-size: 15px; font-weight: 500; line-height: 1.4; color: #5a5d3c; text-align: right">From S$3,700*</p>
+</div>
+</div>
+</article>
+
+<article class="card" style="display: {{ rs.tibet }}; flex-direction: column; background: #ffffff; border: 1px solid #dcd3bf; border-radius: 14px; overflow: hidden">
+<img loading="lazy" src="./assets/06963ad2cef28071ff5599541071aedf.jpg" alt="Tibet · Nyingchi &amp; Lhasa, a Journey Within Restore private journey" style="width: 100%; height: 210px; object-fit: cover; display: block; background: #f1eadb">
+<div style="padding: 22px 24px 20px; display: flex; flex-direction: column; gap: 10px; flex: 1 1 auto">
+<p style="margin: 0; font-size: 12px; font-weight: 700; letter-spacing: 2px; color: #7a6222">NORTH EAST ASIA · 9 DAYS</p>
+<h3 style="margin: 0; font-size: 26px; font-weight: 700; line-height: 1.2">Tibet · Nyingchi &amp; Lhasa</h3>
+<div style="margin: auto 0 0; padding-top: 8px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0 16px">
+<button type="button" onClick="{{ open.tibet }}" style="min-height: 44px; padding: 0; border: none; background: none; text-align: left; font-family: Montserrat, sans-serif; font-size: 15px; font-weight: 700; color: #567542; text-decoration: underline; cursor: pointer">View itinerary</button>
+<p style="margin: 0 0 0 auto; font-size: 15px; font-weight: 500; line-height: 1.4; color: #5a5d3c; text-align: right">From S$5,460*</p>
+</div>
+</div>
+</article>
+
+<article class="card" style="display: {{ rs.harbinne }}; flex-direction: column; background: #ffffff; border: 1px solid #dcd3bf; border-radius: 14px; overflow: hidden">
+<img loading="lazy" src="./assets/a8aa0acad927cb7088ae7c66de815676.jpg" alt="Harbin &amp; the Northeast, a Journey Within Restore private journey" style="width: 100%; height: 210px; object-fit: cover; display: block; background: #f1eadb">
+<div style="padding: 22px 24px 20px; display: flex; flex-direction: column; gap: 10px; flex: 1 1 auto">
+<p style="margin: 0; font-size: 12px; font-weight: 700; letter-spacing: 2px; color: #7a6222">NORTH EAST ASIA · 11 DAYS</p>
+<h3 style="margin: 0; font-size: 26px; font-weight: 700; line-height: 1.2">Harbin &amp; the Northeast</h3>
+<div style="margin: auto 0 0; padding-top: 8px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0 16px">
+<button type="button" onClick="{{ open.harbinne }}" style="min-height: 44px; padding: 0; border: none; background: none; text-align: left; font-family: Montserrat, sans-serif; font-size: 15px; font-weight: 700; color: #567542; text-decoration: underline; cursor: pointer">View itinerary</button>
+<p style="margin: 0 0 0 auto; font-size: 15px; font-weight: 500; line-height: 1.4; color: #5a5d3c; text-align: right">From S$6,150*</p>
+</div>
+</div>
+</article>
+
+<article class="card" style="display: {{ rs.fujianr }}; flex-direction: column; background: #ffffff; border: 1px solid #dcd3bf; border-radius: 14px; overflow: hidden">
+<img loading="lazy" src="./assets/0969e891b5c8943ab530bebe45bf59bd.jpg" alt="Fujian &amp; Chaoshan, a Journey Within Restore private journey" style="width: 100%; height: 210px; object-fit: cover; display: block; background: #f1eadb">
+<div style="padding: 22px 24px 20px; display: flex; flex-direction: column; gap: 10px; flex: 1 1 auto">
+<p style="margin: 0; font-size: 12px; font-weight: 700; letter-spacing: 2px; color: #7a6222">NORTH EAST ASIA · 13 DAYS</p>
+<h3 style="margin: 0; font-size: 26px; font-weight: 700; line-height: 1.2">Fujian &amp; Chaoshan</h3>
+<div style="margin: auto 0 0; padding-top: 8px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0 16px">
+<button type="button" onClick="{{ open.fujianr }}" style="min-height: 44px; padding: 0; border: none; background: none; text-align: left; font-family: Montserrat, sans-serif; font-size: 15px; font-weight: 700; color: #567542; text-decoration: underline; cursor: pointer">View itinerary</button>
+<p style="margin: 0 0 0 auto; font-size: 15px; font-weight: 500; line-height: 1.4; color: #5a5d3c; text-align: right">From S$6,230*</p>
+</div>
+</div>
+</article>
+
+<article class="card" style="display: {{ rs.nagano }}; flex-direction: column; background: #ffffff; border: 1px solid #dcd3bf; border-radius: 14px; overflow: hidden">
+<img loading="lazy" src="./assets/4b0afa0d1f22b8977ac167e8f76802c3.jpg" alt="Nagano &amp; Kanazawa, a Journey Within Restore private journey" style="width: 100%; height: 210px; object-fit: cover; display: block; background: #f1eadb">
+<div style="padding: 22px 24px 20px; display: flex; flex-direction: column; gap: 10px; flex: 1 1 auto">
+<p style="margin: 0; font-size: 12px; font-weight: 700; letter-spacing: 2px; color: #7a6222">NORTH EAST ASIA · 13 DAYS</p>
+<h3 style="margin: 0; font-size: 26px; font-weight: 700; line-height: 1.2">Nagano &amp; Kanazawa</h3>
+<div style="margin: auto 0 0; padding-top: 8px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0 16px">
+<button type="button" onClick="{{ open.nagano }}" style="min-height: 44px; padding: 0; border: none; background: none; text-align: left; font-family: Montserrat, sans-serif; font-size: 15px; font-weight: 700; color: #567542; text-decoration: underline; cursor: pointer">View itinerary</button>
+<p style="margin: 0 0 0 auto; font-size: 15px; font-weight: 500; line-height: 1.4; color: #5a5d3c; text-align: right">From S$6,320*</p>
+</div>
+</div>
+</article>
+
+<article class="card" style="display: {{ rs.njapan }}; flex-direction: column; background: #ffffff; border: 1px solid #dcd3bf; border-radius: 14px; overflow: hidden">
+<img loading="lazy" src="./assets/e280e56489d7aee074085c045357426e.jpg" alt="Northern Japan, a Journey Within Restore private journey" style="width: 100%; height: 210px; object-fit: cover; display: block; background: #f1eadb">
+<div style="padding: 22px 24px 20px; display: flex; flex-direction: column; gap: 10px; flex: 1 1 auto">
+<p style="margin: 0; font-size: 12px; font-weight: 700; letter-spacing: 2px; color: #7a6222">NORTH EAST ASIA · 7 DAYS</p>
+<h3 style="margin: 0; font-size: 26px; font-weight: 700; line-height: 1.2">Northern Japan</h3>
+<div style="margin: auto 0 0; padding-top: 8px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0 16px">
+<button type="button" onClick="{{ open.njapan }}" style="min-height: 44px; padding: 0; border: none; background: none; text-align: left; font-family: Montserrat, sans-serif; font-size: 15px; font-weight: 700; color: #567542; text-decoration: underline; cursor: pointer">View itinerary</button>
+<p style="margin: 0 0 0 auto; font-size: 15px; font-weight: 500; line-height: 1.4; color: #5a5d3c; text-align: right">From S$6,910*</p>
+</div>
+</div>
+</article>
+
+<article class="card" style="display: {{ rs.yunnan }}; flex-direction: column; background: #ffffff; border: 1px solid #dcd3bf; border-radius: 14px; overflow: hidden">
+<img loading="lazy" src="./assets/39d812faba33a62216c00ce3dec117cf.jpg" alt="Yunnan &amp; Shangri-La, a Journey Within Restore private journey" style="width: 100%; height: 210px; object-fit: cover; display: block; background: #f1eadb">
+<div style="padding: 22px 24px 20px; display: flex; flex-direction: column; gap: 10px; flex: 1 1 auto">
+<p style="margin: 0; font-size: 12px; font-weight: 700; letter-spacing: 2px; color: #7a6222">NORTH EAST ASIA · 14 DAYS</p>
+<h3 style="margin: 0; font-size: 26px; font-weight: 700; line-height: 1.2">Yunnan &amp; Shangri-La</h3>
+<div style="margin: auto 0 0; padding-top: 8px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0 16px">
+<button type="button" onClick="{{ open.yunnan }}" style="min-height: 44px; padding: 0; border: none; background: none; text-align: left; font-family: Montserrat, sans-serif; font-size: 15px; font-weight: 700; color: #567542; text-decoration: underline; cursor: pointer">View itinerary</button>
+<p style="margin: 0 0 0 auto; font-size: 15px; font-weight: 500; line-height: 1.4; color: #5a5d3c; text-align: right">From S$7,650*</p>
+</div>
+</div>
+</article>
+
+<article class="card" style="display: {{ rs.jiangnan }}; flex-direction: column; background: #ffffff; border: 1px solid #dcd3bf; border-radius: 14px; overflow: hidden">
+<img loading="lazy" src="./assets/e7f47e5ff32fbf4217b2cebc4e689e8a.jpg" alt="Jiangnan &amp; Zhangjiajie, a Journey Within Restore private journey" style="width: 100%; height: 210px; object-fit: cover; display: block; background: #f1eadb">
+<div style="padding: 22px 24px 20px; display: flex; flex-direction: column; gap: 10px; flex: 1 1 auto">
+<p style="margin: 0; font-size: 12px; font-weight: 700; letter-spacing: 2px; color: #7a6222">NORTH EAST ASIA · 13 DAYS</p>
+<h3 style="margin: 0; font-size: 26px; font-weight: 700; line-height: 1.2">Jiangnan &amp; Zhangjiajie</h3>
+<div style="margin: auto 0 0; padding-top: 8px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0 16px">
+<button type="button" onClick="{{ open.jiangnan }}" style="min-height: 44px; padding: 0; border: none; background: none; text-align: left; font-family: Montserrat, sans-serif; font-size: 15px; font-weight: 700; color: #567542; text-decoration: underline; cursor: pointer">View itinerary</button>
+<p style="margin: 0 0 0 auto; font-size: 15px; font-weight: 500; line-height: 1.4; color: #5a5d3c; text-align: right">From S$8,460*</p>
+</div>
+</div>
+</article>
+
+<article class="card" style="display: {{ rs.srilankar }}; flex-direction: column; background: #ffffff; border: 1px solid #dcd3bf; border-radius: 14px; overflow: hidden">
+<img loading="lazy" src="./assets/bb71764f6bd7d637f3fba0ea50cfdbc2.jpg" alt="Sri Lanka, a Journey Within Restore private journey" style="width: 100%; height: 210px; object-fit: cover; display: block; background: #f1eadb">
+<div style="padding: 22px 24px 20px; display: flex; flex-direction: column; gap: 10px; flex: 1 1 auto">
+<p style="margin: 0; font-size: 12px; font-weight: 700; letter-spacing: 2px; color: #7a6222">HIMALAYAN &amp; INDIAN SUBCONTINENT · 9 DAYS</p>
+<h3 style="margin: 0; font-size: 26px; font-weight: 700; line-height: 1.2">Sri Lanka</h3>
+<div style="margin: auto 0 0; padding-top: 8px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0 16px">
+<button type="button" onClick="{{ open.srilankar }}" style="min-height: 44px; padding: 0; border: none; background: none; text-align: left; font-family: Montserrat, sans-serif; font-size: 15px; font-weight: 700; color: #567542; text-decoration: underline; cursor: pointer">View itinerary</button>
+<p style="margin: 0 0 0 auto; font-size: 15px; font-weight: 500; line-height: 1.4; color: #5a5d3c; text-align: right">From S$2,440*</p>
+</div>
+</div>
+</article>
+
+<article class="card" style="display: {{ rs.jordan }}; flex-direction: column; background: #ffffff; border: 1px solid #dcd3bf; border-radius: 14px; overflow: hidden">
+<img loading="lazy" src="./assets/3db96057ae93bac41c0065d3002bccec.jpg" alt="Jordan &amp; Egypt, a Journey Within Restore private journey" style="width: 100%; height: 210px; object-fit: cover; display: block; background: #f1eadb">
+<div style="padding: 22px 24px 20px; display: flex; flex-direction: column; gap: 10px; flex: 1 1 auto">
+<p style="margin: 0; font-size: 12px; font-weight: 700; letter-spacing: 2px; color: #7a6222">MIDDLE EAST &amp; NORTH AFRICA · 15 DAYS</p>
+<h3 style="margin: 0; font-size: 26px; font-weight: 700; line-height: 1.2">Jordan &amp; Egypt</h3>
+<div style="margin: auto 0 0; padding-top: 8px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0 16px">
+<button type="button" onClick="{{ open.jordan }}" style="min-height: 44px; padding: 0; border: none; background: none; text-align: left; font-family: Montserrat, sans-serif; font-size: 15px; font-weight: 700; color: #567542; text-decoration: underline; cursor: pointer">View itinerary</button>
+<p style="margin: 0 0 0 auto; font-size: 15px; font-weight: 500; line-height: 1.4; color: #5a5d3c; text-align: right">From S$14,660*</p>
+</div>
+</div>
+</article>
+
+<article class="card" style="display: {{ rs.iceland }}; flex-direction: column; background: #ffffff; border: 1px solid #dcd3bf; border-radius: 14px; overflow: hidden">
+<img loading="lazy" src="./assets/a67f95ffa36e68964560d284fbb65882.jpg" alt="Amsterdam &amp; Iceland, a Journey Within Restore private journey" style="width: 100%; height: 210px; object-fit: cover; display: block; background: #f1eadb">
+<div style="padding: 22px 24px 20px; display: flex; flex-direction: column; gap: 10px; flex: 1 1 auto">
+<p style="margin: 0; font-size: 12px; font-weight: 700; letter-spacing: 2px; color: #7a6222">EUROPE · 9 DAYS</p>
+<h3 style="margin: 0; font-size: 26px; font-weight: 700; line-height: 1.2">Amsterdam &amp; Iceland</h3>
+<div style="margin: auto 0 0; padding-top: 8px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0 16px">
+<button type="button" onClick="{{ open.iceland }}" style="min-height: 44px; padding: 0; border: none; background: none; text-align: left; font-family: Montserrat, sans-serif; font-size: 15px; font-weight: 700; color: #567542; text-decoration: underline; cursor: pointer">View itinerary</button>
+<p style="margin: 0 0 0 auto; font-size: 15px; font-weight: 500; line-height: 1.4; color: #5a5d3c; text-align: right">From S$9,220*</p>
+</div>
+</div>
+</article>
+
+<article class="card" style="display: {{ rs.malta }}; flex-direction: column; background: #ffffff; border: 1px solid #dcd3bf; border-radius: 14px; overflow: hidden">
+<img loading="lazy" src="./assets/6a9fa8b6c390b9e90c6ea6ba4a85f906.jpg" alt="Malta &amp; Sicily, a Journey Within Restore private journey" style="width: 100%; height: 210px; object-fit: cover; display: block; background: #f1eadb">
+<div style="padding: 22px 24px 20px; display: flex; flex-direction: column; gap: 10px; flex: 1 1 auto">
+<p style="margin: 0; font-size: 12px; font-weight: 700; letter-spacing: 2px; color: #7a6222">EUROPE · 11 DAYS</p>
+<h3 style="margin: 0; font-size: 26px; font-weight: 700; line-height: 1.2">Malta &amp; Sicily</h3>
+<div style="margin: auto 0 0; padding-top: 8px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0 16px">
+<button type="button" onClick="{{ open.malta }}" style="min-height: 44px; padding: 0; border: none; background: none; text-align: left; font-family: Montserrat, sans-serif; font-size: 15px; font-weight: 700; color: #567542; text-decoration: underline; cursor: pointer">View itinerary</button>
+<p style="margin: 0 0 0 auto; font-size: 15px; font-weight: 500; line-height: 1.4; color: #5a5d3c; text-align: right">From S$9,600*</p>
+</div>
+</div>
+</article>
+
+<article class="card" style="display: {{ rs.portitaly }}; flex-direction: column; background: #ffffff; border: 1px solid #dcd3bf; border-radius: 14px; overflow: hidden">
+<img loading="lazy" src="./assets/2fdca4fbe556c7824595a1b8d7b52a15.jpg" alt="Portugal &amp; Italy, a Journey Within Restore private journey" style="width: 100%; height: 210px; object-fit: cover; display: block; background: #f1eadb">
+<div style="padding: 22px 24px 20px; display: flex; flex-direction: column; gap: 10px; flex: 1 1 auto">
+<p style="margin: 0; font-size: 12px; font-weight: 700; letter-spacing: 2px; color: #7a6222">EUROPE · 12 DAYS</p>
+<h3 style="margin: 0; font-size: 26px; font-weight: 700; line-height: 1.2">Portugal &amp; Italy</h3>
+<div style="margin: auto 0 0; padding-top: 8px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0 16px">
+<button type="button" onClick="{{ open.portitaly }}" style="min-height: 44px; padding: 0; border: none; background: none; text-align: left; font-family: Montserrat, sans-serif; font-size: 15px; font-weight: 700; color: #567542; text-decoration: underline; cursor: pointer">View itinerary</button>
+<p style="margin: 0 0 0 auto; font-size: 15px; font-weight: 500; line-height: 1.4; color: #5a5d3c; text-align: right">From S$9,800*</p>
+</div>
+</div>
+</article>
+
+<article class="card" style="display: {{ rs.finparlon }}; flex-direction: column; background: #ffffff; border: 1px solid #dcd3bf; border-radius: 14px; overflow: hidden">
+<img loading="lazy" src="./assets/d9668b5da1d5508c68d06258483c1fc9.jpg" alt="Finland, Paris &amp; London, a Journey Within Restore private journey" style="width: 100%; height: 210px; object-fit: cover; display: block; background: #f1eadb">
+<div style="padding: 22px 24px 20px; display: flex; flex-direction: column; gap: 10px; flex: 1 1 auto">
+<p style="margin: 0; font-size: 12px; font-weight: 700; letter-spacing: 2px; color: #7a6222">EUROPE · 16 DAYS</p>
+<h3 style="margin: 0; font-size: 26px; font-weight: 700; line-height: 1.2">Finland, Paris &amp; London</h3>
+<div style="margin: auto 0 0; padding-top: 8px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0 16px">
+<button type="button" onClick="{{ open.finparlon }}" style="min-height: 44px; padding: 0; border: none; background: none; text-align: left; font-family: Montserrat, sans-serif; font-size: 15px; font-weight: 700; color: #567542; text-decoration: underline; cursor: pointer">View itinerary</button>
+<p style="margin: 0 0 0 auto; font-size: 15px; font-weight: 500; line-height: 1.4; color: #5a5d3c; text-align: right">From S$10,460*</p>
+</div>
+</div>
+</article>
+
+<article class="card" style="display: {{ rs.spain }}; flex-direction: column; background: #ffffff; border: 1px solid #dcd3bf; border-radius: 14px; overflow: hidden">
+<img loading="lazy" src="./assets/ece9b4d9a22f9956571b71c6ae094c06.jpg" alt="Spain, a Journey Within Restore private journey" style="width: 100%; height: 210px; object-fit: cover; display: block; background: #f1eadb">
+<div style="padding: 22px 24px 20px; display: flex; flex-direction: column; gap: 10px; flex: 1 1 auto">
+<p style="margin: 0; font-size: 12px; font-weight: 700; letter-spacing: 2px; color: #7a6222">EUROPE · 14 DAYS</p>
+<h3 style="margin: 0; font-size: 26px; font-weight: 700; line-height: 1.2">Spain</h3>
+<div style="margin: auto 0 0; padding-top: 8px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0 16px">
+<button type="button" onClick="{{ open.spain }}" style="min-height: 44px; padding: 0; border: none; background: none; text-align: left; font-family: Montserrat, sans-serif; font-size: 15px; font-weight: 700; color: #567542; text-decoration: underline; cursor: pointer">View itinerary</button>
+<p style="margin: 0 0 0 auto; font-size: 15px; font-weight: 500; line-height: 1.4; color: #5a5d3c; text-align: right">From S$11,960*</p>
+</div>
+</div>
+</article>
+
+<article class="card" style="display: {{ rs.scotswiss }}; flex-direction: column; background: #ffffff; border: 1px solid #dcd3bf; border-radius: 14px; overflow: hidden">
+<img loading="lazy" src="./assets/8fffa4baa0f979a85c5150b5d3310e0f.jpg" alt="Scotland &amp; Switzerland, a Journey Within Restore private journey" style="width: 100%; height: 210px; object-fit: cover; display: block; background: #f1eadb">
+<div style="padding: 22px 24px 20px; display: flex; flex-direction: column; gap: 10px; flex: 1 1 auto">
+<p style="margin: 0; font-size: 12px; font-weight: 700; letter-spacing: 2px; color: #7a6222">EUROPE · 10 DAYS</p>
+<h3 style="margin: 0; font-size: 26px; font-weight: 700; line-height: 1.2">Scotland &amp; Switzerland</h3>
+<div style="margin: auto 0 0; padding-top: 8px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0 16px">
+<button type="button" onClick="{{ open.scotswiss }}" style="min-height: 44px; padding: 0; border: none; background: none; text-align: left; font-family: Montserrat, sans-serif; font-size: 15px; font-weight: 700; color: #567542; text-decoration: underline; cursor: pointer">View itinerary</button>
+<p style="margin: 0 0 0 auto; font-size: 15px; font-weight: 500; line-height: 1.4; color: #5a5d3c; text-align: right">From S$14,140*</p>
+</div>
+</div>
+</article>
+
+<article class="card" style="display: {{ rs.britain }}; flex-direction: column; background: #ffffff; border: 1px solid #dcd3bf; border-radius: 14px; overflow: hidden">
+<img loading="lazy" src="./assets/7f2ca13e381502df861e45f53b698d3c.jpg" alt="Britain &amp; Europe, a Journey Within Restore private journey" style="width: 100%; height: 210px; object-fit: cover; display: block; background: #f1eadb">
+<div style="padding: 22px 24px 20px; display: flex; flex-direction: column; gap: 10px; flex: 1 1 auto">
+<p style="margin: 0; font-size: 12px; font-weight: 700; letter-spacing: 2px; color: #7a6222">EUROPE · 17 DAYS</p>
+<h3 style="margin: 0; font-size: 26px; font-weight: 700; line-height: 1.2">Britain &amp; Europe</h3>
+<div style="margin: auto 0 0; padding-top: 8px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0 16px">
+<button type="button" onClick="{{ open.britain }}" style="min-height: 44px; padding: 0; border: none; background: none; text-align: left; font-family: Montserrat, sans-serif; font-size: 15px; font-weight: 700; color: #567542; text-decoration: underline; cursor: pointer">View itinerary</button>
+<p style="margin: 0 0 0 auto; font-size: 15px; font-weight: 500; line-height: 1.4; color: #5a5d3c; text-align: right">From S$16,380*</p>
+</div>
+</div>
+</article>
+
+<article class="card" style="display: {{ rs.finnor }}; flex-direction: column; background: #ffffff; border: 1px solid #dcd3bf; border-radius: 14px; overflow: hidden">
+<img loading="lazy" src="./assets/8146c4baf4969369b3bc186076d6c2ad.jpg" alt="Finland &amp; Norway, a Journey Within Restore private journey" style="width: 100%; height: 210px; object-fit: cover; display: block; background: #f1eadb">
+<div style="padding: 22px 24px 20px; display: flex; flex-direction: column; gap: 10px; flex: 1 1 auto">
+<p style="margin: 0; font-size: 12px; font-weight: 700; letter-spacing: 2px; color: #7a6222">EUROPE · 12 DAYS</p>
+<h3 style="margin: 0; font-size: 26px; font-weight: 700; line-height: 1.2">Finland &amp; Norway</h3>
+<div style="margin: auto 0 0; padding-top: 8px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0 16px">
+<button type="button" onClick="{{ open.finnor }}" style="min-height: 44px; padding: 0; border: none; background: none; text-align: left; font-family: Montserrat, sans-serif; font-size: 15px; font-weight: 700; color: #567542; text-decoration: underline; cursor: pointer">View itinerary</button>
+<p style="margin: 0 0 0 auto; font-size: 15px; font-weight: 500; line-height: 1.4; color: #5a5d3c; text-align: right">From S$21,240*</p>
+</div>
+</div>
+</article>
+
+<article class="card" style="display: {{ rs.kenya }}; flex-direction: column; background: #ffffff; border: 1px solid #dcd3bf; border-radius: 14px; overflow: hidden">
+<img loading="lazy" src="./assets/453ed0e0bb49671d11e9960841a62bbf.jpg" alt="Kenya &amp; Tanzania, a Journey Within Restore private journey" style="width: 100%; height: 210px; object-fit: cover; display: block; background: #f1eadb">
+<div style="padding: 22px 24px 20px; display: flex; flex-direction: column; gap: 10px; flex: 1 1 auto">
+<p style="margin: 0; font-size: 12px; font-weight: 700; letter-spacing: 2px; color: #7a6222">AFRICA · 11 DAYS</p>
+<h3 style="margin: 0; font-size: 26px; font-weight: 700; line-height: 1.2">Kenya &amp; Tanzania</h3>
+<div style="margin: auto 0 0; padding-top: 8px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0 16px">
+<button type="button" onClick="{{ open.kenya }}" style="min-height: 44px; padding: 0; border: none; background: none; text-align: left; font-family: Montserrat, sans-serif; font-size: 15px; font-weight: 700; color: #567542; text-decoration: underline; cursor: pointer">View itinerary</button>
+<p style="margin: 0 0 0 auto; font-size: 15px; font-weight: 500; line-height: 1.4; color: #5a5d3c; text-align: right">From S$10,500*</p>
+</div>
+</div>
+</article>
+
+<article class="card" style="display: {{ rs.vicfalls }}; flex-direction: column; background: #ffffff; border: 1px solid #dcd3bf; border-radius: 14px; overflow: hidden">
+<img loading="lazy" src="./assets/db0624a43b060fa05f2048154b7b20d3.jpg" alt="Victoria Falls &amp; Botswana, a Journey Within Restore private journey" style="width: 100%; height: 210px; object-fit: cover; display: block; background: #f1eadb">
+<div style="padding: 22px 24px 20px; display: flex; flex-direction: column; gap: 10px; flex: 1 1 auto">
+<p style="margin: 0; font-size: 12px; font-weight: 700; letter-spacing: 2px; color: #7a6222">AFRICA · 9 DAYS</p>
+<h3 style="margin: 0; font-size: 26px; font-weight: 700; line-height: 1.2">Victoria Falls &amp; Botswana</h3>
+<div style="margin: auto 0 0; padding-top: 8px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0 16px">
+<button type="button" onClick="{{ open.vicfalls }}" style="min-height: 44px; padding: 0; border: none; background: none; text-align: left; font-family: Montserrat, sans-serif; font-size: 15px; font-weight: 700; color: #567542; text-decoration: underline; cursor: pointer">View itinerary</button>
+<p style="margin: 0 0 0 auto; font-size: 15px; font-weight: 500; line-height: 1.4; color: #5a5d3c; text-align: right">From S$11,680*</p>
+</div>
+</div>
+</article>
+
+<article class="card" style="display: {{ rs.safrica }}; flex-direction: column; background: #ffffff; border: 1px solid #dcd3bf; border-radius: 14px; overflow: hidden">
+<img loading="lazy" src="./assets/9db0b5d023cf7a00a4d577ca4ee0f2fa.jpg" alt="Southern &amp; East Africa, a Journey Within Restore private journey" style="width: 100%; height: 210px; object-fit: cover; display: block; background: #f1eadb">
+<div style="padding: 22px 24px 20px; display: flex; flex-direction: column; gap: 10px; flex: 1 1 auto">
+<p style="margin: 0; font-size: 12px; font-weight: 700; letter-spacing: 2px; color: #7a6222">AFRICA · 14 DAYS</p>
+<h3 style="margin: 0; font-size: 26px; font-weight: 700; line-height: 1.2">Southern &amp; East Africa</h3>
+<div style="margin: auto 0 0; padding-top: 8px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0 16px">
+<button type="button" onClick="{{ open.safrica }}" style="min-height: 44px; padding: 0; border: none; background: none; text-align: left; font-family: Montserrat, sans-serif; font-size: 15px; font-weight: 700; color: #567542; text-decoration: underline; cursor: pointer">View itinerary</button>
+<p style="margin: 0 0 0 auto; font-size: 15px; font-weight: 500; line-height: 1.4; color: #5a5d3c; text-align: right">From S$11,710*</p>
+</div>
+</div>
+</article>
+
+<article class="card" style="display: {{ rs.buenos }}; flex-direction: column; background: #ffffff; border: 1px solid #dcd3bf; border-radius: 14px; overflow: hidden">
+<img loading="lazy" src="./assets/5c1d456389898f7f11248e6ee29c82dc.jpg" alt="Buenos Aires &amp; Iguazu, a Journey Within Restore private journey" style="width: 100%; height: 210px; object-fit: cover; display: block; background: #f1eadb">
+<div style="padding: 22px 24px 20px; display: flex; flex-direction: column; gap: 10px; flex: 1 1 auto">
+<p style="margin: 0; font-size: 12px; font-weight: 700; letter-spacing: 2px; color: #7a6222">SOUTH &amp; CENTRAL AMERICA · 6 DAYS</p>
+<h3 style="margin: 0; font-size: 26px; font-weight: 700; line-height: 1.2">Buenos Aires &amp; Iguazu</h3>
+<div style="margin: auto 0 0; padding-top: 8px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0 16px">
+<button type="button" onClick="{{ open.buenos }}" style="min-height: 44px; padding: 0; border: none; background: none; text-align: left; font-family: Montserrat, sans-serif; font-size: 15px; font-weight: 700; color: #567542; text-decoration: underline; cursor: pointer">View itinerary</button>
+<p style="margin: 0 0 0 auto; font-size: 15px; font-weight: 500; line-height: 1.4; color: #5a5d3c; text-align: right">From S$2,900*</p>
+</div>
+</div>
+</article>
+
+<article class="card" style="display: {{ rs.peru }}; flex-direction: column; background: #ffffff; border: 1px solid #dcd3bf; border-radius: 14px; overflow: hidden">
+<img loading="lazy" src="./assets/6063b240a0324ba39f9d8f8fff7a51a5.jpg" alt="Peru &amp; Bolivia, a Journey Within Restore private journey" style="width: 100%; height: 210px; object-fit: cover; display: block; background: #f1eadb">
+<div style="padding: 22px 24px 20px; display: flex; flex-direction: column; gap: 10px; flex: 1 1 auto">
+<p style="margin: 0; font-size: 12px; font-weight: 700; letter-spacing: 2px; color: #7a6222">SOUTH &amp; CENTRAL AMERICA · 9 DAYS</p>
+<h3 style="margin: 0; font-size: 26px; font-weight: 700; line-height: 1.2">Peru &amp; Bolivia</h3>
+<div style="margin: auto 0 0; padding-top: 8px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0 16px">
+<button type="button" onClick="{{ open.peru }}" style="min-height: 44px; padding: 0; border: none; background: none; text-align: left; font-family: Montserrat, sans-serif; font-size: 15px; font-weight: 700; color: #567542; text-decoration: underline; cursor: pointer">View itinerary</button>
+<p style="margin: 0 0 0 auto; font-size: 15px; font-weight: 500; line-height: 1.4; color: #5a5d3c; text-align: right">From S$4,290*</p>
+</div>
+</div>
+</article>
+</div>
+
+<!-- Price note -->
+<div style="border-top: 1px solid #dcd3bf; padding-top: 22px; max-width: 760px; display: flex; flex-direction: column; gap: 10px">
+<p style="margin: 0; font-size: 15px; line-height: 1.6">* Land price in Singapore dollars, per person, twin sharing, based on two travelling. These are sample itineraries. The final itinerary, hotels and price are confirmed at booking.</p>
+<p style="margin: 0; font-size: 15px; font-weight: 700; line-height: 1.6">The following costs are excluded:</p>
+<ul style="margin: 0; padding-left: 20px; font-size: 15px; line-height: 1.7">
+<li>Airfares and airport taxes</li>
+<li>Beverages where meals are included</li>
+<li>Travel insurance</li>
+<li>Visa (if required)</li>
+<li>Personal expenses such as gratuities, spa, laundry, telephone and bar bills, etc.</li>
+</ul>
+</div>
+
+</div>
+</section>
+</sc-if>
+
+<sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
+<section id="stories" class="sec" aria-labelledby="say-h" style="background: #fcf8f3">
+<div class="wrap" style="display: flex; flex-direction: column; gap: 32px">
+<div class="rv" aria-hidden="true" style="display: flex; justify-content: center"><img src="./assets/df2c1c183a890cde663cb29c278421ed.png" alt="" style="width: min(360px, 80%); height: auto; display: block"></div>
+<div class="rv" style="display: flex; flex-direction: column; gap: 12px; max-width: 720px">
+<p style="margin: 0; display: flex; align-items: center; gap: 12px; font-size: 12px; font-weight: 700; letter-spacing: 3px; color: #7a6222"><span style="font-size: 24px; font-weight: 300; letter-spacing: 0">04</span><span style="width: 40px; height: 2px; background: #8d722b"></span>IN THEIR WORDS</p>
+<h2 id="say-h" style="margin: 0; font-weight: 500; font-size: clamp(30px, 3.6vw, 46px); line-height: 1.15">What our travellers brought home.</h2>
+</div>
+<div class="rail rv" style="grid-template-columns: repeat(3, minmax(0, 1fr))">
+<figure style="margin: 0; border: 1px dashed #8d722b; border-radius: 14px; padding: 28px 26px; display: flex; flex-direction: column; gap: 16px">
+<p style="margin: 0; font-family: Caveat, cursive; font-size: 60px; line-height: 0.6; color: #8d722b" aria-hidden="true">“</p>
+<blockquote style="margin: 0; font-size: 19px; font-weight: 500; line-height: 1.5">[GUEST QUOTE, from our first Bhutan journey]</blockquote>
+<figcaption style="font-size: 14px; font-weight: 700; color: #5a5d3c">[Name] · Bhutan, Nov 2026</figcaption>
+</figure>
+<figure style="margin: 0; border: 1px dashed #8d722b; border-radius: 14px; padding: 28px 26px; display: flex; flex-direction: column; gap: 16px">
+<p style="margin: 0; font-family: Caveat, cursive; font-size: 60px; line-height: 0.6; color: #8d722b" aria-hidden="true">“</p>
+<blockquote style="margin: 0; font-size: 19px; font-weight: 500; line-height: 1.5">[GUEST QUOTE]</blockquote>
+<figcaption style="font-size: 14px; font-weight: 700; color: #5a5d3c">[Name] · [Journey]</figcaption>
+</figure>
+<figure style="margin: 0; border: 1px dashed #8d722b; border-radius: 14px; padding: 28px 26px; display: flex; flex-direction: column; gap: 16px">
+<p style="margin: 0; font-family: Caveat, cursive; font-size: 60px; line-height: 0.6; color: #8d722b" aria-hidden="true">“</p>
+<blockquote style="margin: 0; font-size: 19px; font-weight: 500; line-height: 1.5">[GUEST QUOTE]</blockquote>
+<figcaption style="font-size: 14px; font-weight: 700; color: #5a5d3c">[Name] · [Journey]</figcaption>
+</figure>
+</div>
+</div>
+</section>
+</sc-if>
+
+<!-- Enquire -->
+<section id="enquire" class="sec" aria-labelledby="enq-h" style="background: #40461c; color: #ffffff">
+<div class="wrap rv" style="display: flex; flex-direction: column; align-items: center; text-align: center; gap: 20px">
+<h2 id="enq-h" style="margin: 0; font-weight: 500; font-size: clamp(30px, 3.8vw, 50px); line-height: 1.15; text-wrap: balance">Tell us why you want to travel.</h2>
+<p style="margin: 0; max-width: 560px; font-size: 18px; line-height: 1.55">Dates and details can come later. We would like to hear your reason first.</p>
+<div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 14px; margin-top: 8px">
+<a class="btn" href="https://wa.me/6581290908?text=Hi,%20I%27d%20like%20to%20find%20out%20more%20about%20Journey%20Within." style="background: #ffffff; color: #40461c; text-decoration: none; font-weight: 700; font-size: 17px; padding: 16px 30px; border-radius: 999px">WhatsApp us · +65 8129 0908</a>
+<a class="btn" href="mailto:journey_within@chanbrothers.com.sg" style="border: 2px solid #ffffff; color: #ffffff; text-decoration: none; font-weight: 700; font-size: 17px; padding: 14px 30px; border-radius: 999px">Email us</a>
+</div>
+</div>
+</section>
+
+<footer class="foot" style="background: #567542; color: #ffffff">
+<div class="wrap" style="padding-top: 26px; padding-bottom: 26px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px 32px">
+<img src="./assets/cf853706e02b747c9ac412745bfa9cd9.png" alt="Chan Brothers 60 years, Surging Forward" style="width: 180px; height: auto">
+<p style="margin: 0; font-size: 14px; line-height: 1.5">Journey Within 心旅 is a travel series by Chan Brothers Travel.</p>
+</div>
+</footer>
+
+<!-- Mobile enquiry bar -->
+<div class="cta-bottom" style="position: fixed; left: 0; right: 0; bottom: 0; z-index: 25; padding: 10px 16px; background: #fcf8f3; border-top: 1px solid #dcd3bf; box-shadow: 0 -4px 14px rgba(0, 0, 0, 0.1)">
+<a href="https://wa.me/6581290908?text=Hi,%20I%27d%20like%20to%20find%20out%20more%20about%20Journey%20Within." style="display: block; text-align: center; background: #567542; color: #ffffff; text-decoration: none; font-weight: 700; font-size: 16px; padding: 14px 20px; border-radius: 999px">WhatsApp us</a>
+</div>
+
+<!-- Itinerary viewer -->
+<sc-if value="{{ vOpen }}" hint-placeholder-val="{{ false }}">
+<div id="viewer" role="dialog" aria-modal="true" aria-label="Itinerary" class="fade" style="position: fixed; left: 0; top: 0; width: 100%; height: 100%; z-index: 60; overflow: auto; background: rgba(24, 28, 10, 0.96); color: #ffffff">
+<div style="position: sticky; top: 0; left: 0; z-index: 2; background: #40461c; box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3)">
+<div style="max-width: 940px; margin: 0 auto; padding: 10px 16px; display: flex; flex-wrap: wrap; align-items: center; gap: 8px 10px">
+<p style="margin: 0; flex: 1 1 100%; min-width: 0; font-size: 16px; font-weight: 700; line-height: 1.3">{{ vTitle }}</p>
+<button type="button" onClick="{{ toggleZoom }}" aria-pressed="{{ zoomOn }}" style="font-family: Montserrat, sans-serif; font-size: 14px; font-weight: 700; cursor: pointer; min-height: 44px; padding: 9px 16px; border-radius: 999px; border: 2px solid #ffffff; background: none; color: #ffffff">{{ zoomLabel }}</button>
+<a class="btn" href="{{ vWa }}" style="background: #ffffff; color: #40461c; text-decoration: none; font-weight: 700; font-size: 14px; padding: 11px 16px; border-radius: 999px">Enquire</a>
+<button type="button" onClick="{{ closeViewer }}" style="margin-left: auto; font-family: Montserrat, sans-serif; font-size: 14px; font-weight: 700; cursor: pointer; min-height: 44px; padding: 9px 16px; border-radius: 999px; border: 2px solid #ffffff; background: none; color: #ffffff">Close</button>
+</div>
+</div>
+<div style="box-sizing: border-box; width: {{ vW }}; max-width: {{ vMax }}; margin: 0 auto; padding: 18px 12px 28px; display: flex; flex-direction: column; gap: 12px">
+
+<sc-if value="{{ vBhutan }}" hint-placeholder-val="{{ false }}">
+<img src="./assets/e7091a3a6608c6ee62fba0d46d64a792.jpg" alt="Bhutan itinerary, page 1" style="width: 100%; height: auto; display: block; background: #fcf8f3">
+<img loading="lazy" src="./assets/220cf576119451b218e72b9fdc2c3f43.jpg" alt="Bhutan itinerary, page 2" style="width: 100%; height: auto; display: block; background: #fcf8f3">
+<img loading="lazy" src="./assets/4238dc3dc8d3d3d063ec31dc701d92ac.jpg" alt="Bhutan itinerary, page 3" style="width: 100%; height: auto; display: block; background: #fcf8f3">
+<img loading="lazy" src="./assets/ece33fe59f13565e4ab9cb098bd79927.jpg" alt="Bhutan itinerary, page 4" style="width: 100%; height: auto; display: block; background: #fcf8f3">
+<img loading="lazy" src="./assets/f08bcb5b46b2add4e6b93a8438a7eb18.jpg" alt="Bhutan itinerary, page 5" style="width: 100%; height: auto; display: block; background: #fcf8f3">
+<img loading="lazy" src="./assets/0a21c7ea534a3bea90c0b83ee06b5c3d.jpg" alt="Bhutan itinerary, page 6" style="width: 100%; height: auto; display: block; background: #fcf8f3">
+<img loading="lazy" src="./assets/ff8d1c4edbde7108010c128c26a2f9c0.jpg" alt="Bhutan itinerary, page 7" style="width: 100%; height: auto; display: block; background: #fcf8f3">
+</sc-if>
+
+<sc-if value="{{ vSrilanka }}" hint-placeholder-val="{{ false }}">
+<img src="./assets/8f355b6afbd1641c9b77cb8d15e7436b.jpg" alt="Sri Lanka itinerary, page 1" style="width: 100%; height: auto; display: block; background: #fcf8f3">
+<img loading="lazy" src="./assets/a3873ce4ca80bdb682f1011a08cdf8e4.jpg" alt="Sri Lanka itinerary, page 2" style="width: 100%; height: auto; display: block; background: #fcf8f3">
+<img loading="lazy" src="./assets/43e7d0d97dce34e572e804b95c12e5e2.jpg" alt="Sri Lanka itinerary, page 3" style="width: 100%; height: auto; display: block; background: #fcf8f3">
+<img loading="lazy" src="./assets/c777b6a51dd7252abf666002784791b2.jpg" alt="Sri Lanka itinerary, page 4" style="width: 100%; height: auto; display: block; background: #fcf8f3">
+<img loading="lazy" src="./assets/665c95c6c92ac4e780932eb57543c3cb.jpg" alt="Sri Lanka itinerary, page 5" style="width: 100%; height: auto; display: block; background: #fcf8f3">
+<img loading="lazy" src="./assets/3e528ed3599b77860639114cc45c941c.jpg" alt="Sri Lanka itinerary, page 6" style="width: 100%; height: auto; display: block; background: #fcf8f3">
+<img loading="lazy" src="./assets/9d99a93ee45546cebc820b93573e9e8a.jpg" alt="Sri Lanka itinerary, page 7" style="width: 100%; height: auto; display: block; background: #fcf8f3">
+<img loading="lazy" src="./assets/108a3acd5be637e70d72f53bfee5754a.jpg" alt="Sri Lanka itinerary, page 8" style="width: 100%; height: auto; display: block; background: #fcf8f3">
+</sc-if>
+
+<sc-if value="{{ vJiangxi }}" hint-placeholder-val="{{ false }}">
+<img src="./assets/7e4a6443da9acda604ab7ce938866429.jpg" alt="Jiangxi itinerary, page 1" style="width: 100%; height: auto; display: block; background: #fcf8f3">
+<img loading="lazy" src="./assets/687373591228ae8c0dd58030a726871c.jpg" alt="Jiangxi itinerary, page 2" style="width: 100%; height: auto; display: block; background: #fcf8f3">
+<img loading="lazy" src="./assets/a41972fe6a8c2022129e6c9bcd354eed.jpg" alt="Jiangxi itinerary, page 3" style="width: 100%; height: auto; display: block; background: #fcf8f3">
+<img loading="lazy" src="./assets/4136b73398d18184137e155d7776ea91.jpg" alt="Jiangxi itinerary, page 4" style="width: 100%; height: auto; display: block; background: #fcf8f3">
+<img loading="lazy" src="./assets/50a51a5555bb02e9e2015eb242cce37b.jpg" alt="Jiangxi itinerary, page 5" style="width: 100%; height: auto; display: block; background: #fcf8f3">
+<img loading="lazy" src="./assets/343de491aab8927ac337b4636d4eee9e.jpg" alt="Jiangxi itinerary, page 6" style="width: 100%; height: auto; display: block; background: #fcf8f3">
+<img loading="lazy" src="./assets/8c320d5129042fb24ad91779a6fcd86d.jpg" alt="Jiangxi itinerary, page 7" style="width: 100%; height: auto; display: block; background: #fcf8f3">
+<img loading="lazy" src="./assets/de35178b51506a833b88ccff9dbec937.jpg" alt="Jiangxi itinerary, page 8" style="width: 100%; height: auto; display: block; background: #fcf8f3">
+</sc-if>
+
+<sc-if value="{{ vFujian }}" hint-placeholder-val="{{ false }}">
+<img src="./assets/fb5ff72d52ea43a685bf0c6bfa8d2720.jpg" alt="Fujian and Chaoshan itinerary, page 1" style="width: 100%; height: auto; display: block; background: #fcf8f3">
+<img loading="lazy" src="./assets/ea6231ce7ae517c093754aa46d197cbb.jpg" alt="Fujian and Chaoshan itinerary, page 2" style="width: 100%; height: auto; display: block; background: #fcf8f3">
+<img loading="lazy" src="./assets/ef9acd295a597010ee9c841b2482465a.jpg" alt="Fujian and Chaoshan itinerary, page 3" style="width: 100%; height: auto; display: block; background: #fcf8f3">
+<img loading="lazy" src="./assets/d5b590651982142c542639349d524ed5.jpg" alt="Fujian and Chaoshan itinerary, page 4" style="width: 100%; height: auto; display: block; background: #fcf8f3">
+<img loading="lazy" src="./assets/5febc79e6aa71be98e51345fefa5c0f3.jpg" alt="Fujian and Chaoshan itinerary, page 5" style="width: 100%; height: auto; display: block; background: #fcf8f3">
+<img loading="lazy" src="./assets/97956f6a741ae83b3295ba888e5d27e8.jpg" alt="Fujian and Chaoshan itinerary, page 6" style="width: 100%; height: auto; display: block; background: #fcf8f3">
+<img loading="lazy" src="./assets/d977ba99dfb26cc5f007bb7ec61cfed4.jpg" alt="Fujian and Chaoshan itinerary, page 7" style="width: 100%; height: auto; display: block; background: #fcf8f3">
+<img loading="lazy" src="./assets/26ac6f3e095add034383f20a8b7e4d06.jpg" alt="Fujian and Chaoshan itinerary, page 8" style="width: 100%; height: auto; display: block; background: #fcf8f3">
+</sc-if>
+
+<sc-if value="{{ vHokkaido }}" hint-placeholder-val="{{ false }}">
+<img src="./assets/89fefd91292c65eeee21155a80d62dce.jpg" alt="Hokkaido itinerary, page 1" style="width: 100%; height: auto; display: block; background: #fcf8f3">
+<img loading="lazy" src="./assets/36bdb592494c58ea2ce1bdc15d74f9ad.jpg" alt="Hokkaido itinerary, page 2" style="width: 100%; height: auto; display: block; background: #fcf8f3">
+<img loading="lazy" src="./assets/1cd7e5e4baabe98fc34d41b69e6a2abd.jpg" alt="Hokkaido itinerary, page 3" style="width: 100%; height: auto; display: block; background: #fcf8f3">
+<img loading="lazy" src="./assets/afc1d46f779bba77ed6252f1a44e2d26.jpg" alt="Hokkaido itinerary, page 4" style="width: 100%; height: auto; display: block; background: #fcf8f3">
+<img loading="lazy" src="./assets/43d5a6bbffe6988e74c01d202a950b87.jpg" alt="Hokkaido itinerary, page 5" style="width: 100%; height: auto; display: block; background: #fcf8f3">
+<img loading="lazy" src="./assets/4233e7f7a0fc9b3e0bfe6e67408f67ef.jpg" alt="Hokkaido itinerary, page 6" style="width: 100%; height: auto; display: block; background: #fcf8f3">
+<img loading="lazy" src="./assets/5fdfde0dabafc477249bb72baa491ac0.jpg" alt="Hokkaido itinerary, page 7" style="width: 100%; height: auto; display: block; background: #fcf8f3">
+</sc-if>
+
+<sc-if value="{{ vTaiwan }}" hint-placeholder-val="{{ false }}">
+<img src="./assets/f817b9f03889dcf2309ce835777ee411.jpg" alt="Taiwan Father and Child itinerary, page 1" style="width: 100%; height: auto; display: block; background: #fcf8f3">
+<img loading="lazy" src="./assets/56d91669e52f9652c433f84dac535189.jpg" alt="Taiwan Father and Child itinerary, page 2" style="width: 100%; height: auto; display: block; background: #fcf8f3">
+<img loading="lazy" src="./assets/2ddc8724452431e662d0b086d6a0895c.jpg" alt="Taiwan Father and Child itinerary, page 3" style="width: 100%; height: auto; display: block; background: #fcf8f3">
+<img loading="lazy" src="./assets/126d31321244c44096ed263578b1cffd.jpg" alt="Taiwan Father and Child itinerary, page 4" style="width: 100%; height: auto; display: block; background: #fcf8f3">
+</sc-if>
+
+<sc-if value="{{ vJingdezhen }}" hint-placeholder-val="{{ false }}">
+<img src="./assets/97578fdc19c4e2cbe76c02ef39a466c2.jpg" alt="Jingdezhen itinerary, page 1" style="width: 100%; height: auto; display: block; background: #fcf8f3">
+<img loading="lazy" src="./assets/f6ad5328a3ebaa44d29bc7a1296ba0b5.jpg" alt="Jingdezhen itinerary, page 2" style="width: 100%; height: auto; display: block; background: #fcf8f3">
+<img loading="lazy" src="./assets/2362262ad084a6b92e4bd44967416a49.jpg" alt="Jingdezhen itinerary, page 3" style="width: 100%; height: auto; display: block; background: #fcf8f3">
+<img loading="lazy" src="./assets/dfa6e70c2ebb3f2074dc2e9847efb6fa.jpg" alt="Jingdezhen itinerary, page 4" style="width: 100%; height: auto; display: block; background: #fcf8f3">
+<img loading="lazy" src="./assets/18569a9235b47131bdb7c69f67b32bba.jpg" alt="Jingdezhen itinerary, page 5" style="width: 100%; height: auto; display: block; background: #fcf8f3">
+<img loading="lazy" src="./assets/ee75a692d1389f9b0a6e7f96d92145a3.jpg" alt="Jingdezhen itinerary, page 6" style="width: 100%; height: auto; display: block; background: #fcf8f3">
+</sc-if>
+
+<sc-if value="{{ vFootsteps }}" hint-placeholder-val="{{ false }}">
+<img src="./assets/cbd1b6dae9105c2919b8a2c6d23dbe0a.jpg" alt="Japan Footsteps itinerary, page 1" style="width: 100%; height: auto; display: block; background: #fcf8f3">
+<img loading="lazy" src="./assets/ba7b3cda0b75028f7db5fa3b4345c722.jpg" alt="Japan Footsteps itinerary, page 2" style="width: 100%; height: auto; display: block; background: #fcf8f3">
+<img loading="lazy" src="./assets/e4dbce5ff8eefa627af72dc14c91a89c.jpg" alt="Japan Footsteps itinerary, page 3" style="width: 100%; height: auto; display: block; background: #fcf8f3">
+<img loading="lazy" src="./assets/db89503d8c1f5418f9cd8eed9eac8d2a.jpg" alt="Japan Footsteps itinerary, page 4" style="width: 100%; height: auto; display: block; background: #fcf8f3">
+<img loading="lazy" src="./assets/7f35aeb26d5330f1d0c2c1b8c98eec06.jpg" alt="Japan Footsteps itinerary, page 5" style="width: 100%; height: auto; display: block; background: #fcf8f3">
+</sc-if>
+
+<sc-if value="{{ vPenang }}" hint-placeholder-val="{{ false }}">
+<img src="./assets/0b522ba3bfb35d74c93d8e57e3765631.jpg" alt="Penang Team Edition itinerary, page 1" style="width: 100%; height: auto; display: block; background: #fcf8f3">
+<img loading="lazy" src="./assets/6a39871e538c0df019162f53d4f9cd3a.jpg" alt="Penang Team Edition itinerary, page 2" style="width: 100%; height: auto; display: block; background: #fcf8f3">
+<img loading="lazy" src="./assets/5587080e54ca460ab1adf6d76c9c4a97.jpg" alt="Penang Team Edition itinerary, page 3" style="width: 100%; height: auto; display: block; background: #fcf8f3">
+<img loading="lazy" src="./assets/f58b1112b024eeb2e7d7c273fa92b7de.jpg" alt="Penang Team Edition itinerary, page 4" style="width: 100%; height: auto; display: block; background: #fcf8f3">
+<img loading="lazy" src="./assets/5f50aea8dbb953ef05eb03d3dfa5d575.jpg" alt="Penang Team Edition itinerary, page 5" style="width: 100%; height: auto; display: block; background: #fcf8f3">
+<img loading="lazy" src="./assets/aa1f0d20c2e1bb2281a3261bf8e39ab6.jpg" alt="Penang Team Edition itinerary, page 6" style="width: 100%; height: auto; display: block; background: #fcf8f3">
+<img loading="lazy" src="./assets/7eac59c6d45fbdea941e3b2b4595b559.jpg" alt="Penang Team Edition itinerary, page 7" style="width: 100%; height: auto; display: block; background: #fcf8f3">
+<img loading="lazy" src="./assets/d5b327145ff0eedd367c59fb3b8c4652.jpg" alt="Penang Team Edition itinerary, page 8" style="width: 100%; height: auto; display: block; background: #fcf8f3">
+</sc-if>
+
+<sc-if value="{{ vr.hangzhou }}" hint-placeholder-val="{{ false }}">
+<img src="./assets/098b67d79ce86cf576eeb2023d4a9c20.jpg" alt="8D Hangzhou, Wuzhen &amp; Shanghai, Journey Within Restore, full itinerary" style="width: 100%; height: auto; display: block; background: #fcf8f3">
+</sc-if>
+
+<sc-if value="{{ vr.busan }}" hint-placeholder-val="{{ false }}">
+<img src="./assets/cc9e494d7cce4019932e44ee93748906.jpg" alt="7D Busan &amp; Gyeongju, Journey Within Restore, full itinerary" style="width: 100%; height: auto; display: block; background: #fcf8f3">
+</sc-if>
+
+<sc-if value="{{ vr.yichun }}" hint-placeholder-val="{{ false }}">
+<img src="./assets/0f5241f5929f0ce834c7404f3a5f8448.jpg" alt="8D Harbin &amp; Yichun, Journey Within Restore, full itinerary" style="width: 100%; height: auto; display: block; background: #fcf8f3">
+</sc-if>
+
+<sc-if value="{{ vr.fenghuang }}" hint-placeholder-val="{{ false }}">
+<img src="./assets/3e69eb837001a7ba9887811639612b4c.jpg" alt="9D Fenghuang &amp; Zhangjiajie, Journey Within Restore, full itinerary" style="width: 100%; height: auto; display: block; background: #fcf8f3">
+</sc-if>
+
+<sc-if value="{{ vr.tibet }}" hint-placeholder-val="{{ false }}">
+<img src="./assets/b4e8869aa94166355b4665aab73a6e8c.jpg" alt="9D Tibet · Nyingchi &amp; Lhasa, Journey Within Restore, full itinerary" style="width: 100%; height: auto; display: block; background: #fcf8f3">
+</sc-if>
+
+<sc-if value="{{ vr.harbinne }}" hint-placeholder-val="{{ false }}">
+<img src="./assets/013f7331944485e99317ac5a46c94cef.jpg" alt="11D Harbin &amp; the Northeast, Journey Within Restore, full itinerary" style="width: 100%; height: auto; display: block; background: #fcf8f3">
+</sc-if>
+
+<sc-if value="{{ vr.fujianr }}" hint-placeholder-val="{{ false }}">
+<img src="./assets/f49df6b98e03c4459dea42b64459c786.jpg" alt="13D Fujian &amp; Chaoshan, Journey Within Restore, full itinerary" style="width: 100%; height: auto; display: block; background: #fcf8f3">
+</sc-if>
+
+<sc-if value="{{ vr.nagano }}" hint-placeholder-val="{{ false }}">
+<img src="./assets/9b5b4d83dcb3dbd9360f08d5c2bc6657.jpg" alt="13D Nagano &amp; Kanazawa, Journey Within Restore, full itinerary" style="width: 100%; height: auto; display: block; background: #fcf8f3">
+</sc-if>
+
+<sc-if value="{{ vr.njapan }}" hint-placeholder-val="{{ false }}">
+<img src="./assets/8b903e6f9521962ccd4b990023a52136.jpg" alt="7D Northern Japan, Journey Within Restore, full itinerary" style="width: 100%; height: auto; display: block; background: #fcf8f3">
+</sc-if>
+
+<sc-if value="{{ vr.yunnan }}" hint-placeholder-val="{{ false }}">
+<img src="./assets/a8bad96f06c198562eab1baa3dea5bfe.jpg" alt="14D Yunnan &amp; Shangri-La, Journey Within Restore, full itinerary" style="width: 100%; height: auto; display: block; background: #fcf8f3">
+</sc-if>
+
+<sc-if value="{{ vr.jiangnan }}" hint-placeholder-val="{{ false }}">
+<img src="./assets/510d78ec7b57b95a8cdaa43c53b7fad8.jpg" alt="13D Jiangnan &amp; Zhangjiajie, Journey Within Restore, full itinerary" style="width: 100%; height: auto; display: block; background: #fcf8f3">
+</sc-if>
+
+<sc-if value="{{ vr.srilankar }}" hint-placeholder-val="{{ false }}">
+<img src="./assets/b894118de2ab414c539c6ab6db2577a0.jpg" alt="9D Sri Lanka, Journey Within Restore, full itinerary" style="width: 100%; height: auto; display: block; background: #fcf8f3">
+</sc-if>
+
+<sc-if value="{{ vr.jordan }}" hint-placeholder-val="{{ false }}">
+<img src="./assets/b7645543e0966f8f348cd277e46cd230.jpg" alt="15D Jordan &amp; Egypt, Journey Within Restore, full itinerary" style="width: 100%; height: auto; display: block; background: #fcf8f3">
+</sc-if>
+
+<sc-if value="{{ vr.iceland }}" hint-placeholder-val="{{ false }}">
+<img src="./assets/04d0d5458c2d912ef5e49d8df98a7a9e.jpg" alt="9D Amsterdam &amp; Iceland, Journey Within Restore, full itinerary" style="width: 100%; height: auto; display: block; background: #fcf8f3">
+</sc-if>
+
+<sc-if value="{{ vr.malta }}" hint-placeholder-val="{{ false }}">
+<img src="./assets/8add566aff7f9e37dc8527e5f6bf1ec3.jpg" alt="11D Malta &amp; Sicily, Journey Within Restore, full itinerary" style="width: 100%; height: auto; display: block; background: #fcf8f3">
+</sc-if>
+
+<sc-if value="{{ vr.portitaly }}" hint-placeholder-val="{{ false }}">
+<img src="./assets/3d7270af45703f86cdc69b3f5e549c74.jpg" alt="12D Portugal &amp; Italy, Journey Within Restore, full itinerary" style="width: 100%; height: auto; display: block; background: #fcf8f3">
+</sc-if>
+
+<sc-if value="{{ vr.finparlon }}" hint-placeholder-val="{{ false }}">
+<img src="./assets/971a27a756fc506d270f95d98bd9f725.jpg" alt="16D Finland, Paris &amp; London, Journey Within Restore, full itinerary" style="width: 100%; height: auto; display: block; background: #fcf8f3">
+</sc-if>
+
+<sc-if value="{{ vr.spain }}" hint-placeholder-val="{{ false }}">
+<img src="./assets/951bd23e247e9ad69d27daf5613b9b0d.jpg" alt="14D Spain, Journey Within Restore, full itinerary" style="width: 100%; height: auto; display: block; background: #fcf8f3">
+</sc-if>
+
+<sc-if value="{{ vr.scotswiss }}" hint-placeholder-val="{{ false }}">
+<img src="./assets/4030429a057ae5d82574e96235dace3c.jpg" alt="10D Scotland &amp; Switzerland, Journey Within Restore, full itinerary" style="width: 100%; height: auto; display: block; background: #fcf8f3">
+</sc-if>
+
+<sc-if value="{{ vr.britain }}" hint-placeholder-val="{{ false }}">
+<img src="./assets/e1e1695273542aa3f24f6dce87f9191e.jpg" alt="17D Britain &amp; Europe, Journey Within Restore, full itinerary" style="width: 100%; height: auto; display: block; background: #fcf8f3">
+</sc-if>
+
+<sc-if value="{{ vr.finnor }}" hint-placeholder-val="{{ false }}">
+<img src="./assets/85b8868c7cb42706193c37273473c358.jpg" alt="12D Finland &amp; Norway, Journey Within Restore, full itinerary" style="width: 100%; height: auto; display: block; background: #fcf8f3">
+</sc-if>
+
+<sc-if value="{{ vr.kenya }}" hint-placeholder-val="{{ false }}">
+<img src="./assets/14762c3e137d4b59b04244917be8dfdc.jpg" alt="11D Kenya &amp; Tanzania, Journey Within Restore, full itinerary" style="width: 100%; height: auto; display: block; background: #fcf8f3">
+</sc-if>
+
+<sc-if value="{{ vr.vicfalls }}" hint-placeholder-val="{{ false }}">
+<img src="./assets/77329d1a6200c844a4ec4112418fbcb1.jpg" alt="9D Victoria Falls &amp; Botswana, Journey Within Restore, full itinerary" style="width: 100%; height: auto; display: block; background: #fcf8f3">
+</sc-if>
+
+<sc-if value="{{ vr.safrica }}" hint-placeholder-val="{{ false }}">
+<img src="./assets/35e3b066ea59b94ec2e93d7a1e1fd0f6.jpg" alt="14D Southern &amp; East Africa, Journey Within Restore, full itinerary" style="width: 100%; height: auto; display: block; background: #fcf8f3">
+</sc-if>
+
+<sc-if value="{{ vr.buenos }}" hint-placeholder-val="{{ false }}">
+<img src="./assets/60f094c97e6db6c54588a7c0764094a3.jpg" alt="6D Buenos Aires &amp; Iguazu, Journey Within Restore, full itinerary" style="width: 100%; height: auto; display: block; background: #fcf8f3">
+</sc-if>
+
+<sc-if value="{{ vr.peru }}" hint-placeholder-val="{{ false }}">
+<img src="./assets/45f1e956540802f8f2ddf0a4a815b8b0.jpg" alt="9D Peru &amp; Bolivia, Journey Within Restore, full itinerary" style="width: 100%; height: auto; display: block; background: #fcf8f3">
+</sc-if>
+
+<div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; padding-top: 12px">
+<a class="btn" href="{{ vWa }}" style="background: #ffffff; color: #40461c; text-decoration: none; font-weight: 700; font-size: 15px; padding: 13px 22px; border-radius: 999px">Enquire on WhatsApp</a>
+<button type="button" onClick="{{ closeViewer }}" style="font-family: Montserrat, sans-serif; font-size: 15px; font-weight: 700; cursor: pointer; min-height: 44px; padding: 11px 22px; border-radius: 999px; border: 2px solid #ffffff; background: none; color: #ffffff">Back to Journey Within</button>
+</div>
+</div>
+</div>
+</sc-if>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":5200}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { view: 'home', filter: 'all', rfilter: 'all', viewer: '', menu: false, zoom: false };
+  }
+
+  componentDidMount() {
+    var self = this;
+    // Phones must lay the page out at their own width, not shrink a desktop page
+    try {
+      if (!document.querySelector('meta[name="viewport"]')) {
+        var vp = document.createElement('meta');
+        vp.name = 'viewport';
+        vp.content = 'width=device-width, initial-scale=1';
+        document.head.appendChild(vp);
+      }
+    } catch (err) {}
+    try {
+      if (!('IntersectionObserver' in window)) return;
+      // Sections rise into view as you scroll
+      this._io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) {
+            e.target.classList.add('in');
+            self._io.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.06, rootMargin: '0px 0px -5% 0px' });
+      // Highlight the current section in the navigation
+      this._spy = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (!e.isIntersecting) return;
+          var links = document.querySelectorAll('[data-spy]');
+          var now = document.getElementById('nav-now');
+          for (var i = 0; i < links.length; i++) {
+            var match = links[i].getAttribute('data-spy') === e.target.id;
+            links[i].classList.toggle('on', match);
+            if (match && now) now.textContent = links[i].textContent;
+          }
+        });
+      }, { rootMargin: '-40% 0px -55% 0px', threshold: 0 });
+      this._scan();
+      document.documentElement.classList.add('rv-on');
+      // Safety: if nothing was revealed, switch the effect off so content always shows
+      this._t = setTimeout(function () {
+        if (!document.querySelector('.rv.in')) document.documentElement.classList.remove('rv-on');
+      }, 1800);
+    } catch (err) {}
+  }
+
+  componentDidUpdate() {
+    this._scan();
+    try {
+      var view = (this.state || {}).view || 'home';
+      var labels = { restore: 'Private journeys', relate: 'Small group journeys', partners: 'Partner journeys' };
+      var now = document.getElementById('nav-now');
+      if (view !== 'home') {
+        var links = document.querySelectorAll('[data-spy]');
+        for (var i = 0; i < links.length; i++) links[i].classList.remove('on');
+        if (now) now.textContent = labels[view] || 'Menu';
+      } else if (now && this._lastView && this._lastView !== 'home') {
+        now.textContent = 'Menu';
+      }
+      this._lastView = view;
+      // After a change of page, move to the part the visitor asked for
+      if (this._to) {
+        var id = this._to;
+        this._to = null;
+        setTimeout(function () {
+          try {
+            var el = document.getElementById(id);
+            if (el) el.scrollIntoView({ block: 'start' });
+            else window.scrollTo(0, 0);
+          } catch (err) {}
+        }, 40);
+      }
+    } catch (err) {}
+  }
+
+  componentWillUnmount() {
+    try {
+      if (this._io) this._io.disconnect();
+      if (this._spy) this._spy.disconnect();
+      if (this._t) clearTimeout(this._t);
+      document.body.style.overflow = '';
+    } catch (err) {}
+  }
+
+  _scan() {
+    try {
+      if (!this._io) return;
+      var nodes = document.querySelectorAll('.rv:not(.in)');
+      for (var i = 0; i < nodes.length; i++) this._io.observe(nodes[i]);
+      if (!this._spy) return;
+      var links = document.querySelectorAll('[data-spy]');
+      for (var j = 0; j < links.length; j++) {
+        var sec = document.getElementById(links[j].getAttribute('data-spy'));
+        if (sec) this._spy.observe(sec);
+      }
+    } catch (err) {}
+  }
+
+  renderVals() {
+    var st = this.state || {};
+    var view = st.view || 'home';
+    var filter = st.filter || 'all';
+    var rfilter = st.rfilter || 'all';
+    var viewer = st.viewer || '';
+    var self = this;
+    var out = {};
+
+    // Pages: the landing page, and one page each for private, small group and partner journeys
+    function jump(v, id) {
+      return function (e) {
+        var s = self.state || {};
+        var cur = s.view || 'home';
+        if (cur === v && !s.menu) {
+          if (v === 'home' && e && e.currentTarget && e.currentTarget.tagName === 'A') return; // the link scrolls on its own
+          if (e && e.preventDefault) e.preventDefault();
+          try {
+            var el = document.getElementById(id);
+            if (el) el.scrollIntoView({ block: 'start' });
+          } catch (err) {}
+          return;
+        }
+        if (e && e.preventDefault) e.preventDefault();
+        self._to = id;
+        self.setState({ view: v, menu: false });
+      };
+    }
+    out.isHome = view === 'home';
+    out.isRestorePage = view === 'restore';
+    out.isRelatePage = view === 'relate';
+    out.isPartnersPage = view === 'partners';
+    out.go = { home: jump('home', 'top'), restore: jump('restore', 'restore'), relate: jump('relate', 'journeys'), partners: jump('partners', 'partners') };
+    out.nav = { top: jump('home', 'top'), why: jump('home', 'why'), science: jump('home', 'science'), stories: jump('home', 'stories') };
+    out.navc = { restore: view === 'restore' ? 'on' : '', relate: view === 'relate' ? 'on' : '', partners: view === 'partners' ? 'on' : '' };
+
+    // Regions follow the customer-facing taxonomy
+    var RN = {
+      nea: 'North East Asia', him: 'Himalayan & Indian Subcontinent', mena: 'Middle East & North Africa',
+      eur: 'Europe', afr: 'Africa', oce: 'Oceania', sca: 'South & Central America'
+    };
+
+    // 2027 Small Group Journeys: one filter at a time, by month or by region
+    var names = { all: '2027', mar: 'March', apr: 'April', may: 'May', jun: 'June', sep: 'September', oct: 'October', nov: 'November', nea: RN.nea, him: RN.him, eur: RN.eur, oce: RN.oce };
+    out.fb = {};
+    Object.keys(names).forEach(function (k) {
+      var on = filter === k;
+      var region = !!RN[k];
+      var dark = region ? '#40461c' : '#567542';
+      out.fb[k] = {
+        on: on,
+        pick: function () { self.setState({ filter: k }); },
+        bg: on ? dark : '#ffffff',
+        fg: on ? '#ffffff' : '#40461c',
+        border: on ? dark : '#dcd3bf'
+      };
+    });
+    var cards = [
+      ['Bhutan', 'mar', 'him'], ['SriLanka', 'apr', 'him'], ['Puer', 'apr', 'nea'], ['Gorges', 'may', 'nea'],
+      ['Swiss', 'jun', 'eur'], ['Hokkaido', 'sep', 'nea'], ['Norway', 'sep', 'eur'], ['Wuyuan', 'oct', 'nea'],
+      ['Nz', 'oct', 'oce'], ['Jeolla', 'nov', 'nea'], ['Fujian', 'nov', 'nea']
+    ];
+    var count = 0;
+    cards.forEach(function (c) {
+      var show = filter === 'all' || filter === c[1] || filter === c[2];
+      if (show) count++;
+      out['s' + c[0]] = show ? 'flex' : 'none';
+    });
+    out.filtered = filter !== 'all';
+    out.countLabel = count + (count === 1 ? ' journey' : ' journeys') + (filter === 'all' ? ' in 2027' : (RN[filter] ? ' · ' : ' in ') + names[filter]);
+
+    // Restore: private sample journeys. Key, title, days, region. Photos, prices and itinerary images sit in the markup above
+    var R = [
+      ['hangzhou', 'Hangzhou, Wuzhen & Shanghai', 8, 'nea'],
+      ['busan', 'Busan & Gyeongju', 7, 'nea'],
+      ['yichun', 'Harbin & Yichun', 8, 'nea'],
+      ['fenghuang', 'Fenghuang & Zhangjiajie', 9, 'nea'],
+      ['tibet', 'Tibet · Nyingchi & Lhasa', 9, 'nea'],
+      ['harbinne', 'Harbin & the Northeast', 11, 'nea'],
+      ['fujianr', 'Fujian & Chaoshan', 13, 'nea'],
+      ['nagano', 'Nagano & Kanazawa', 13, 'nea'],
+      ['njapan', 'Northern Japan', 7, 'nea'],
+      ['yunnan', 'Yunnan & Shangri-La', 14, 'nea'],
+      ['jiangnan', 'Jiangnan & Zhangjiajie', 13, 'nea'],
+      ['srilankar', 'Sri Lanka', 9, 'him'],
+      ['jordan', 'Jordan & Egypt', 15, 'mena'],
+      ['iceland', 'Amsterdam & Iceland', 9, 'eur'],
+      ['malta', 'Malta & Sicily', 11, 'eur'],
+      ['portitaly', 'Portugal & Italy', 12, 'eur'],
+      ['finparlon', 'Finland, Paris & London', 16, 'eur'],
+      ['spain', 'Spain', 14, 'eur'],
+      ['scotswiss', 'Scotland & Switzerland', 10, 'eur'],
+      ['britain', 'Britain & Europe', 17, 'eur'],
+      ['finnor', 'Finland & Norway', 12, 'eur'],
+      ['kenya', 'Kenya & Tanzania', 11, 'afr'],
+      ['vicfalls', 'Victoria Falls & Botswana', 9, 'afr'],
+      ['safrica', 'Southern & East Africa', 14, 'afr'],
+      ['buenos', 'Buenos Aires & Iguazu', 6, 'sca'],
+      ['peru', 'Peru & Bolivia', 9, 'sca']
+    ];
+    function openIt(k) {
+      return function () {
+        try { document.body.style.overflow = 'hidden'; } catch (err) {}
+        self.setState({ viewer: k, zoom: false, menu: false }, function () {
+          try {
+            var v = document.getElementById('viewer');
+            if (v) { v.scrollTop = 0; v.scrollIntoView({ block: 'start' }); }
+          } catch (err) {}
+        });
+      };
+    }
+    var rmap = {};
+    var rcount = {};
+    R.forEach(function (r) {
+      rmap[r[0]] = { title: r[2] + 'D ' + r[1] + ' · Journey Within Restore' };
+      rcount[r[3]] = (rcount[r[3]] || 0) + 1;
+    });
+    var shown = R.filter(function (r) { return rfilter === 'all' || rfilter === r[3]; });
+    out.rs = {};
+    out.vr = {};
+    R.forEach(function (r) {
+      out.rs[r[0]] = (rfilter === 'all' || rfilter === r[3]) ? 'flex' : 'none';
+      out.vr[r[0]] = viewer === r[0];
+    });
+    out.rChips = ['all', 'nea', 'him', 'mena', 'eur', 'afr', 'sca'].map(function (k) {
+      var on = rfilter === k;
+      return {
+        on: on,
+        label: k === 'all' ? 'All regions (' + R.length + ')' : RN[k] + ' (' + (rcount[k] || 0) + ')',
+        pick: function () { self.setState({ rfilter: k }); },
+        bg: on ? '#40461c' : '#ffffff',
+        fg: on ? '#ffffff' : '#40461c',
+        border: on ? '#40461c' : '#dcd3bf'
+      };
+    });
+    out.rCount = shown.length + (shown.length === 1 ? ' private journey' : ' private journeys') + (rfilter === 'all' ? '' : ' · ' + RN[rfilter]);
+
+    // Itinerary viewer
+    var titles = {
+      bhutan: '7D Bhutan · Journey Within Relate',
+      srilanka: '9D Sri Lanka · Journey Within Relate',
+      hokkaido: '8D Hokkaido · Journey Within Relate',
+      jiangxi: '8D Jiangxi · Journey Within Relate',
+      fujian: '8D Fujian · Chaoshan · Journey Within Relate',
+      taiwan: '5D Taiwan · Father & Child Edition',
+      jingdezhen: '9D Jingdezhen · Art & Heritage Edition',
+      footsteps: '8D Japan · Footsteps Edition',
+      penang: '3D Penang · Team Edition'
+    };
+    out.open = {};
+    Object.keys(titles).forEach(function (k) {
+      out.open[k] = openIt(k);
+      out['v' + k.charAt(0).toUpperCase() + k.slice(1)] = viewer === k;
+    });
+    R.forEach(function (r) { out.open[r[0]] = openIt(r[0]); });
+    var rv = rmap[viewer];
+    var vTitle = titles[viewer] || (rv ? rv.title : '');
+    out.vOpen = !!viewer;
+    out.vTitle = vTitle;
+    out.vWa = 'https://wa.me/6581290908?text=' + encodeURIComponent("Hi, I'm interested in the " + (vTitle || 'Journey Within') + ' itinerary.');
+    out.closeViewer = function () {
+      try { document.body.style.overflow = ''; } catch (err) {}
+      self.setState({ viewer: '', zoom: false });
+    };
+    // Zoom for reading itinerary pages on a phone
+    var zoom = !!st.zoom;
+    out.zoomOn = zoom;
+    out.zoomLabel = zoom ? 'Fit to screen' : 'Zoom in';
+    out.vW = zoom ? '240%' : '100%';
+    out.vMax = zoom ? 'none' : '900px';
+    out.toggleZoom = function () { self.setState({ zoom: !zoom }); };
+
+    // Mobile menu
+    var menu = !!st.menu;
+    out.menuOpen = menu;
+    out.menuCls = menu ? 'open' : '';
+    out.toggleMenu = function () { self.setState({ menu: !menu }); };
+    out.closeMenu = function () { if (menu) self.setState({ menu: false }); };
+
+    return out;
+  }
+}
+</script>
+</body>
+</html>
