@@ -329,10 +329,10 @@ html{scroll-behavior:auto}
 <article class="card" style="display: {{ sPuer }}; flex-direction: column; background: #ffffff; border: 1px solid #dcd3bf; border-radius: 14px; overflow: hidden">
 <img src="./assets/b7fb53f45e1e53d160a6f94898d94553.jpg" alt="Green mountains and terraced slopes above a river valley in Pu’er, Yunnan" style="width: 100%; height: 210px; object-fit: cover; object-position: 50% 60%; display: block">
 <div style="padding: 22px 24px 20px; display: flex; flex-direction: column; gap: 10px; flex: 1 1 auto">
-<p style="margin: 0; font-size: 12px; font-weight: 700; letter-spacing: 2px; color: #7a6222">LATE APR 2027 · NORTH EAST ASIA</p>
-<h3 style="margin: 0; font-size: 26px; font-weight: 700; line-height: 1.2">Pu’er · Jingmai Mountain</h3>
-<p style="margin: 0; font-size: 17px; font-style: italic; font-weight: 500; line-height: 1.5; color: #567542">“We travel because we want to drink tea where it has grown for a thousand years, with the families who tend it.”</p>
-<p style="margin: auto 0 0; padding-top: 18px; font-size: 15px; font-weight: 700; color: #5a5d3c">Itinerary coming soon</p>
+<p style="margin: 0; font-size: 12px; font-weight: 700; letter-spacing: 2px; color: #7a6222">LATE APR 2027 · NORTH EAST ASIA · 8 DAYS</p>
+<h3 style="margin: 0; font-size: 26px; font-weight: 700; line-height: 1.2">Yunnan · Pu’er</h3>
+<p style="margin: 0; font-size: 17px; font-style: italic; font-weight: 500; line-height: 1.5; color: #567542">“We travel to make new friends, one cup of tea and one cup of coffee at a time.”</p>
+<button type="button" class="pill" onClick="{{ open.puer }}" style="margin: auto 0 0; align-self: flex-start">View itinerary</button>
 </div>
 </article>
 
@@ -475,6 +475,16 @@ html{scroll-behavior:auto}
 <h3 style="margin: 0; font-size: 21px; font-weight: 700; line-height: 1.25">Penang, for your team</h3>
 <p style="margin: 0; font-size: 15px; line-height: 1.55; color: #5a5d3c">A company trip with time to rest, to talk, and to think about the mark each person wants to leave.</p>
 <button type="button" class="pill" onClick="{{ open.penang }}" style="margin: auto 0 0; align-self: flex-start">View itinerary</button>
+</div>
+</article>
+
+<article class="card" style="display: flex; flex-direction: column; background: #ffffff; border: 1px solid #dcd3bf; border-radius: 14px; overflow: hidden">
+<img src="./assets/37f4f8fe34d1847ea2876d5ffc388040.jpg" alt="A Hakka village with a round earth building, below green hills in the mist" style="width: 100%; height: 190px; object-fit: cover; object-position: 18% 50%; display: block">
+<div style="padding: 20px 22px 18px; display: flex; flex-direction: column; gap: 8px; flex: 1 1 auto">
+<p style="margin: 0; font-size: 12px; font-weight: 700; letter-spacing: 2px; color: #7a6222">ROOTS EDITION</p>
+<h3 style="margin: 0; font-size: 21px; font-weight: 700; line-height: 1.25">Fujian &amp; Chaoshan, back to your roots</h3>
+<p style="margin: 0; font-size: 15px; line-height: 1.55; color: #5a5d3c">For families and clan groups. Eight days through Teochew and Hakka country, with a day at your own ancestral village.</p>
+<button type="button" class="pill" onClick="{{ open.roots }}" style="margin: auto 0 0; align-self: flex-start">View itinerary</button>
 </div>
 </article>
 
@@ -1063,7 +1073,7 @@ html{scroll-behavior:auto}
 <h4 style="margin: 0; font-size: 26px; font-weight: 700; line-height: 1.2">Five ’Stans of Central Asia</h4>
 <div style="margin: auto 0 0; padding-top: 10px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 16px">
 <button type="button" class="pill" onClick="{{ open.stans }}">View itinerary</button>
-<p style="margin: 0 0 0 auto; font-size: 15px; font-weight: 500; line-height: 1.4; color: #5a5d3c; text-align: right">From S$10,320*</p>
+<p style="margin: 0 0 0 auto; font-size: 15px; font-weight: 500; line-height: 1.4; color: #5a5d3c; text-align: right">From S$10,720*</p>
 </div>
 </div>
 </article>
@@ -1099,7 +1109,7 @@ html{scroll-behavior:auto}
 <h4 style="margin: 0; font-size: 26px; font-weight: 700; line-height: 1.2">Uzbekistan</h4>
 <div style="margin: auto 0 0; padding-top: 10px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 16px">
 <button type="button" class="pill" onClick="{{ open.uzbek }}">View itinerary</button>
-<p style="margin: 0 0 0 auto; font-size: 15px; font-weight: 500; line-height: 1.4; color: #5a5d3c; text-align: right">Price on request</p>
+<p style="margin: 0 0 0 auto; font-size: 15px; font-weight: 500; line-height: 1.4; color: #5a5d3c; text-align: right">From S$4,430*</p>
 </div>
 </div>
 </article>
@@ -1515,9 +1525,15 @@ html{scroll-behavior:auto}
 <div style="box-sizing: border-box; width: {{ vW }}; max-width: {{ vMax }}; margin: 0 auto; padding: 18px 12px 28px; display: flex; flex-direction: column; gap: 12px">
 
 <sc-if value="{{ vGorges }}" hint-placeholder-val="{{ false }}">
-<img src="./assets/7aef1cd3ee59d27c108ee066003d1f74.webp" width="1655" height="7020" alt="8D Yangtze Three Gorges, Journey Within Relate itinerary, part 1 of 3" style="width: 100%; height: auto; display: block; background: #fcf8f3">
-<img loading="lazy" src="./assets/7f98550fe75395bb52d64fcbcbd20808.webp" width="1655" height="7020" alt="8D Yangtze Three Gorges, Journey Within Relate itinerary, part 2 of 3" style="width: 100%; height: auto; display: block; background: #fcf8f3">
-<img loading="lazy" src="./assets/edf04d917702f7e9860e6d6d5747017b.webp" width="1655" height="4680" alt="8D Yangtze Three Gorges, Journey Within Relate itinerary, part 3 of 3" style="width: 100%; height: auto; display: block; background: #fcf8f3">
+<img src="./assets/7a0d48f22e8a45612bbdc896edee0ad6.webp" width="1655" height="7020" alt="8D Yangtze Three Gorges, Journey Within Relate itinerary, part 1 of 3" style="width: 100%; height: auto; display: block; background: #fcf8f3">
+<img loading="lazy" src="./assets/a89d263220f20af6f429a09063877845.webp" width="1655" height="7020" alt="8D Yangtze Three Gorges, Journey Within Relate itinerary, part 2 of 3" style="width: 100%; height: auto; display: block; background: #fcf8f3">
+<img loading="lazy" src="./assets/198d2705b0768c149fee323ff7c04d23.webp" width="1655" height="4680" alt="8D Yangtze Three Gorges, Journey Within Relate itinerary, part 3 of 3" style="width: 100%; height: auto; display: block; background: #fcf8f3">
+</sc-if>
+
+<sc-if value="{{ vPuer }}" hint-placeholder-val="{{ false }}">
+<img src="./assets/575fe8bdb0c4e049f513a8b28252dd7e.webp" width="1655" height="7020" alt="8D Yunnan Pu’er, Journey Within Relate itinerary, part 1 of 3" style="width: 100%; height: auto; display: block; background: #fcf8f3">
+<img loading="lazy" src="./assets/955c77a754a2effeeb6e567833529534.webp" width="1655" height="7020" alt="8D Yunnan Pu’er, Journey Within Relate itinerary, part 2 of 3" style="width: 100%; height: auto; display: block; background: #fcf8f3">
+<img loading="lazy" src="./assets/dfb30808ad6c9fd8fadb85e6b1b118b1.webp" width="1655" height="4680" alt="8D Yunnan Pu’er, Journey Within Relate itinerary, part 3 of 3" style="width: 100%; height: auto; display: block; background: #fcf8f3">
 </sc-if>
 
 <sc-if value="{{ vBhutan }}" hint-placeholder-val="{{ false }}">
@@ -1551,38 +1567,29 @@ html{scroll-behavior:auto}
 </sc-if>
 
 <sc-if value="{{ vTaiwan }}" hint-placeholder-val="{{ false }}">
-<img src="./assets/f817b9f03889dcf2309ce835777ee411.jpg" alt="Taiwan Father and Child itinerary, page 1" style="width: 100%; height: auto; display: block; background: #fcf8f3">
-<img loading="lazy" src="./assets/56d91669e52f9652c433f84dac535189.jpg" alt="Taiwan Father and Child itinerary, page 2" style="width: 100%; height: auto; display: block; background: #fcf8f3">
-<img loading="lazy" src="./assets/2ddc8724452431e662d0b086d6a0895c.jpg" alt="Taiwan Father and Child itinerary, page 3" style="width: 100%; height: auto; display: block; background: #fcf8f3">
-<img loading="lazy" src="./assets/126d31321244c44096ed263578b1cffd.jpg" alt="Taiwan Father and Child itinerary, page 4" style="width: 100%; height: auto; display: block; background: #fcf8f3">
+<img src="./assets/b529a8e641a201dddccac0ef790394c9.webp" width="1655" height="4680" alt="5D Taiwan, Journey Within Reveal Father and Child Edition itinerary, part 1 of 2" style="width: 100%; height: auto; display: block; background: #fcf8f3">
+<img loading="lazy" src="./assets/32b5da2911bdb19d5c878acbbb03dc17.webp" width="1655" height="4680" alt="5D Taiwan, Journey Within Reveal Father and Child Edition itinerary, part 2 of 2" style="width: 100%; height: auto; display: block; background: #fcf8f3">
 </sc-if>
 
 <sc-if value="{{ vJingdezhen }}" hint-placeholder-val="{{ false }}">
-<img src="./assets/97578fdc19c4e2cbe76c02ef39a466c2.jpg" alt="Jingdezhen itinerary, page 1" style="width: 100%; height: auto; display: block; background: #fcf8f3">
-<img loading="lazy" src="./assets/f6ad5328a3ebaa44d29bc7a1296ba0b5.jpg" alt="Jingdezhen itinerary, page 2" style="width: 100%; height: auto; display: block; background: #fcf8f3">
-<img loading="lazy" src="./assets/2362262ad084a6b92e4bd44967416a49.jpg" alt="Jingdezhen itinerary, page 3" style="width: 100%; height: auto; display: block; background: #fcf8f3">
-<img loading="lazy" src="./assets/dfa6e70c2ebb3f2074dc2e9847efb6fa.jpg" alt="Jingdezhen itinerary, page 4" style="width: 100%; height: auto; display: block; background: #fcf8f3">
-<img loading="lazy" src="./assets/18569a9235b47131bdb7c69f67b32bba.jpg" alt="Jingdezhen itinerary, page 5" style="width: 100%; height: auto; display: block; background: #fcf8f3">
-<img loading="lazy" src="./assets/ee75a692d1389f9b0a6e7f96d92145a3.jpg" alt="Jingdezhen itinerary, page 6" style="width: 100%; height: auto; display: block; background: #fcf8f3">
+<img src="./assets/0641cf7022139f97f2559cb0c53c6f21.webp" width="1655" height="7020" alt="9D Jingdezhen, Journey Within Reveal Art and Heritage Edition itinerary, part 1 of 2" style="width: 100%; height: auto; display: block; background: #fcf8f3">
+<img loading="lazy" src="./assets/c502debd8c921ef3c201f6e4d14d0532.webp" width="1655" height="7020" alt="9D Jingdezhen, Journey Within Reveal Art and Heritage Edition itinerary, part 2 of 2" style="width: 100%; height: auto; display: block; background: #fcf8f3">
 </sc-if>
 
 <sc-if value="{{ vFootsteps }}" hint-placeholder-val="{{ false }}">
-<img src="./assets/cbd1b6dae9105c2919b8a2c6d23dbe0a.jpg" alt="Japan Footsteps itinerary, page 1" style="width: 100%; height: auto; display: block; background: #fcf8f3">
-<img loading="lazy" src="./assets/ba7b3cda0b75028f7db5fa3b4345c722.jpg" alt="Japan Footsteps itinerary, page 2" style="width: 100%; height: auto; display: block; background: #fcf8f3">
-<img loading="lazy" src="./assets/e4dbce5ff8eefa627af72dc14c91a89c.jpg" alt="Japan Footsteps itinerary, page 3" style="width: 100%; height: auto; display: block; background: #fcf8f3">
-<img loading="lazy" src="./assets/db89503d8c1f5418f9cd8eed9eac8d2a.jpg" alt="Japan Footsteps itinerary, page 4" style="width: 100%; height: auto; display: block; background: #fcf8f3">
-<img loading="lazy" src="./assets/7f35aeb26d5330f1d0c2c1b8c98eec06.jpg" alt="Japan Footsteps itinerary, page 5" style="width: 100%; height: auto; display: block; background: #fcf8f3">
+<img src="./assets/9702dc76316a55576902b6afae08a9a5.webp" width="1655" height="7020" alt="8D Japan, Journey Within Reveal Footsteps Edition itinerary, part 1 of 2" style="width: 100%; height: auto; display: block; background: #fcf8f3">
+<img loading="lazy" src="./assets/f694dc727c2a76e02adc431b6fe35530.webp" width="1655" height="4680" alt="8D Japan, Journey Within Reveal Footsteps Edition itinerary, part 2 of 2" style="width: 100%; height: auto; display: block; background: #fcf8f3">
 </sc-if>
 
 <sc-if value="{{ vPenang }}" hint-placeholder-val="{{ false }}">
-<img src="./assets/0b522ba3bfb35d74c93d8e57e3765631.jpg" alt="Penang Team Edition itinerary, page 1" style="width: 100%; height: auto; display: block; background: #fcf8f3">
-<img loading="lazy" src="./assets/6a39871e538c0df019162f53d4f9cd3a.jpg" alt="Penang Team Edition itinerary, page 2" style="width: 100%; height: auto; display: block; background: #fcf8f3">
-<img loading="lazy" src="./assets/5587080e54ca460ab1adf6d76c9c4a97.jpg" alt="Penang Team Edition itinerary, page 3" style="width: 100%; height: auto; display: block; background: #fcf8f3">
-<img loading="lazy" src="./assets/f58b1112b024eeb2e7d7c273fa92b7de.jpg" alt="Penang Team Edition itinerary, page 4" style="width: 100%; height: auto; display: block; background: #fcf8f3">
-<img loading="lazy" src="./assets/5f50aea8dbb953ef05eb03d3dfa5d575.jpg" alt="Penang Team Edition itinerary, page 5" style="width: 100%; height: auto; display: block; background: #fcf8f3">
-<img loading="lazy" src="./assets/aa1f0d20c2e1bb2281a3261bf8e39ab6.jpg" alt="Penang Team Edition itinerary, page 6" style="width: 100%; height: auto; display: block; background: #fcf8f3">
-<img loading="lazy" src="./assets/7eac59c6d45fbdea941e3b2b4595b559.jpg" alt="Penang Team Edition itinerary, page 7" style="width: 100%; height: auto; display: block; background: #fcf8f3">
-<img loading="lazy" src="./assets/d5b327145ff0eedd367c59fb3b8c4652.jpg" alt="Penang Team Edition itinerary, page 8" style="width: 100%; height: auto; display: block; background: #fcf8f3">
+<img src="./assets/1680ef4e8cfa99516ab3971d18fefa87.webp" width="1655" height="7020" alt="3D Penang, Journey Within Reveal Team Edition itinerary, part 1 of 3" style="width: 100%; height: auto; display: block; background: #fcf8f3">
+<img loading="lazy" src="./assets/a716c5bc7ff6b532c87a23915f86c6fb.webp" width="1655" height="7020" alt="3D Penang, Journey Within Reveal Team Edition itinerary, part 2 of 3" style="width: 100%; height: auto; display: block; background: #fcf8f3">
+<img loading="lazy" src="./assets/58ef889ac8de9f18182a226f93ab99b3.webp" width="1655" height="4680" alt="3D Penang, Journey Within Reveal Team Edition itinerary, part 3 of 3" style="width: 100%; height: auto; display: block; background: #fcf8f3">
+</sc-if>
+
+<sc-if value="{{ vRoots }}" hint-placeholder-val="{{ false }}">
+<img src="./assets/8f06f74d882abed90a41462a38fca63b.webp" width="1655" height="7020" alt="8D Chaoshan, Yongding and Xiamen, Journey Within Reveal Roots Edition itinerary, part 1 of 2" style="width: 100%; height: auto; display: block; background: #fcf8f3">
+<img loading="lazy" src="./assets/45dd284724525fe8315475b63cc4ef3d.webp" width="1655" height="7020" alt="8D Chaoshan, Yongding and Xiamen, Journey Within Reveal Roots Edition itinerary, part 2 of 2" style="width: 100%; height: auto; display: block; background: #fcf8f3">
 </sc-if>
 
 <sc-if value="{{ vr.beijing }}" hint-placeholder-val="{{ false }}">
@@ -2323,10 +2330,12 @@ class Component extends DCLogic {
       jiangxi: '8D Jiangxi · Journey Within Relate',
       fujian: '8D Fujian · Chaoshan · Journey Within Relate',
       gorges: '8D Yangtze Three Gorges · Journey Within Relate',
+      puer: '8D Yunnan Pu’er · Journey Within Relate',
       taiwan: '5D Taiwan · Father & Child Edition',
       jingdezhen: '9D Jingdezhen · Art & Heritage Edition',
       footsteps: '8D Japan · Footsteps Edition',
-      penang: '3D Penang · Team Edition'
+      penang: '3D Penang · Team Edition',
+      roots: '8D Chaoshan, Yongding & Xiamen · Roots Edition'
     };
     out.open = {};
     Object.keys(titles).forEach(function (k) {
@@ -2337,8 +2346,8 @@ class Component extends DCLogic {
     // Itinerary addresses: key -> [page, name in the address]
     var links = {};
     R.forEach(function (r) { links[r[0]] = ['restore', (r[2] + 'd-' + r[1]).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')]; });
-    ['bhutan', 'srilanka', 'hokkaido', 'jiangxi', 'fujian', 'gorges'].forEach(function (k) { links[k] = ['relate', k]; });
-    ['taiwan', 'jingdezhen', 'footsteps', 'penang'].forEach(function (k) { links[k] = ['partners', k]; });
+    ['bhutan', 'srilanka', 'hokkaido', 'jiangxi', 'fujian', 'gorges', 'puer'].forEach(function (k) { links[k] = ['relate', k]; });
+    ['taiwan', 'jingdezhen', 'footsteps', 'penang', 'roots'].forEach(function (k) { links[k] = ['partners', k]; });
     this._links = links;
     var rv = rmap[viewer];
     var vTitle = titles[viewer] || (rv ? rv.title : '');
