@@ -33,6 +33,9 @@ a{color:#567542}a:hover{color:#40461c}
 .hero{min-height:560px}
 .card{transition:transform .25s ease,box-shadow .25s ease}
 .card:hover{transform:translateY(-5px);box-shadow:0 16px 32px rgba(64,70,28,.16)}
+.pick{-webkit-appearance:none;appearance:none;text-overflow:ellipsis}
+.pick:focus-visible{outline:3px solid #8d722b;outline-offset:2px}
+@media (max-width:640px){.fld{max-width:none !important;flex-basis:100% !important}}
 .pill{display:inline-flex;align-items:center;justify-content:center;gap:8px;box-sizing:border-box;min-height:44px;padding:10px 22px;border:2px solid #567542;border-radius:999px;background:#567542;color:#ffffff;font-family:Montserrat,sans-serif;font-size:14px;font-weight:700;line-height:1.2;text-align:center;text-decoration:none;cursor:pointer;transition:background-color .2s ease,border-color .2s ease,color .2s ease}
 .pill:hover{background:#40461c;border-color:#40461c;color:#ffffff}
 .pill.lt{background:#ffffff;border-color:#ffffff;color:#40461c}
@@ -139,7 +142,7 @@ html{scroll-behavior:auto}
 <span style="font-family: Caveat, cursive; font-size: 32px; line-height: 0.95; color: #567542">Restore</span>
 <span style="font-size: 21px; font-weight: 500; line-height: 1.25">Your people. Your dates. Your reason.</span>
 <span style="font-size: 16px; line-height: 1.55">A private journey for couples, families and friends.</span>
-<span class="pill" style="margin-top: auto; align-self: flex-start">See 102 private journeys</span>
+<span class="pill" style="margin-top: auto; align-self: flex-start">See 120 private journeys</span>
 </button>
 <button class="card" type="button" onClick="{{ go.relate }}" style="text-align: left; font-family: Montserrat, sans-serif; color: #40461c; cursor: pointer; background: #ffffff; border: 1px solid #dcd3bf; border-radius: 14px; padding: 26px 24px 24px; display: flex; flex-direction: column; gap: 10px">
 <span style="font-size: 34px; font-weight: 700; line-height: 1.1; color: #40461c">Small Group</span>
@@ -192,6 +195,31 @@ html{scroll-behavior:auto}
 </div>
 </div>
 <p class="rv" style="margin: 0; font-size: 14px; line-height: 1.5">Grounded in peer-reviewed positive psychology research from leading universities.</p>
+</div>
+</section>
+
+<!-- Curated by people -->
+<section id="people" class="sec" aria-labelledby="ppl-h" style="background: #f1eadb; border-bottom: 1px solid #dcd3bf">
+<div class="wrap" style="display: flex; flex-direction: column; gap: 36px">
+<div class="rv" style="display: flex; flex-direction: column; gap: 12px; max-width: 760px">
+<p style="margin: 0; display: flex; align-items: center; gap: 12px; font-size: 12px; font-weight: 700; letter-spacing: 3px; color: #7a6222"><span style="width: 40px; height: 2px; background: #8d722b"></span>CURATED BY PEOPLE</p>
+<h2 id="ppl-h" style="margin: 0; font-weight: 500; font-size: clamp(30px, 3.6vw, 46px); line-height: 1.15">Human intelligence. Human warmth.</h2>
+<p style="margin: 0; font-size: 18px; line-height: 1.55">Science guides the design. People do the curating. Every Journey Within itinerary is put together by our own planners, with care for who is travelling and why.</p>
+</div>
+<div class="rv" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); gap: 24px">
+<div style="border-top: 2px solid #8d722b; padding-top: 18px; display: flex; flex-direction: column; gap: 8px">
+<h3 style="margin: 0; font-size: 21px; font-weight: 700">Curated by our planners</h3>
+<p style="margin: 0; font-size: 16px; line-height: 1.55">Every itinerary is chosen and shaped by people who know the place and have thought about your reason for going.</p>
+</div>
+<div style="border-top: 2px solid #8d722b; padding-top: 18px; display: flex; flex-direction: column; gap: 8px">
+<h3 style="margin: 0; font-size: 21px; font-weight: 700">Built around human warmth</h3>
+<p style="margin: 0; font-size: 16px; line-height: 1.55">We plan for time with one another, and with the hosts, guides and families you meet along the way.</p>
+</div>
+<div style="border-top: 2px solid #8d722b; padding-top: 18px; display: flex; flex-direction: column; gap: 8px">
+<h3 style="margin: 0; font-size: 21px; font-weight: 700">Real photos only</h3>
+<p style="margin: 0; font-size: 16px; line-height: 1.55">Every photo on this site and in our itineraries is real and authentic. None is AI-generated.</p>
+</div>
+</div>
 </div>
 </section>
 
@@ -276,31 +304,43 @@ html{scroll-behavior:auto}
 </div>
 </div>
 
-<!-- Month filter -->
-<div class="chips rv" role="group" aria-label="Filter journeys by month">
-<button class="btn" type="button" onClick="{{ fb.all.pick }}" aria-pressed="{{ fb.all.on }}" style="flex: 0 0 auto; min-width: 104px; min-height: 66px; text-align: left; font-family: Montserrat, sans-serif; cursor: pointer; border-radius: 12px; padding: 10px 14px; display: flex; flex-direction: column; gap: 4px; border: 2px solid {{ fb.all.border }}; background: {{ fb.all.bg }}; color: {{ fb.all.fg }}"><span style="font-size: 13px; font-weight: 700; letter-spacing: 1.5px">ALL 2027</span><span style="font-size: 13px; font-weight: 500; line-height: 1.3">11 journeys</span></button>
-<button class="btn" type="button" onClick="{{ fb.mar.pick }}" aria-pressed="{{ fb.mar.on }}" style="flex: 0 0 auto; min-width: 104px; min-height: 66px; text-align: left; font-family: Montserrat, sans-serif; cursor: pointer; border-radius: 12px; padding: 10px 14px; display: flex; flex-direction: column; gap: 4px; border: 2px solid {{ fb.mar.border }}; background: {{ fb.mar.bg }}; color: {{ fb.mar.fg }}"><span style="font-size: 13px; font-weight: 700; letter-spacing: 1.5px">MAR</span><span style="font-size: 13px; font-weight: 500; line-height: 1.3">Bhutan</span></button>
-<button class="btn" type="button" onClick="{{ fb.apr.pick }}" aria-pressed="{{ fb.apr.on }}" style="flex: 0 0 auto; min-width: 104px; min-height: 66px; text-align: left; font-family: Montserrat, sans-serif; cursor: pointer; border-radius: 12px; padding: 10px 14px; display: flex; flex-direction: column; gap: 4px; border: 2px solid {{ fb.apr.border }}; background: {{ fb.apr.bg }}; color: {{ fb.apr.fg }}"><span style="font-size: 13px; font-weight: 700; letter-spacing: 1.5px">APR</span><span style="font-size: 13px; font-weight: 500; line-height: 1.3">Sri Lanka · Pu’er</span></button>
-<button class="btn" type="button" onClick="{{ fb.may.pick }}" aria-pressed="{{ fb.may.on }}" style="flex: 0 0 auto; min-width: 104px; min-height: 66px; text-align: left; font-family: Montserrat, sans-serif; cursor: pointer; border-radius: 12px; padding: 10px 14px; display: flex; flex-direction: column; gap: 4px; border: 2px solid {{ fb.may.border }}; background: {{ fb.may.bg }}; color: {{ fb.may.fg }}"><span style="font-size: 13px; font-weight: 700; letter-spacing: 1.5px">MAY</span><span style="font-size: 13px; font-weight: 500; line-height: 1.3">Three Gorges</span></button>
-<button class="btn" type="button" onClick="{{ fb.jun.pick }}" aria-pressed="{{ fb.jun.on }}" style="flex: 0 0 auto; min-width: 104px; min-height: 66px; text-align: left; font-family: Montserrat, sans-serif; cursor: pointer; border-radius: 12px; padding: 10px 14px; display: flex; flex-direction: column; gap: 4px; border: 2px solid {{ fb.jun.border }}; background: {{ fb.jun.bg }}; color: {{ fb.jun.fg }}"><span style="font-size: 13px; font-weight: 700; letter-spacing: 1.5px">JUN</span><span style="font-size: 13px; font-weight: 500; line-height: 1.3">Switzerland</span></button>
-<button class="btn" type="button" onClick="{{ fb.sep.pick }}" aria-pressed="{{ fb.sep.on }}" style="flex: 0 0 auto; min-width: 104px; min-height: 66px; text-align: left; font-family: Montserrat, sans-serif; cursor: pointer; border-radius: 12px; padding: 10px 14px; display: flex; flex-direction: column; gap: 4px; border: 2px solid {{ fb.sep.border }}; background: {{ fb.sep.bg }}; color: {{ fb.sep.fg }}"><span style="font-size: 13px; font-weight: 700; letter-spacing: 1.5px">SEP</span><span style="font-size: 13px; font-weight: 500; line-height: 1.3">Hokkaido · Norway</span></button>
-<button class="btn" type="button" onClick="{{ fb.oct.pick }}" aria-pressed="{{ fb.oct.on }}" style="flex: 0 0 auto; min-width: 104px; min-height: 66px; text-align: left; font-family: Montserrat, sans-serif; cursor: pointer; border-radius: 12px; padding: 10px 14px; display: flex; flex-direction: column; gap: 4px; border: 2px solid {{ fb.oct.border }}; background: {{ fb.oct.bg }}; color: {{ fb.oct.fg }}"><span style="font-size: 13px; font-weight: 700; letter-spacing: 1.5px">OCT</span><span style="font-size: 13px; font-weight: 500; line-height: 1.3">Jiangxi · New Zealand</span></button>
-<button class="btn" type="button" onClick="{{ fb.nov.pick }}" aria-pressed="{{ fb.nov.on }}" style="flex: 0 0 auto; min-width: 104px; min-height: 66px; text-align: left; font-family: Montserrat, sans-serif; cursor: pointer; border-radius: 12px; padding: 10px 14px; display: flex; flex-direction: column; gap: 4px; border: 2px solid {{ fb.nov.border }}; background: {{ fb.nov.bg }}; color: {{ fb.nov.fg }}"><span style="font-size: 13px; font-weight: 700; letter-spacing: 1.5px">NOV</span><span style="font-size: 13px; font-weight: 500; line-height: 1.3">Jeolla · Fujian</span></button>
-</div>
-
-<!-- Region filter and status -->
-<div class="rv" style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px">
-<span style="font-size: 14px; font-weight: 700; color: #5a5d3c">Or by region</span>
-<div role="group" aria-label="Filter journeys by region" style="display: flex; flex-wrap: wrap; gap: 8px">
-<button type="button" onClick="{{ fb.nea.pick }}" aria-pressed="{{ fb.nea.on }}" style="font-family: Montserrat, sans-serif; font-size: 14px; font-weight: 700; cursor: pointer; min-height: 44px; padding: 8px 18px; border-radius: 999px; border: 2px solid {{ fb.nea.border }}; background: {{ fb.nea.bg }}; color: {{ fb.nea.fg }}">North East Asia</button>
-<button type="button" onClick="{{ fb.him.pick }}" aria-pressed="{{ fb.him.on }}" style="font-family: Montserrat, sans-serif; font-size: 14px; font-weight: 700; cursor: pointer; min-height: 44px; padding: 8px 18px; border-radius: 999px; border: 2px solid {{ fb.him.border }}; background: {{ fb.him.bg }}; color: {{ fb.him.fg }}">Himalayan &amp; Indian Subcontinent</button>
-<button type="button" onClick="{{ fb.eur.pick }}" aria-pressed="{{ fb.eur.on }}" style="font-family: Montserrat, sans-serif; font-size: 14px; font-weight: 700; cursor: pointer; min-height: 44px; padding: 8px 18px; border-radius: 999px; border: 2px solid {{ fb.eur.border }}; background: {{ fb.eur.bg }}; color: {{ fb.eur.fg }}">Europe</button>
-<button type="button" onClick="{{ fb.oce.pick }}" aria-pressed="{{ fb.oce.on }}" style="font-family: Montserrat, sans-serif; font-size: 14px; font-weight: 700; cursor: pointer; min-height: 44px; padding: 8px 18px; border-radius: 999px; border: 2px solid {{ fb.oce.border }}; background: {{ fb.oce.bg }}; color: {{ fb.oce.fg }}">Oceania</button>
-</div>
-<p aria-live="polite" style="margin: 0 0 0 auto; font-size: 14px; font-weight: 700; color: #5a5d3c">{{ countLabel }}</p>
+<!-- Filters: month or region, as dropdowns -->
+<div class="rv" style="display: flex; flex-direction: column; gap: 14px">
+<div role="group" aria-label="Filter small group journeys" style="display: flex; flex-wrap: wrap; align-items: flex-end; gap: 14px 16px">
+<label class="fld" style="display: flex; flex-direction: column; gap: 6px; flex: 1 1 220px; max-width: 340px; min-width: 0">
+<span style="font-size: 12px; font-weight: 700; letter-spacing: 2px; color: #7a6222">MONTH</span>
+<span style="position: relative; display: block">
+<select class="pick" aria-label="Filter small group journeys by month" value="{{ fMonth }}" onChange="{{ pickMonth }}" style="font-family: Montserrat, sans-serif; font-size: 14px; font-weight: 700; cursor: pointer; width: 100%; min-height: 46px; padding: 8px 42px 8px 18px; border-radius: 999px; border: 2px solid {{ mBorder }}; background-color: {{ mBg }}; color: {{ mFg }}">
+<option value="all">All 2027 (11)</option>
+<option value="mar">March · Bhutan</option>
+<option value="apr">April · Sri Lanka, Pu’er</option>
+<option value="may">May · Three Gorges</option>
+<option value="jun">June · Switzerland</option>
+<option value="sep">September · Hokkaido, Norway</option>
+<option value="oct">October · Jiangxi, New Zealand</option>
+<option value="nov">November · Jeolla, Fujian</option>
+</select>
+<svg aria-hidden="true" width="14" height="14" viewBox="0 0 14 14" style="position: absolute; right: 18px; top: 50%; margin-top: -7px; pointer-events: none; color: {{ mFg }}"><path d="M2 4.5 7 9.5 12 4.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+</span>
+</label>
+<label class="fld" style="display: flex; flex-direction: column; gap: 6px; flex: 1 1 220px; max-width: 340px; min-width: 0">
+<span style="font-size: 12px; font-weight: 700; letter-spacing: 2px; color: #7a6222">REGION</span>
+<span style="position: relative; display: block">
+<select class="pick" aria-label="Filter small group journeys by region" value="{{ fRegion }}" onChange="{{ pickFRegion }}" style="font-family: Montserrat, sans-serif; font-size: 14px; font-weight: 700; cursor: pointer; width: 100%; min-height: 46px; padding: 8px 42px 8px 18px; border-radius: 999px; border: 2px solid {{ gBorder }}; background-color: {{ gBg }}; color: {{ gFg }}">
+<option value="all">All regions</option>
+<option value="nea">North East Asia (6)</option>
+<option value="him">Himalayan &amp; Indian Subcontinent (2)</option>
+<option value="eur">Europe (2)</option>
+<option value="oce">Oceania (1)</option>
+</select>
+<svg aria-hidden="true" width="14" height="14" viewBox="0 0 14 14" style="position: absolute; right: 18px; top: 50%; margin-top: -7px; pointer-events: none; color: {{ gFg }}"><path d="M2 4.5 7 9.5 12 4.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+</span>
+</label>
 <sc-if value="{{ filtered }}" hint-placeholder-val="{{ false }}">
 <button type="button" class="pill ol" onClick="{{ fb.all.pick }}">Show all</button>
 </sc-if>
+</div>
+<p aria-live="polite" style="margin: 0; font-size: 14px; font-weight: 700; color: #5a5d3c">{{ countLabel }}</p>
 </div>
 
 <!-- Journey cards -->
@@ -558,24 +598,38 @@ html{scroll-behavior:auto}
 </div>
 </div>
 
-<!-- Filters: region and length -->
+<!-- Filters: region, country and length, as dropdowns -->
 <div style="display: flex; flex-direction: column; gap: 14px">
-<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px">
-<p style="margin: 0; flex: 0 0 76px; font-size: 12px; font-weight: 700; letter-spacing: 2px; color: #7a6222">REGION</p>
-<div class="chips" role="group" aria-label="Filter private journeys by region" style="display: flex; flex-wrap: wrap; gap: 8px; flex: 1 1 280px">
-<sc-for list="{{ rChips }}" as="c" hint-placeholder-count="12">
-<button type="button" onClick="{{ c.pick }}" aria-pressed="{{ c.on }}" style="font-family: Montserrat, sans-serif; font-size: 14px; font-weight: 700; cursor: pointer; min-height: 44px; padding: 8px 18px; border-radius: 999px; border: 2px solid {{ c.border }}; background: {{ c.bg }}; color: {{ c.fg }}">{{ c.label }}</button>
-</sc-for>
-</div>
-</div>
-<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px">
-<p style="margin: 0; flex: 0 0 76px; font-size: 12px; font-weight: 700; letter-spacing: 2px; color: #7a6222">COUNTRY</p>
-<select class="pick" aria-label="Filter private journeys by country" value="{{ rcountry }}" onChange="{{ pickCountry }}" style="font-family: Montserrat, sans-serif; font-size: 14px; font-weight: 700; cursor: pointer; min-height: 44px; max-width: 100%; padding: 8px 14px 8px 16px; border-radius: 999px; border: 2px solid {{ cBorder }}; background-color: {{ cBg }}; color: {{ cFg }}">
-<option value="all">Any country (61)</option>
+<div role="group" aria-label="Filter private journeys" style="display: flex; flex-wrap: wrap; align-items: flex-end; gap: 14px 16px">
+<label class="fld" style="display: flex; flex-direction: column; gap: 6px; flex: 1 1 220px; max-width: 340px; min-width: 0">
+<span style="font-size: 12px; font-weight: 700; letter-spacing: 2px; color: #7a6222">REGION</span>
+<span style="position: relative; display: block">
+<select class="pick" aria-label="Filter private journeys by region" value="{{ rfilter }}" onChange="{{ pickRegion }}" style="font-family: Montserrat, sans-serif; font-size: 14px; font-weight: 700; cursor: pointer; width: 100%; min-height: 46px; padding: 8px 42px 8px 18px; border-radius: 999px; border: 2px solid {{ rBorder }}; background-color: {{ rBg }}; color: {{ rFg }}">
+<option value="all">All regions (120)</option>
+<option value="nea">North East Asia (46)</option>
+<option value="sea">South East Asia (1)</option>
+<option value="him">Himalayan &amp; Indian Subcontinent (7)</option>
+<option value="cac">Central Asia &amp; Caucasus (5)</option>
+<option value="mena">Middle East &amp; North Africa (8)</option>
+<option value="eur">Europe (18)</option>
+<option value="afr">Africa (4)</option>
+<option value="oce">Oceania (19)</option>
+<option value="na">North America (6)</option>
+<option value="ant">Antarctica &amp; Arctic (2)</option>
+<option value="sca">South &amp; Central America (4)</option>
+</select>
+<svg aria-hidden="true" width="14" height="14" viewBox="0 0 14 14" style="position: absolute; right: 18px; top: 50%; margin-top: -7px; pointer-events: none; color: {{ rFg }}"><path d="M2 4.5 7 9.5 12 4.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+</span>
+</label>
+<label class="fld" style="display: flex; flex-direction: column; gap: 6px; flex: 1 1 220px; max-width: 340px; min-width: 0">
+<span style="font-size: 12px; font-weight: 700; letter-spacing: 2px; color: #7a6222">COUNTRY</span>
+<span style="position: relative; display: block">
+<select class="pick" aria-label="Filter private journeys by country" value="{{ rcountry }}" onChange="{{ pickCountry }}" style="font-family: Montserrat, sans-serif; font-size: 14px; font-weight: 700; cursor: pointer; width: 100%; min-height: 46px; padding: 8px 42px 8px 18px; border-radius: 999px; border: 2px solid {{ cBorder }}; background-color: {{ cBg }}; color: {{ cFg }}">
+<option value="all">Any country (62)</option>
 <option value="Antarctica">Antarctica (2)</option>
 <option value="Argentina">Argentina (5)</option>
 <option value="Armenia">Armenia (1)</option>
-<option value="Australia">Australia (4)</option>
+<option value="Australia">Australia (11)</option>
 <option value="Austria">Austria (3)</option>
 <option value="Azerbaijan">Azerbaijan (1)</option>
 <option value="Belgium">Belgium (1)</option>
@@ -585,21 +639,21 @@ html{scroll-behavior:auto}
 <option value="Botswana">Botswana (2)</option>
 <option value="Brazil">Brazil (4)</option>
 <option value="Brunei">Brunei (1)</option>
-<option value="Canada">Canada (5)</option>
+<option value="Canada">Canada (6)</option>
 <option value="Chile">Chile (1)</option>
 <option value="China">China (23)</option>
 <option value="Croatia">Croatia (2)</option>
 <option value="Czech Republic">Czech Republic (1)</option>
-<option value="Egypt">Egypt (1)</option>
+<option value="Egypt">Egypt (2)</option>
 <option value="Estonia">Estonia (1)</option>
 <option value="Finland">Finland (3)</option>
-<option value="France">France (2)</option>
+<option value="France">France (3)</option>
 <option value="Georgia">Georgia (2)</option>
 <option value="Greece">Greece (1)</option>
 <option value="Hungary">Hungary (1)</option>
 <option value="Iceland">Iceland (1)</option>
 <option value="India">India (3)</option>
-<option value="Italy">Italy (2)</option>
+<option value="Italy">Italy (3)</option>
 <option value="Japan">Japan (8)</option>
 <option value="Jordan">Jordan (1)</option>
 <option value="Kazakhstan">Kazakhstan (3)</option>
@@ -609,17 +663,17 @@ html{scroll-behavior:auto}
 <option value="Lithuania">Lithuania (1)</option>
 <option value="Malta">Malta (1)</option>
 <option value="Mongolia">Mongolia (1)</option>
-<option value="Morocco">Morocco (1)</option>
+<option value="Morocco">Morocco (2)</option>
 <option value="Nepal">Nepal (2)</option>
 <option value="Netherlands">Netherlands (2)</option>
-<option value="New Zealand">New Zealand (3)</option>
+<option value="New Zealand">New Zealand (8)</option>
 <option value="Norway">Norway (2)</option>
 <option value="Peru">Peru (3)</option>
-<option value="Portugal">Portugal (1)</option>
+<option value="Portugal">Portugal (2)</option>
 <option value="Slovenia">Slovenia (2)</option>
 <option value="South Africa">South Africa (2)</option>
 <option value="South Korea">South Korea (8)</option>
-<option value="Spain">Spain (1)</option>
+<option value="Spain">Spain (2)</option>
 <option value="Sri Lanka">Sri Lanka (1)</option>
 <option value="Sweden">Sweden (1)</option>
 <option value="Switzerland">Switzerland (3)</option>
@@ -629,23 +683,35 @@ html{scroll-behavior:auto}
 <option value="Tunisia">Tunisia (1)</option>
 <option value="Turkey">Turkey (3)</option>
 <option value="Turkmenistan">Turkmenistan (1)</option>
+<option value="United Arab Emirates">United Arab Emirates (1)</option>
 <option value="United Kingdom">United Kingdom (3)</option>
 <option value="United States">United States (1)</option>
 <option value="Uzbekistan">Uzbekistan (2)</option>
 <option value="Zimbabwe">Zimbabwe (3)</option>
 </select>
-</div>
-<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px">
-<p style="margin: 0; flex: 0 0 76px; font-size: 12px; font-weight: 700; letter-spacing: 2px; color: #7a6222">LENGTH</p>
-<div class="chips" role="group" aria-label="Filter private journeys by length" style="display: flex; flex-wrap: wrap; gap: 8px; flex: 1 1 280px">
-<sc-for list="{{ dChips }}" as="d" hint-placeholder-count="5">
-<button type="button" onClick="{{ d.pick }}" aria-pressed="{{ d.on }}" style="font-family: Montserrat, sans-serif; font-size: 14px; font-weight: 700; cursor: pointer; min-height: 44px; padding: 8px 18px; border-radius: 999px; border: 2px solid {{ d.border }}; background: {{ d.bg }}; color: {{ d.fg }}">{{ d.label }}</button>
-</sc-for>
-</div>
+<svg aria-hidden="true" width="14" height="14" viewBox="0 0 14 14" style="position: absolute; right: 18px; top: 50%; margin-top: -7px; pointer-events: none; color: {{ cFg }}"><path d="M2 4.5 7 9.5 12 4.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+</span>
+</label>
+<label class="fld" style="display: flex; flex-direction: column; gap: 6px; flex: 1 1 220px; max-width: 340px; min-width: 0">
+<span style="font-size: 12px; font-weight: 700; letter-spacing: 2px; color: #7a6222">LENGTH</span>
+<span style="position: relative; display: block">
+<select class="pick" aria-label="Filter private journeys by length" value="{{ rdur }}" onChange="{{ pickLength }}" style="font-family: Montserrat, sans-serif; font-size: 14px; font-weight: 700; cursor: pointer; width: 100%; min-height: 46px; padding: 8px 42px 8px 18px; border-radius: 999px; border: 2px solid {{ dBorder }}; background-color: {{ dBg }}; color: {{ dFg }}">
+<option value="all">Any length</option>
+<option value="a">4 to 7 days (33)</option>
+<option value="b">8 to 10 days (51)</option>
+<option value="c">11 to 14 days (27)</option>
+<option value="d">15 days or more (9)</option>
+</select>
+<svg aria-hidden="true" width="14" height="14" viewBox="0 0 14 14" style="position: absolute; right: 18px; top: 50%; margin-top: -7px; pointer-events: none; color: {{ dFg }}"><path d="M2 4.5 7 9.5 12 4.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+</span>
+</label>
+<sc-if value="{{ rFiltered }}" hint-placeholder-val="{{ false }}">
+<button type="button" class="pill ol" onClick="{{ rClear }}">Show all</button>
+</sc-if>
 </div>
 <p aria-live="polite" style="margin: 0; font-size: 14px; font-weight: 700; color: #5a5d3c">{{ rCount }}</p>
 <sc-if value="{{ rNone }}" hint-placeholder-val="{{ false }}">
-<p style="margin: 0; font-size: 17px; line-height: 1.55">No sample journey fits both choices yet. Tell us what you have in mind and we will shape one for you.</p>
+<p style="margin: 0; font-size: 17px; line-height: 1.55">No sample journey fits these choices yet. Tell us what you have in mind and we will shape one for you.</p>
 </sc-if>
 </div>
 
@@ -1392,6 +1458,30 @@ html{scroll-behavior:auto}
 </div>
 </article>
 
+<article class="card" style="display: {{ rs.dubai }}; flex-direction: column; background: #ffffff; border: 1px solid #dcd3bf; border-radius: 14px; overflow: hidden">
+<img loading="lazy" src="./assets/75b2f32af273746ed2b83805f1e65536.jpg" alt="Dubai &amp; Abu Dhabi, a Journey Within Restore private journey" style="width: 100%; height: 210px; object-fit: cover; display: block; background: #f1eadb">
+<div style="padding: 22px 24px 22px; display: flex; flex-direction: column; gap: 10px; flex: 1 1 auto">
+<p style="margin: 0; font-size: 12px; font-weight: 700; letter-spacing: 2px; line-height: 1.6; color: #7a6222">MIDDLE EAST &amp; NORTH AFRICA · UNITED ARAB EMIRATES · 6 DAYS</p>
+<h4 style="margin: 0; font-size: 26px; font-weight: 700; line-height: 1.2">Dubai &amp; Abu Dhabi</h4>
+<div style="margin: auto 0 0; padding-top: 10px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 16px">
+<button type="button" class="pill" onClick="{{ open.dubai }}">View itinerary</button>
+<p style="margin: 0 0 0 auto; font-size: 15px; font-weight: 500; line-height: 1.4; color: #5a5d3c; text-align: right">From S$2,910*</p>
+</div>
+</div>
+</article>
+
+<article class="card" style="display: {{ rs.egyptnile }}; flex-direction: column; background: #ffffff; border: 1px solid #dcd3bf; border-radius: 14px; overflow: hidden">
+<img loading="lazy" src="./assets/f57665bec7ba2718f5671a34e17d8184.jpg" alt="Egypt: Cairo &amp; the Nile, a Journey Within Restore private journey" style="width: 100%; height: 210px; object-fit: cover; display: block; background: #f1eadb">
+<div style="padding: 22px 24px 22px; display: flex; flex-direction: column; gap: 10px; flex: 1 1 auto">
+<p style="margin: 0; font-size: 12px; font-weight: 700; letter-spacing: 2px; line-height: 1.6; color: #7a6222">MIDDLE EAST &amp; NORTH AFRICA · EGYPT · 9 DAYS</p>
+<h4 style="margin: 0; font-size: 26px; font-weight: 700; line-height: 1.2">Egypt: Cairo &amp; the Nile</h4>
+<div style="margin: auto 0 0; padding-top: 10px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 16px">
+<button type="button" class="pill" onClick="{{ open.egyptnile }}">View itinerary</button>
+<p style="margin: 0 0 0 auto; font-size: 15px; font-weight: 500; line-height: 1.4; color: #5a5d3c; text-align: right">From S$3,540*</p>
+</div>
+</div>
+</article>
+
 <article class="card" style="display: {{ rs.tbilisi }}; flex-direction: column; background: #ffffff; border: 1px solid #dcd3bf; border-radius: 14px; overflow: hidden">
 <img loading="lazy" src="./assets/513d324c5274da65d34a9924e36683b7.jpg" alt="Istanbul to Tbilisi, a Journey Within Restore private journey" style="width: 100%; height: 210px; object-fit: cover; display: block; background: #f1eadb">
 <div style="padding: 22px 24px 22px; display: flex; flex-direction: column; gap: 10px; flex: 1 1 auto">
@@ -1412,6 +1502,18 @@ html{scroll-behavior:auto}
 <div style="margin: auto 0 0; padding-top: 10px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 16px">
 <button type="button" class="pill" onClick="{{ open.jordan }}">View itinerary</button>
 <p style="margin: 0 0 0 auto; font-size: 15px; font-weight: 500; line-height: 1.4; color: #5a5d3c; text-align: right">From S$14,660*</p>
+</div>
+</div>
+</article>
+
+<article class="card" style="display: {{ rs.marrakech }}; flex-direction: column; background: #ffffff; border: 1px solid #dcd3bf; border-radius: 14px; overflow: hidden">
+<img loading="lazy" src="./assets/9cd9ed4af75932da66b50f342fdac4b7.jpg" alt="Marrakech &amp; the Southern Desert, a Journey Within Restore private journey" style="width: 100%; height: 210px; object-fit: cover; display: block; background: #f1eadb">
+<div style="padding: 22px 24px 22px; display: flex; flex-direction: column; gap: 10px; flex: 1 1 auto">
+<p style="margin: 0; font-size: 12px; font-weight: 700; letter-spacing: 2px; line-height: 1.6; color: #7a6222">MIDDLE EAST &amp; NORTH AFRICA · MOROCCO · 10 DAYS</p>
+<h4 style="margin: 0; font-size: 26px; font-weight: 700; line-height: 1.2">Marrakech &amp; the Southern Desert</h4>
+<div style="margin: auto 0 0; padding-top: 10px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 16px">
+<button type="button" class="pill" onClick="{{ open.marrakech }}">View itinerary</button>
+<p style="margin: 0 0 0 auto; font-size: 15px; font-weight: 500; line-height: 1.4; color: #5a5d3c; text-align: right">From S$3,920*</p>
 </div>
 </div>
 </article>
@@ -1538,6 +1640,18 @@ html{scroll-behavior:auto}
 </div>
 </article>
 
+<article class="card" style="display: {{ rs.como }}; flex-direction: column; background: #ffffff; border: 1px solid #dcd3bf; border-radius: 14px; overflow: hidden">
+<img loading="lazy" src="./assets/4a7e767f8c71b87b09b0cc8d3bfa072a.jpg" alt="Lake Como, Cinque Terre &amp; Amalfi Coast, a Journey Within Restore private journey" style="width: 100%; height: 210px; object-fit: cover; display: block; background: #f1eadb">
+<div style="padding: 22px 24px 22px; display: flex; flex-direction: column; gap: 10px; flex: 1 1 auto">
+<p style="margin: 0; font-size: 12px; font-weight: 700; letter-spacing: 2px; line-height: 1.6; color: #7a6222">EUROPE · ITALY · 10 DAYS</p>
+<h4 style="margin: 0; font-size: 26px; font-weight: 700; line-height: 1.2">Lake Como, Cinque Terre &amp; Amalfi Coast</h4>
+<div style="margin: auto 0 0; padding-top: 10px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 16px">
+<button type="button" class="pill" onClick="{{ open.como }}">View itinerary</button>
+<p style="margin: 0 0 0 auto; font-size: 15px; font-weight: 500; line-height: 1.4; color: #5a5d3c; text-align: right">From S$7,540*</p>
+</div>
+</div>
+</article>
+
 <article class="card" style="display: {{ rs.finparlon }}; flex-direction: column; background: #ffffff; border: 1px solid #dcd3bf; border-radius: 14px; overflow: hidden">
 <img loading="lazy" src="./assets/15c896a8b2aba7ab80574ae35fd1de39.jpg" alt="Lapland, Paris &amp; London, a Journey Within Restore private journey" style="width: 100%; height: 210px; object-fit: cover; display: block; background: #f1eadb">
 <div style="padding: 22px 24px 22px; display: flex; flex-direction: column; gap: 10px; flex: 1 1 auto">
@@ -1582,6 +1696,18 @@ html{scroll-behavior:auto}
 <div style="margin: auto 0 0; padding-top: 10px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 16px">
 <button type="button" class="pill" onClick="{{ open.malta }}">View itinerary</button>
 <p style="margin: 0 0 0 auto; font-size: 15px; font-weight: 500; line-height: 1.4; color: #5a5d3c; text-align: right">From S$9,600*</p>
+</div>
+</div>
+</article>
+
+<article class="card" style="display: {{ rs.lourdes }}; flex-direction: column; background: #ffffff; border: 1px solid #dcd3bf; border-radius: 14px; overflow: hidden">
+<img loading="lazy" src="./assets/c4b381c67a6316c9f0ed70170967d1ec.jpg" alt="Paris, Lourdes &amp; Fátima, a Journey Within Restore private journey" style="width: 100%; height: 210px; object-fit: cover; display: block; background: #f1eadb">
+<div style="padding: 22px 24px 22px; display: flex; flex-direction: column; gap: 10px; flex: 1 1 auto">
+<p style="margin: 0; font-size: 12px; font-weight: 700; letter-spacing: 2px; line-height: 1.6; color: #7a6222">EUROPE · FRANCE, SPAIN &amp; PORTUGAL · 9 DAYS</p>
+<h4 style="margin: 0; font-size: 26px; font-weight: 700; line-height: 1.2">Paris, Lourdes &amp; Fátima</h4>
+<div style="margin: auto 0 0; padding-top: 10px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 16px">
+<button type="button" class="pill" onClick="{{ open.lourdes }}">View itinerary</button>
+<p style="margin: 0 0 0 auto; font-size: 15px; font-weight: 500; line-height: 1.4; color: #5a5d3c; text-align: right">From S$5,390*</p>
 </div>
 </div>
 </article>
@@ -1688,6 +1814,18 @@ html{scroll-behavior:auto}
 
 <p role="heading" aria-level="4" style="display: {{ gh.c_oce_Australia }}; grid-column: 1 / -1; margin: 6px 0 -6px; font-size: 12px; font-weight: 700; letter-spacing: 2px; line-height: 1.6; text-transform: uppercase; color: #7a6222">AUSTRALIA · {{ gn.c_oce_Australia }}</p>
 
+<article class="card" style="display: {{ rs.adelaide }}; flex-direction: column; background: #ffffff; border: 1px solid #dcd3bf; border-radius: 14px; overflow: hidden">
+<img loading="lazy" src="./assets/0db246b0c4839795c4e0c3d2b55980ff.jpg" alt="Adelaide &amp; Kangaroo Island: Self-drive, a Journey Within Restore private journey" style="width: 100%; height: 210px; object-fit: cover; display: block; background: #f1eadb">
+<div style="padding: 22px 24px 22px; display: flex; flex-direction: column; gap: 10px; flex: 1 1 auto">
+<p style="margin: 0; font-size: 12px; font-weight: 700; letter-spacing: 2px; line-height: 1.6; color: #7a6222">OCEANIA · AUSTRALIA · 10 DAYS</p>
+<h4 style="margin: 0; font-size: 26px; font-weight: 700; line-height: 1.2">Adelaide &amp; Kangaroo Island: Self-drive</h4>
+<div style="margin: auto 0 0; padding-top: 10px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 16px">
+<button type="button" class="pill" onClick="{{ open.adelaide }}">View itinerary</button>
+<p style="margin: 0 0 0 auto; font-size: 15px; font-weight: 500; line-height: 1.4; color: #5a5d3c; text-align: right">From S$2,470*</p>
+</div>
+</div>
+</article>
+
 <article class="card" style="display: {{ rs.goldcoast }}; flex-direction: column; background: #ffffff; border: 1px solid #dcd3bf; border-radius: 14px; overflow: hidden">
 <img loading="lazy" src="./assets/c3a566275a68f39f31641f61b154bb5e.jpg" alt="Gold Coast &amp; Hinterland, a Journey Within Restore private journey" style="width: 100%; height: 210px; object-fit: cover; display: block; background: #f1eadb">
 <div style="padding: 22px 24px 22px; display: flex; flex-direction: column; gap: 10px; flex: 1 1 auto">
@@ -1724,6 +1862,78 @@ html{scroll-behavior:auto}
 </div>
 </article>
 
+<article class="card" style="display: {{ rs.melbgor }}; flex-direction: column; background: #ffffff; border: 1px solid #dcd3bf; border-radius: 14px; overflow: hidden">
+<img loading="lazy" src="./assets/4a9db493570500b6ca0d0619e3384a3a.jpg" alt="Melbourne, Great Ocean Road &amp; Yarra Valley, a Journey Within Restore private journey" style="width: 100%; height: 210px; object-fit: cover; display: block; background: #f1eadb">
+<div style="padding: 22px 24px 22px; display: flex; flex-direction: column; gap: 10px; flex: 1 1 auto">
+<p style="margin: 0; font-size: 12px; font-weight: 700; letter-spacing: 2px; line-height: 1.6; color: #7a6222">OCEANIA · AUSTRALIA · 6 DAYS</p>
+<h4 style="margin: 0; font-size: 26px; font-weight: 700; line-height: 1.2">Melbourne, Great Ocean Road &amp; Yarra Valley</h4>
+<div style="margin: auto 0 0; padding-top: 10px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 16px">
+<button type="button" class="pill" onClick="{{ open.melbgor }}">View itinerary</button>
+<p style="margin: 0 0 0 auto; font-size: 15px; font-weight: 500; line-height: 1.4; color: #5a5d3c; text-align: right">From S$3,110*</p>
+</div>
+</div>
+</article>
+
+<article class="card" style="display: {{ rs.perth4 }}; flex-direction: column; background: #ffffff; border: 1px solid #dcd3bf; border-radius: 14px; overflow: hidden">
+<img loading="lazy" src="./assets/e8b082c7a2c7400ef92a43a8e312f60c.jpg" alt="Perth &amp; Rottnest, a Journey Within Restore private journey" style="width: 100%; height: 210px; object-fit: cover; display: block; background: #f1eadb">
+<div style="padding: 22px 24px 22px; display: flex; flex-direction: column; gap: 10px; flex: 1 1 auto">
+<p style="margin: 0; font-size: 12px; font-weight: 700; letter-spacing: 2px; line-height: 1.6; color: #7a6222">OCEANIA · AUSTRALIA · 4 DAYS</p>
+<h4 style="margin: 0; font-size: 26px; font-weight: 700; line-height: 1.2">Perth &amp; Rottnest</h4>
+<div style="margin: auto 0 0; padding-top: 10px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 16px">
+<button type="button" class="pill" onClick="{{ open.perth4 }}">View itinerary</button>
+<p style="margin: 0 0 0 auto; font-size: 15px; font-weight: 500; line-height: 1.4; color: #5a5d3c; text-align: right">From S$1,570*</p>
+</div>
+</div>
+</article>
+
+<article class="card" style="display: {{ rs.perth7 }}; flex-direction: column; background: #ffffff; border: 1px solid #dcd3bf; border-radius: 14px; overflow: hidden">
+<img loading="lazy" src="./assets/8bb4d5d8360bc1c415fcba65dc5f1a89.jpg" alt="Perth, Rottnest &amp; the Pinnacles, a Journey Within Restore private journey" style="width: 100%; height: 210px; object-fit: cover; display: block; background: #f1eadb">
+<div style="padding: 22px 24px 22px; display: flex; flex-direction: column; gap: 10px; flex: 1 1 auto">
+<p style="margin: 0; font-size: 12px; font-weight: 700; letter-spacing: 2px; line-height: 1.6; color: #7a6222">OCEANIA · AUSTRALIA · 7 DAYS</p>
+<h4 style="margin: 0; font-size: 26px; font-weight: 700; line-height: 1.2">Perth, Rottnest &amp; the Pinnacles</h4>
+<div style="margin: auto 0 0; padding-top: 10px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 16px">
+<button type="button" class="pill" onClick="{{ open.perth7 }}">View itinerary</button>
+<p style="margin: 0 0 0 auto; font-size: 15px; font-weight: 500; line-height: 1.4; color: #5a5d3c; text-align: right">From S$3,440*</p>
+</div>
+</div>
+</article>
+
+<article class="card" style="display: {{ rs.snowy }}; flex-direction: column; background: #ffffff; border: 1px solid #dcd3bf; border-radius: 14px; overflow: hidden">
+<img loading="lazy" src="./assets/ea436f84b6b89f803ed463042ec52866.jpg" alt="Sydney &amp; the Snowy Mountains, a Journey Within Restore private journey" style="width: 100%; height: 210px; object-fit: cover; display: block; background: #f1eadb">
+<div style="padding: 22px 24px 22px; display: flex; flex-direction: column; gap: 10px; flex: 1 1 auto">
+<p style="margin: 0; font-size: 12px; font-weight: 700; letter-spacing: 2px; line-height: 1.6; color: #7a6222">OCEANIA · AUSTRALIA · 8 DAYS</p>
+<h4 style="margin: 0; font-size: 26px; font-weight: 700; line-height: 1.2">Sydney &amp; the Snowy Mountains</h4>
+<div style="margin: auto 0 0; padding-top: 10px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 16px">
+<button type="button" class="pill" onClick="{{ open.snowy }}">View itinerary</button>
+<p style="margin: 0 0 0 auto; font-size: 15px; font-weight: 500; line-height: 1.4; color: #5a5d3c; text-align: right">From S$4,820*</p>
+</div>
+</div>
+</article>
+
+<article class="card" style="display: {{ rs.sydney7 }}; flex-direction: column; background: #ffffff; border: 1px solid #dcd3bf; border-radius: 14px; overflow: hidden">
+<img loading="lazy" src="./assets/c5fdb1e6a97e230570bc648d0eb8dc44.jpg" alt="Sydney, Blue Mountains &amp; Hunter Valley, a Journey Within Restore private journey" style="width: 100%; height: 210px; object-fit: cover; display: block; background: #f1eadb">
+<div style="padding: 22px 24px 22px; display: flex; flex-direction: column; gap: 10px; flex: 1 1 auto">
+<p style="margin: 0; font-size: 12px; font-weight: 700; letter-spacing: 2px; line-height: 1.6; color: #7a6222">OCEANIA · AUSTRALIA · 7 DAYS</p>
+<h4 style="margin: 0; font-size: 26px; font-weight: 700; line-height: 1.2">Sydney, Blue Mountains &amp; Hunter Valley</h4>
+<div style="margin: auto 0 0; padding-top: 10px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 16px">
+<button type="button" class="pill" onClick="{{ open.sydney7 }}">View itinerary</button>
+<p style="margin: 0 0 0 auto; font-size: 15px; font-weight: 500; line-height: 1.4; color: #5a5d3c; text-align: right">From S$3,490*</p>
+</div>
+</div>
+</article>
+
+<article class="card" style="display: {{ rs.sydney11 }}; flex-direction: column; background: #ffffff; border: 1px solid #dcd3bf; border-radius: 14px; overflow: hidden">
+<img loading="lazy" src="./assets/222b844680690eec27577aec53361369.jpg" alt="Sydney, Gold Coast &amp; Melbourne, a Journey Within Restore private journey" style="width: 100%; height: 210px; object-fit: cover; display: block; background: #f1eadb">
+<div style="padding: 22px 24px 22px; display: flex; flex-direction: column; gap: 10px; flex: 1 1 auto">
+<p style="margin: 0; font-size: 12px; font-weight: 700; letter-spacing: 2px; line-height: 1.6; color: #7a6222">OCEANIA · AUSTRALIA · 11 DAYS</p>
+<h4 style="margin: 0; font-size: 26px; font-weight: 700; line-height: 1.2">Sydney, Gold Coast &amp; Melbourne</h4>
+<div style="margin: auto 0 0; padding-top: 10px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 16px">
+<button type="button" class="pill" onClick="{{ open.sydney11 }}">View itinerary</button>
+<p style="margin: 0 0 0 auto; font-size: 15px; font-weight: 500; line-height: 1.4; color: #5a5d3c; text-align: right">From S$6,540*</p>
+</div>
+</div>
+</article>
+
 <article class="card" style="display: {{ rs.tasmania }}; flex-direction: column; background: #ffffff; border: 1px solid #dcd3bf; border-radius: 14px; overflow: hidden">
 <img loading="lazy" src="./assets/6d320c038a9208c22e4dcaa518d24346.jpg" alt="Tasmania: Self-drive, a Journey Within Restore private journey" style="width: 100%; height: 210px; object-fit: cover; display: block; background: #f1eadb">
 <div style="padding: 22px 24px 22px; display: flex; flex-direction: column; gap: 10px; flex: 1 1 auto">
@@ -1737,6 +1947,30 @@ html{scroll-behavior:auto}
 </article>
 
 <p role="heading" aria-level="4" style="display: {{ gh.c_oce_NewZealand }}; grid-column: 1 / -1; margin: 6px 0 -6px; font-size: 12px; font-weight: 700; letter-spacing: 2px; line-height: 1.6; text-transform: uppercase; color: #7a6222">NEW ZEALAND · {{ gn.c_oce_NewZealand }}</p>
+
+<article class="card" style="display: {{ rs.dunedin }}; flex-direction: column; background: #ffffff; border: 1px solid #dcd3bf; border-radius: 14px; overflow: hidden">
+<img loading="lazy" src="./assets/80407ee8f8209b25d09ffb74d5f6f924.jpg" alt="Mt Cook, Queenstown &amp; Dunedin: Self-drive, a Journey Within Restore private journey" style="width: 100%; height: 210px; object-fit: cover; display: block; background: #f1eadb">
+<div style="padding: 22px 24px 22px; display: flex; flex-direction: column; gap: 10px; flex: 1 1 auto">
+<p style="margin: 0; font-size: 12px; font-weight: 700; letter-spacing: 2px; line-height: 1.6; color: #7a6222">OCEANIA · NEW ZEALAND · 10 DAYS</p>
+<h4 style="margin: 0; font-size: 26px; font-weight: 700; line-height: 1.2">Mt Cook, Queenstown &amp; Dunedin: Self-drive</h4>
+<div style="margin: auto 0 0; padding-top: 10px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 16px">
+<button type="button" class="pill" onClick="{{ open.dunedin }}">View itinerary</button>
+<p style="margin: 0 0 0 auto; font-size: 15px; font-weight: 500; line-height: 1.4; color: #5a5d3c; text-align: right">From S$3,160*</p>
+</div>
+</div>
+</article>
+
+<article class="card" style="display: {{ rs.wanaka }}; flex-direction: column; background: #ffffff; border: 1px solid #dcd3bf; border-radius: 14px; overflow: hidden">
+<img loading="lazy" src="./assets/2d29e5482f5a7be0d0dda312fa1ce8d1.jpg" alt="Mt Cook, Wanaka &amp; Queenstown: Self-drive, a Journey Within Restore private journey" style="width: 100%; height: 210px; object-fit: cover; display: block; background: #f1eadb">
+<div style="padding: 22px 24px 22px; display: flex; flex-direction: column; gap: 10px; flex: 1 1 auto">
+<p style="margin: 0; font-size: 12px; font-weight: 700; letter-spacing: 2px; line-height: 1.6; color: #7a6222">OCEANIA · NEW ZEALAND · 11 DAYS</p>
+<h4 style="margin: 0; font-size: 26px; font-weight: 700; line-height: 1.2">Mt Cook, Wanaka &amp; Queenstown: Self-drive</h4>
+<div style="margin: auto 0 0; padding-top: 10px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 16px">
+<button type="button" class="pill" onClick="{{ open.wanaka }}">View itinerary</button>
+<p style="margin: 0 0 0 auto; font-size: 15px; font-weight: 500; line-height: 1.4; color: #5a5d3c; text-align: right">From S$3,200*</p>
+</div>
+</div>
+</article>
 
 <article class="card" style="display: {{ rs.nzr }}; flex-direction: column; background: #ffffff; border: 1px solid #dcd3bf; border-radius: 14px; overflow: hidden">
 <img loading="lazy" src="./assets/a676ea969a19a34b2f531f5adc2c777d.jpg" alt="New Zealand: Both Islands, a Journey Within Restore private journey" style="width: 100%; height: 210px; object-fit: cover; display: block; background: #f1eadb">
@@ -1758,6 +1992,42 @@ html{scroll-behavior:auto}
 <div style="margin: auto 0 0; padding-top: 10px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 16px">
 <button type="button" class="pill" onClick="{{ open.nz6 }}">View itinerary</button>
 <p style="margin: 0 0 0 auto; font-size: 15px; font-weight: 500; line-height: 1.4; color: #5a5d3c; text-align: right">From S$2,150*</p>
+</div>
+</div>
+</article>
+
+<article class="card" style="display: {{ rs.napier }}; flex-direction: column; background: #ffffff; border: 1px solid #dcd3bf; border-radius: 14px; overflow: hidden">
+<img loading="lazy" src="./assets/06dbd173cd4dd088c6a412b677d1e9b3.jpg" alt="Rotorua, Napier &amp; Wellington, a Journey Within Restore private journey" style="width: 100%; height: 210px; object-fit: cover; display: block; background: #f1eadb">
+<div style="padding: 22px 24px 22px; display: flex; flex-direction: column; gap: 10px; flex: 1 1 auto">
+<p style="margin: 0; font-size: 12px; font-weight: 700; letter-spacing: 2px; line-height: 1.6; color: #7a6222">OCEANIA · NEW ZEALAND · 8 DAYS</p>
+<h4 style="margin: 0; font-size: 26px; font-weight: 700; line-height: 1.2">Rotorua, Napier &amp; Wellington</h4>
+<div style="margin: auto 0 0; padding-top: 10px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 16px">
+<button type="button" class="pill" onClick="{{ open.napier }}">View itinerary</button>
+<p style="margin: 0 0 0 auto; font-size: 15px; font-weight: 500; line-height: 1.4; color: #5a5d3c; text-align: right">From S$5,240*</p>
+</div>
+</div>
+</article>
+
+<article class="card" style="display: {{ rs.arthurs }}; flex-direction: column; background: #ffffff; border: 1px solid #dcd3bf; border-radius: 14px; overflow: hidden">
+<img loading="lazy" src="./assets/00faacf8f466421eba41b84a3b58e653.jpg" alt="Rotorua, Queenstown &amp; Arthur’s Pass, a Journey Within Restore private journey" style="width: 100%; height: 210px; object-fit: cover; display: block; background: #f1eadb">
+<div style="padding: 22px 24px 22px; display: flex; flex-direction: column; gap: 10px; flex: 1 1 auto">
+<p style="margin: 0; font-size: 12px; font-weight: 700; letter-spacing: 2px; line-height: 1.6; color: #7a6222">OCEANIA · NEW ZEALAND · 15 DAYS</p>
+<h4 style="margin: 0; font-size: 26px; font-weight: 700; line-height: 1.2">Rotorua, Queenstown &amp; Arthur’s Pass</h4>
+<div style="margin: auto 0 0; padding-top: 10px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 16px">
+<button type="button" class="pill" onClick="{{ open.arthurs }}">View itinerary</button>
+<p style="margin: 0 0 0 auto; font-size: 15px; font-weight: 500; line-height: 1.4; color: #5a5d3c; text-align: right">From S$10,460*</p>
+</div>
+</div>
+</article>
+
+<article class="card" style="display: {{ rs.westcoast }}; flex-direction: column; background: #ffffff; border: 1px solid #dcd3bf; border-radius: 14px; overflow: hidden">
+<img loading="lazy" src="./assets/173737d5dad67fa5d0da5d4d3080fc9f.jpg" alt="Rotorua, West Coast &amp; Queenstown, a Journey Within Restore private journey" style="width: 100%; height: 210px; object-fit: cover; display: block; background: #f1eadb">
+<div style="padding: 22px 24px 22px; display: flex; flex-direction: column; gap: 10px; flex: 1 1 auto">
+<p style="margin: 0; font-size: 12px; font-weight: 700; letter-spacing: 2px; line-height: 1.6; color: #7a6222">OCEANIA · NEW ZEALAND · 11 DAYS</p>
+<h4 style="margin: 0; font-size: 26px; font-weight: 700; line-height: 1.2">Rotorua, West Coast &amp; Queenstown</h4>
+<div style="margin: auto 0 0; padding-top: 10px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 16px">
+<button type="button" class="pill" onClick="{{ open.westcoast }}">View itinerary</button>
+<p style="margin: 0 0 0 auto; font-size: 15px; font-weight: 500; line-height: 1.4; color: #5a5d3c; text-align: right">From S$7,020*</p>
 </div>
 </div>
 </article>
@@ -1820,6 +2090,18 @@ html{scroll-behavior:auto}
 <div style="margin: auto 0 0; padding-top: 10px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 16px">
 <button type="button" class="pill" onClick="{{ open.whitehorse }}">View itinerary</button>
 <p style="margin: 0 0 0 auto; font-size: 15px; font-weight: 500; line-height: 1.4; color: #5a5d3c; text-align: right">From S$5,200*</p>
+</div>
+</div>
+</article>
+
+<article class="card" style="display: {{ rs.whwinter }}; flex-direction: column; background: #ffffff; border: 1px solid #dcd3bf; border-radius: 14px; overflow: hidden">
+<img loading="lazy" src="./assets/1b26c448620cfeef15fef4ccc201c541.jpg" alt="Whitehorse, Banff &amp; Vancouver in Winter, a Journey Within Restore private journey" style="width: 100%; height: 210px; object-fit: cover; display: block; background: #f1eadb">
+<div style="padding: 22px 24px 22px; display: flex; flex-direction: column; gap: 10px; flex: 1 1 auto">
+<p style="margin: 0; font-size: 12px; font-weight: 700; letter-spacing: 2px; line-height: 1.6; color: #7a6222">NORTH AMERICA · CANADA · 9 DAYS</p>
+<h4 style="margin: 0; font-size: 26px; font-weight: 700; line-height: 1.2">Whitehorse, Banff &amp; Vancouver in Winter</h4>
+<div style="margin: auto 0 0; padding-top: 10px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 16px">
+<button type="button" class="pill" onClick="{{ open.whwinter }}">View itinerary</button>
+<p style="margin: 0 0 0 auto; font-size: 15px; font-weight: 500; line-height: 1.4; color: #5a5d3c; text-align: right">From S$7,130*</p>
 </div>
 </div>
 </article>
@@ -1915,6 +2197,7 @@ html{scroll-behavior:auto}
 
 <!-- Price note -->
 <div style="border-top: 1px solid #dcd3bf; padding-top: 22px; max-width: 760px; display: flex; flex-direction: column; gap: 10px">
+<p style="margin: 0; font-size: 15px; font-weight: 700; line-height: 1.6">Every itinerary here is curated by our planners. Every photo is real, none AI-generated.</p>
 <p style="margin: 0; font-size: 15px; line-height: 1.6">* Land price in Singapore dollars, per person, twin sharing, based on two travelling. These are sample itineraries. The final itinerary, hotels and price are confirmed at booking.</p>
 <p style="margin: 0; font-size: 15px; font-weight: 700; line-height: 1.6">The following costs are excluded:</p>
 <ul style="margin: 0; padding-left: 20px; font-size: 15px; line-height: 1.7">
@@ -1963,7 +2246,7 @@ html{scroll-behavior:auto}
 <section id="enquire" class="sec" aria-labelledby="enq-h" style="background: #40461c; color: #ffffff">
 <div class="wrap rv" style="display: flex; flex-direction: column; align-items: center; text-align: center; gap: 20px">
 <h2 id="enq-h" style="margin: 0; font-weight: 500; font-size: clamp(30px, 3.8vw, 50px); line-height: 1.15; text-wrap: balance">Tell us why you want to travel.</h2>
-<p style="margin: 0; max-width: 560px; font-size: 18px; line-height: 1.55">Dates and details can come later. We would like to hear your reason first.</p>
+<p style="margin: 0; max-width: 560px; font-size: 18px; line-height: 1.55">Dates and details can come later. We would like to hear your story first.</p>
 <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 14px; margin-top: 8px">
 <a class="btn" href="https://wa.me/6581290908?text=Hi,%20I%27d%20like%20to%20find%20out%20more%20about%20Journey%20Within." style="background: #ffffff; color: #40461c; text-decoration: none; font-weight: 700; font-size: 17px; padding: 16px 30px; border-radius: 999px"><img src="./assets/7f40a90cca331b0d3397e50cca465240.svg" alt="" width="20" height="20" style="display: inline-block; vertical-align: -4px; margin-right: 8px">WhatsApp us · +65 8129 0908</a>
 <a class="btn" href="mailto:journey_within@chanbrothers.com.sg" style="border: 2px solid #ffffff; color: #ffffff; text-decoration: none; font-weight: 700; font-size: 17px; padding: 14px 30px; border-radius: 999px">Email us</a>
@@ -2365,6 +2648,16 @@ html{scroll-behavior:auto}
 <img loading="lazy" src="./assets/958326a31748412dd126d3bf82581b03.webp" width="1655" height="4680" alt="10D Cappadocia &amp; Istanbul, Journey Within Restore itinerary, part 2 of 2" style="width: 100%; height: auto; display: block; background: #fcf8f3">
 </sc-if>
 
+<sc-if value="{{ vr.dubai }}" hint-placeholder-val="{{ false }}">
+<img src="./assets/7907188dfc74cd136dc96bd400aad62e.webp" width="1655" height="4680" alt="6D Dubai &amp; Abu Dhabi, Journey Within Restore itinerary, part 1 of 2" style="width: 100%; height: auto; display: block; background: #fcf8f3">
+<img loading="lazy" src="./assets/3292f24299ac230e4817e661d349037f.webp" width="1655" height="4680" alt="6D Dubai &amp; Abu Dhabi, Journey Within Restore itinerary, part 2 of 2" style="width: 100%; height: auto; display: block; background: #fcf8f3">
+</sc-if>
+
+<sc-if value="{{ vr.egyptnile }}" hint-placeholder-val="{{ false }}">
+<img src="./assets/b8b251926951ce8a6e027b5fb47e8680.webp" width="1655" height="7020" alt="9D Egypt: Cairo &amp; the Nile, Journey Within Restore itinerary, part 1 of 2" style="width: 100%; height: auto; display: block; background: #fcf8f3">
+<img loading="lazy" src="./assets/2d7ad3e13074b07b8aa79d56169902e6.webp" width="1655" height="4680" alt="9D Egypt: Cairo &amp; the Nile, Journey Within Restore itinerary, part 2 of 2" style="width: 100%; height: auto; display: block; background: #fcf8f3">
+</sc-if>
+
 <sc-if value="{{ vr.tbilisi }}" hint-placeholder-val="{{ false }}">
 <img src="./assets/fe18be4f7e7dfc1a9a69f1dfa53ab6b0.webp" width="1655" height="7020" alt="14D Istanbul to Tbilisi, Journey Within Restore itinerary, part 1 of 2" style="width: 100%; height: auto; display: block; background: #fcf8f3">
 <img loading="lazy" src="./assets/c04c67c1e75053f8ceafb882c337605a.webp" width="1655" height="7020" alt="14D Istanbul to Tbilisi, Journey Within Restore itinerary, part 2 of 2" style="width: 100%; height: auto; display: block; background: #fcf8f3">
@@ -2373,6 +2666,11 @@ html{scroll-behavior:auto}
 <sc-if value="{{ vr.jordan }}" hint-placeholder-val="{{ false }}">
 <img src="./assets/a50ce6561ff7ac280854938d63145f40.webp" width="1655" height="7020" alt="15D Jordan &amp; Egypt, Journey Within Restore itinerary, part 1 of 2" style="width: 100%; height: auto; display: block; background: #fcf8f3">
 <img loading="lazy" src="./assets/509a6acb13cd46370b7e403b78864a16.webp" width="1655" height="7020" alt="15D Jordan &amp; Egypt, Journey Within Restore itinerary, part 2 of 2" style="width: 100%; height: auto; display: block; background: #fcf8f3">
+</sc-if>
+
+<sc-if value="{{ vr.marrakech }}" hint-placeholder-val="{{ false }}">
+<img src="./assets/dc2dea57b5766513a8aa446a764f36e5.webp" width="1655" height="7020" alt="10D Marrakech &amp; the Southern Desert, Journey Within Restore itinerary, part 1 of 2" style="width: 100%; height: auto; display: block; background: #fcf8f3">
+<img loading="lazy" src="./assets/bfbd5909b67d72deebbac2663c5c13e6.webp" width="1655" height="4680" alt="10D Marrakech &amp; the Southern Desert, Journey Within Restore itinerary, part 2 of 2" style="width: 100%; height: auto; display: block; background: #fcf8f3">
 </sc-if>
 
 <sc-if value="{{ vr.morocco }}" hint-placeholder-val="{{ false }}">
@@ -2425,6 +2723,11 @@ html{scroll-behavior:auto}
 <img loading="lazy" src="./assets/42ca824fc8756456d4c708cca7244dfa.webp" width="1655" height="4680" alt="11D Lake Bled, Zadar &amp; Dubrovnik, Journey Within Restore itinerary, part 2 of 2" style="width: 100%; height: auto; display: block; background: #fcf8f3">
 </sc-if>
 
+<sc-if value="{{ vr.como }}" hint-placeholder-val="{{ false }}">
+<img src="./assets/f1df91989dd62fb4f1cd736e0453d015.webp" width="1655" height="7020" alt="10D Lake Como, Cinque Terre &amp; Amalfi Coast, Journey Within Restore itinerary, part 1 of 2" style="width: 100%; height: auto; display: block; background: #fcf8f3">
+<img loading="lazy" src="./assets/7ca3b0ebf9307c2dc4e07e23de202d78.webp" width="1655" height="4680" alt="10D Lake Como, Cinque Terre &amp; Amalfi Coast, Journey Within Restore itinerary, part 2 of 2" style="width: 100%; height: auto; display: block; background: #fcf8f3">
+</sc-if>
+
 <sc-if value="{{ vr.finparlon }}" hint-placeholder-val="{{ false }}">
 <img src="./assets/707d67ca147b69225fce19d3e8106d20.webp" width="1655" height="7020" alt="16D Lapland, Paris &amp; London, Journey Within Restore itinerary, part 1 of 2" style="width: 100%; height: auto; display: block; background: #fcf8f3">
 <img loading="lazy" src="./assets/880593187a87b3b355bb72edf06aeb8b.webp" width="1655" height="7020" alt="16D Lapland, Paris &amp; London, Journey Within Restore itinerary, part 2 of 2" style="width: 100%; height: auto; display: block; background: #fcf8f3">
@@ -2443,6 +2746,11 @@ html{scroll-behavior:auto}
 <sc-if value="{{ vr.malta }}" hint-placeholder-val="{{ false }}">
 <img src="./assets/46a83ccfd1edcfbdfef676a8ca884782.webp" width="1655" height="7020" alt="11D Malta &amp; Sicily, Journey Within Restore itinerary, part 1 of 2" style="width: 100%; height: auto; display: block; background: #fcf8f3">
 <img loading="lazy" src="./assets/490ac6b0c69f08007efedf7b77728700.webp" width="1655" height="4680" alt="11D Malta &amp; Sicily, Journey Within Restore itinerary, part 2 of 2" style="width: 100%; height: auto; display: block; background: #fcf8f3">
+</sc-if>
+
+<sc-if value="{{ vr.lourdes }}" hint-placeholder-val="{{ false }}">
+<img src="./assets/7736950b3e72219e3117e001c7e2ec93.webp" width="1655" height="7020" alt="9D Paris, Lourdes &amp; Fátima, Journey Within Restore itinerary, part 1 of 2" style="width: 100%; height: auto; display: block; background: #fcf8f3">
+<img loading="lazy" src="./assets/5c1d1098a265ebdcf328975c3bb064ac.webp" width="1655" height="4680" alt="9D Paris, Lourdes &amp; Fátima, Journey Within Restore itinerary, part 2 of 2" style="width: 100%; height: auto; display: block; background: #fcf8f3">
 </sc-if>
 
 <sc-if value="{{ vr.scotswiss }}" hint-placeholder-val="{{ false }}">
@@ -2485,6 +2793,11 @@ html{scroll-behavior:auto}
 <img loading="lazy" src="./assets/05c69bd6f46fe9c755ccbc1763fa1678.webp" width="1655" height="4680" alt="9D Victoria Falls &amp; Botswana, Journey Within Restore itinerary, part 2 of 2" style="width: 100%; height: auto; display: block; background: #fcf8f3">
 </sc-if>
 
+<sc-if value="{{ vr.adelaide }}" hint-placeholder-val="{{ false }}">
+<img src="./assets/9f3d8990da390d3cf85fb6a4a7e6cced.webp" width="1655" height="7020" alt="10D Adelaide &amp; Kangaroo Island: Self-drive, Journey Within Restore itinerary, part 1 of 2" style="width: 100%; height: auto; display: block; background: #fcf8f3">
+<img loading="lazy" src="./assets/0420883a56e58159ab70c9768f790c58.webp" width="1655" height="4680" alt="10D Adelaide &amp; Kangaroo Island: Self-drive, Journey Within Restore itinerary, part 2 of 2" style="width: 100%; height: auto; display: block; background: #fcf8f3">
+</sc-if>
+
 <sc-if value="{{ vr.goldcoast }}" hint-placeholder-val="{{ false }}">
 <img src="./assets/77e034197cff25f37d3d610e9e512d3b.webp" width="1655" height="4680" alt="6D Gold Coast &amp; Hinterland, Journey Within Restore itinerary, part 1 of 2" style="width: 100%; height: auto; display: block; background: #fcf8f3">
 <img loading="lazy" src="./assets/f67bb56f389dd36efe071517b15554f6.webp" width="1655" height="4680" alt="6D Gold Coast &amp; Hinterland, Journey Within Restore itinerary, part 2 of 2" style="width: 100%; height: auto; display: block; background: #fcf8f3">
@@ -2498,9 +2811,48 @@ html{scroll-behavior:auto}
 <img src="./assets/bf4b9608e01b6ac5c42cb53e4758e357.webp" width="1656" height="7017" alt="4D Melbourne, Journey Within Restore itinerary, part 1 of 1" style="width: 100%; height: auto; display: block; background: #fcf8f3">
 </sc-if>
 
+<sc-if value="{{ vr.melbgor }}" hint-placeholder-val="{{ false }}">
+<img src="./assets/df49a64847b3546d01c0df6a523405e5.webp" width="1655" height="4680" alt="6D Melbourne, Great Ocean Road &amp; Yarra Valley, Journey Within Restore itinerary, part 1 of 2" style="width: 100%; height: auto; display: block; background: #fcf8f3">
+<img loading="lazy" src="./assets/4e71be02f68ea4588d1d4ac799deb49f.webp" width="1655" height="4680" alt="6D Melbourne, Great Ocean Road &amp; Yarra Valley, Journey Within Restore itinerary, part 2 of 2" style="width: 100%; height: auto; display: block; background: #fcf8f3">
+</sc-if>
+
+<sc-if value="{{ vr.perth4 }}" hint-placeholder-val="{{ false }}">
+<img src="./assets/f7c47146f17374043021a7d4f76d0bdd.webp" width="1655" height="7020" alt="4D Perth &amp; Rottnest, Journey Within Restore itinerary, part 1 of 1" style="width: 100%; height: auto; display: block; background: #fcf8f3">
+</sc-if>
+
+<sc-if value="{{ vr.perth7 }}" hint-placeholder-val="{{ false }}">
+<img src="./assets/04d58412da06ec15f216c6ecd6ddfe89.webp" width="1655" height="4680" alt="7D Perth, Rottnest &amp; the Pinnacles, Journey Within Restore itinerary, part 1 of 2" style="width: 100%; height: auto; display: block; background: #fcf8f3">
+<img loading="lazy" src="./assets/eb1bbfa146b74a7ff411ba34df1d2089.webp" width="1655" height="4680" alt="7D Perth, Rottnest &amp; the Pinnacles, Journey Within Restore itinerary, part 2 of 2" style="width: 100%; height: auto; display: block; background: #fcf8f3">
+</sc-if>
+
+<sc-if value="{{ vr.snowy }}" hint-placeholder-val="{{ false }}">
+<img src="./assets/7fc40a09270d665ed1216e336274befc.webp" width="1655" height="4680" alt="8D Sydney &amp; the Snowy Mountains, Journey Within Restore itinerary, part 1 of 2" style="width: 100%; height: auto; display: block; background: #fcf8f3">
+<img loading="lazy" src="./assets/c3af772b9980fafdb15548e92fd1d591.webp" width="1655" height="4680" alt="8D Sydney &amp; the Snowy Mountains, Journey Within Restore itinerary, part 2 of 2" style="width: 100%; height: auto; display: block; background: #fcf8f3">
+</sc-if>
+
+<sc-if value="{{ vr.sydney7 }}" hint-placeholder-val="{{ false }}">
+<img src="./assets/7f5d093bba937709db9532fc082fbfe2.webp" width="1655" height="4680" alt="7D Sydney, Blue Mountains &amp; Hunter Valley, Journey Within Restore itinerary, part 1 of 2" style="width: 100%; height: auto; display: block; background: #fcf8f3">
+<img loading="lazy" src="./assets/b24b11f5ca21d09e7712525e43c514f8.webp" width="1655" height="4680" alt="7D Sydney, Blue Mountains &amp; Hunter Valley, Journey Within Restore itinerary, part 2 of 2" style="width: 100%; height: auto; display: block; background: #fcf8f3">
+</sc-if>
+
+<sc-if value="{{ vr.sydney11 }}" hint-placeholder-val="{{ false }}">
+<img src="./assets/53386f8015fa25bedc3fbc767d65cc24.webp" width="1655" height="7020" alt="11D Sydney, Gold Coast &amp; Melbourne, Journey Within Restore itinerary, part 1 of 2" style="width: 100%; height: auto; display: block; background: #fcf8f3">
+<img loading="lazy" src="./assets/54c1f08eeebfb403710102ccc21ad84c.webp" width="1655" height="4680" alt="11D Sydney, Gold Coast &amp; Melbourne, Journey Within Restore itinerary, part 2 of 2" style="width: 100%; height: auto; display: block; background: #fcf8f3">
+</sc-if>
+
 <sc-if value="{{ vr.tasmania }}" hint-placeholder-val="{{ false }}">
 <img src="./assets/c9aec0acf01c6fcf19803cd35a1eecc5.webp" width="1656" height="4678" alt="8D Tasmania: Self-drive, Journey Within Restore itinerary, part 1 of 2" style="width: 100%; height: auto; display: block; background: #fcf8f3">
 <img loading="lazy" src="./assets/71fe1f1f559ed5afc4222d1f067cc7b5.webp" width="1656" height="4678" alt="8D Tasmania: Self-drive, Journey Within Restore itinerary, part 2 of 2" style="width: 100%; height: auto; display: block; background: #fcf8f3">
+</sc-if>
+
+<sc-if value="{{ vr.dunedin }}" hint-placeholder-val="{{ false }}">
+<img src="./assets/067ae32c5c2f62faebe589ab921f30aa.webp" width="1655" height="7020" alt="10D Mt Cook, Queenstown &amp; Dunedin: Self-drive, Journey Within Restore itinerary, part 1 of 2" style="width: 100%; height: auto; display: block; background: #fcf8f3">
+<img loading="lazy" src="./assets/7fe6e1775da5835c9dfd79311e7e3d5a.webp" width="1655" height="4680" alt="10D Mt Cook, Queenstown &amp; Dunedin: Self-drive, Journey Within Restore itinerary, part 2 of 2" style="width: 100%; height: auto; display: block; background: #fcf8f3">
+</sc-if>
+
+<sc-if value="{{ vr.wanaka }}" hint-placeholder-val="{{ false }}">
+<img src="./assets/df6f5185e553335bd6f66cee2e640f73.webp" width="1655" height="7020" alt="11D Mt Cook, Wanaka &amp; Queenstown: Self-drive, Journey Within Restore itinerary, part 1 of 2" style="width: 100%; height: auto; display: block; background: #fcf8f3">
+<img loading="lazy" src="./assets/db4ac48a7bc44b9c4e69333ea524591b.webp" width="1655" height="4680" alt="11D Mt Cook, Wanaka &amp; Queenstown: Self-drive, Journey Within Restore itinerary, part 2 of 2" style="width: 100%; height: auto; display: block; background: #fcf8f3">
 </sc-if>
 
 <sc-if value="{{ vr.nzr }}" hint-placeholder-val="{{ false }}">
@@ -2511,6 +2863,21 @@ html{scroll-behavior:auto}
 <sc-if value="{{ vr.nz6 }}" hint-placeholder-val="{{ false }}">
 <img src="./assets/65cf0dbfeebcb273b60c0ffb9209b520.webp" width="1656" height="4678" alt="6D Queenstown &amp; Mt Cook, Journey Within Restore itinerary, part 1 of 2" style="width: 100%; height: auto; display: block; background: #fcf8f3">
 <img loading="lazy" src="./assets/489cbaf290b7853f47eb43f79c50151f.webp" width="1656" height="4678" alt="6D Queenstown &amp; Mt Cook, Journey Within Restore itinerary, part 2 of 2" style="width: 100%; height: auto; display: block; background: #fcf8f3">
+</sc-if>
+
+<sc-if value="{{ vr.napier }}" hint-placeholder-val="{{ false }}">
+<img src="./assets/fd4c95b1385c5947f2b0439277af1a74.webp" width="1655" height="4680" alt="8D Rotorua, Napier &amp; Wellington, Journey Within Restore itinerary, part 1 of 2" style="width: 100%; height: auto; display: block; background: #fcf8f3">
+<img loading="lazy" src="./assets/ca8bf4ac7b953b209fd05d75c005449e.webp" width="1655" height="4680" alt="8D Rotorua, Napier &amp; Wellington, Journey Within Restore itinerary, part 2 of 2" style="width: 100%; height: auto; display: block; background: #fcf8f3">
+</sc-if>
+
+<sc-if value="{{ vr.arthurs }}" hint-placeholder-val="{{ false }}">
+<img src="./assets/8fdf55b944e853e15ae6ff9e5ff3cf10.webp" width="1655" height="7020" alt="15D Rotorua, Queenstown &amp; Arthur’s Pass, Journey Within Restore itinerary, part 1 of 2" style="width: 100%; height: auto; display: block; background: #fcf8f3">
+<img loading="lazy" src="./assets/42bcda837f72c62a7416fdc9200fb979.webp" width="1655" height="7020" alt="15D Rotorua, Queenstown &amp; Arthur’s Pass, Journey Within Restore itinerary, part 2 of 2" style="width: 100%; height: auto; display: block; background: #fcf8f3">
+</sc-if>
+
+<sc-if value="{{ vr.westcoast }}" hint-placeholder-val="{{ false }}">
+<img src="./assets/b5befa522a9f9c0dc74b44be91b0d8f6.webp" width="1655" height="7020" alt="11D Rotorua, West Coast &amp; Queenstown, Journey Within Restore itinerary, part 1 of 2" style="width: 100%; height: auto; display: block; background: #fcf8f3">
+<img loading="lazy" src="./assets/625c29ec05cc6dd8fd60e2f314e12f74.webp" width="1655" height="4680" alt="11D Rotorua, West Coast &amp; Queenstown, Journey Within Restore itinerary, part 2 of 2" style="width: 100%; height: auto; display: block; background: #fcf8f3">
 </sc-if>
 
 <sc-if value="{{ vr.southisland }}" hint-placeholder-val="{{ false }}">
@@ -2536,6 +2903,11 @@ html{scroll-behavior:auto}
 <sc-if value="{{ vr.whitehorse }}" hint-placeholder-val="{{ false }}">
 <img src="./assets/f55421fe060b6aa9fe518d00d11c7bd8.webp" width="1655" height="4680" alt="7D Whitehorse &amp; Vancouver, Journey Within Restore itinerary, part 1 of 2" style="width: 100%; height: auto; display: block; background: #fcf8f3">
 <img loading="lazy" src="./assets/fbda864d72d50a087da9a78e96a4c218.webp" width="1655" height="4680" alt="7D Whitehorse &amp; Vancouver, Journey Within Restore itinerary, part 2 of 2" style="width: 100%; height: auto; display: block; background: #fcf8f3">
+</sc-if>
+
+<sc-if value="{{ vr.whwinter }}" hint-placeholder-val="{{ false }}">
+<img src="./assets/743a0b7b526e65fa958119956a59cdb4.webp" width="1655" height="7020" alt="9D Whitehorse, Banff &amp; Vancouver in Winter, Journey Within Restore itinerary, part 1 of 2" style="width: 100%; height: auto; display: block; background: #fcf8f3">
+<img loading="lazy" src="./assets/d03961042b8bd64aec51c8c33d496377.webp" width="1655" height="4680" alt="9D Whitehorse, Banff &amp; Vancouver in Winter, Journey Within Restore itinerary, part 2 of 2" style="width: 100%; height: auto; display: block; background: #fcf8f3">
 </sc-if>
 
 <sc-if value="{{ vr.yellowknife }}" hint-placeholder-val="{{ false }}">
@@ -2821,6 +3193,16 @@ class Component extends DCLogic {
       out['s' + c[0]] = show ? 'flex' : 'none';
     });
     out.filtered = filter !== 'all';
+    // Dropdowns: the month and region choices share the one filter, so picking one clears the other
+    var isRegion = !!RN[filter];
+    out.fMonth = isRegion ? 'all' : filter;
+    out.fRegion = isRegion ? filter : 'all';
+    var pickF = function (e) { self.setState({ filter: (e && e.target && e.target.value) || 'all' }); };
+    out.pickMonth = pickF; out.pickFRegion = pickF;
+    var onLook = function (on) { return { bg: on ? '#40461c' : '#ffffff', fg: on ? '#ffffff' : '#40461c', border: on ? '#40461c' : '#dcd3bf' }; };
+    var ml = onLook(filter !== 'all' && !isRegion), gl = onLook(isRegion);
+    out.mBg = ml.bg; out.mFg = ml.fg; out.mBorder = ml.border;
+    out.gBg = gl.bg; out.gFg = gl.fg; out.gBorder = gl.border;
     out.countLabel = count + (count === 1 ? ' journey' : ' journeys') + (filter === 'all' ? ' in 2027' : (RN[filter] ? ' · ' : ' in ') + names[filter]);
 
     // Restore: private sample journeys. Key, title, days, region, countries visited. Photos, prices and itinerary images sit in the markup above
@@ -2885,8 +3267,11 @@ class Component extends DCLogic {
       ['stans', 'Five ’Stans of Central Asia', 21, 'cac', ['Kazakhstan', 'Kyrgyzstan', 'Tajikistan', 'Turkmenistan', 'Uzbekistan']],
       ['uzbek', 'Uzbekistan', 10, 'cac', ['Uzbekistan']],
       ['cappadocia', 'Cappadocia & Istanbul', 10, 'mena', ['Turkey']],
+      ['dubai', 'Dubai & Abu Dhabi', 6, 'mena', ['United Arab Emirates']],
+      ['egyptnile', 'Egypt: Cairo & the Nile', 9, 'mena', ['Egypt']],
       ['tbilisi', 'Istanbul to Tbilisi', 14, 'mena', ['Turkey', 'Georgia']],
       ['jordan', 'Jordan & Egypt', 15, 'mena', ['Jordan', 'Egypt']],
+      ['marrakech', 'Marrakech & the Southern Desert', 10, 'mena', ['Morocco']],
       ['morocco', 'Morocco', 12, 'mena', ['Morocco']],
       ['tunisia', 'Tunisia: Sea, Oasis & Sahara', 9, 'mena', ['Tunisia']],
       ['iceland', 'Amsterdam & Iceland', 9, 'eur', ['Netherlands', 'Iceland']],
@@ -2897,10 +3282,12 @@ class Component extends DCLogic {
       ['greece', 'Greece', 10, 'eur', ['Greece']],
       ['bled12', 'Lake Bled to Dubrovnik', 12, 'eur', ['Slovenia', 'Croatia', 'Bosnia']],
       ['bled11', 'Lake Bled, Zadar & Dubrovnik', 11, 'eur', ['Slovenia', 'Croatia', 'Bosnia']],
+      ['como', 'Lake Como, Cinque Terre & Amalfi Coast', 10, 'eur', ['Italy']],
       ['finparlon', 'Lapland, Paris & London', 16, 'eur', ['Finland', 'France', 'United Kingdom']],
       ['finnor', 'Lapland, Tromsø & Lofoten', 12, 'eur', ['Finland', 'Norway']],
       ['portitaly', 'Lisbon, Porto & Amalfi Coast', 12, 'eur', ['Portugal', 'Italy']],
       ['malta', 'Malta & Sicily', 11, 'eur', ['Malta', 'Italy']],
+      ['lourdes', 'Paris, Lourdes & Fátima', 9, 'eur', ['France', 'Spain', 'Portugal']],
       ['scotswiss', 'Scotland & Switzerland', 10, 'eur', ['United Kingdom', 'Switzerland']],
       ['spain', 'Spain', 14, 'eur', ['Spain']],
       ['lucerne', 'Vienna, Salzburg & Lucerne', 8, 'eur', ['Austria', 'Switzerland']],
@@ -2909,17 +3296,30 @@ class Component extends DCLogic {
       ['kenya', 'Kenya & Tanzania', 11, 'afr', ['Kenya', 'Tanzania']],
       ['capetown', 'South Africa & Victoria Falls', 13, 'afr', ['South Africa', 'Zimbabwe', 'Botswana']],
       ['vicfalls', 'Victoria Falls & Botswana', 9, 'afr', ['Zimbabwe', 'Botswana']],
+      ['adelaide', 'Adelaide & Kangaroo Island: Self-drive', 10, 'oce', ['Australia']],
       ['goldcoast', 'Gold Coast & Hinterland', 6, 'oce', ['Australia']],
       ['kalbarri', 'Kalbarri & the Pinnacles', 4, 'oce', ['Australia']],
       ['melbourne', 'Melbourne', 4, 'oce', ['Australia']],
+      ['melbgor', 'Melbourne, Great Ocean Road & Yarra Valley', 6, 'oce', ['Australia']],
+      ['perth4', 'Perth & Rottnest', 4, 'oce', ['Australia']],
+      ['perth7', 'Perth, Rottnest & the Pinnacles', 7, 'oce', ['Australia']],
+      ['snowy', 'Sydney & the Snowy Mountains', 8, 'oce', ['Australia']],
+      ['sydney7', 'Sydney, Blue Mountains & Hunter Valley', 7, 'oce', ['Australia']],
+      ['sydney11', 'Sydney, Gold Coast & Melbourne', 11, 'oce', ['Australia']],
       ['tasmania', 'Tasmania: Self-drive', 8, 'oce', ['Australia']],
+      ['dunedin', 'Mt Cook, Queenstown & Dunedin: Self-drive', 10, 'oce', ['New Zealand']],
+      ['wanaka', 'Mt Cook, Wanaka & Queenstown: Self-drive', 11, 'oce', ['New Zealand']],
       ['nzr', 'New Zealand: Both Islands', 10, 'oce', ['New Zealand']],
       ['nz6', 'Queenstown & Mt Cook', 6, 'oce', ['New Zealand']],
+      ['napier', 'Rotorua, Napier & Wellington', 8, 'oce', ['New Zealand']],
+      ['arthurs', 'Rotorua, Queenstown & Arthur’s Pass', 15, 'oce', ['New Zealand']],
+      ['westcoast', 'Rotorua, West Coast & Queenstown', 11, 'oce', ['New Zealand']],
       ['southisland', 'South Island: Self-drive', 12, 'oce', ['New Zealand']],
       ['banff', 'Banff, Jasper & Vancouver', 9, 'na', ['Canada']],
       ['nyquebec', 'New York, Quebec City & Niagara Falls', 12, 'na', ['United States', 'Canada']],
       ['rockym', 'Vancouver & Banff (Rocky Mountaineer)', 9, 'na', ['Canada']],
       ['whitehorse', 'Whitehorse & Vancouver', 7, 'na', ['Canada']],
+      ['whwinter', 'Whitehorse, Banff & Vancouver in Winter', 9, 'na', ['Canada']],
       ['yellowknife', 'Yellowknife & Vancouver', 7, 'na', ['Canada']],
       ['weddell', 'Buenos Aires & Antarctica', 16, 'ant', ['Argentina', 'Antarctica']],
       ['rioant', 'Rio, Iguazu & Antarctica', 19, 'ant', ['Brazil', 'Argentina', 'Antarctica']],
@@ -2978,22 +3378,18 @@ class Component extends DCLogic {
       });
     });
     function chipLook(on) { return { on: on, bg: on ? '#40461c' : '#ffffff', fg: on ? '#ffffff' : '#40461c', border: on ? '#40461c' : '#dcd3bf' }; }
-    out.rChips = ['all', 'nea', 'sea', 'him', 'cac', 'mena', 'eur', 'afr', 'oce', 'na', 'ant', 'sca'].map(function (k) {
-      var c = chipLook(rfilter === k && (k !== 'all' || rcountry === 'all'));
-      c.label = k === 'all' ? 'All regions (' + R.length + ')' : RN[k] + ' (' + (rcount[k] || 0) + ')';
-      c.pick = function () { self.setState({ rfilter: k, rcountry: 'all' }); };
-      return c;
-    });
-    out.dChips = D.map(function (d) {
-      var c = chipLook(rdur === d[0]);
-      c.label = d[1];
-      c.pick = function () { self.setState({ rdur: d[0] }); };
-      return c;
-    });
-    out.rcountry = rcountry;
-    out.pickCountry = function (e) { self.setState({ rcountry: (e && e.target && e.target.value) || 'all', rfilter: 'all' }); };
-    var cl = chipLook(rcountry !== 'all');
+    // Three dropdowns: region and country reset each other, length works with either
+    var val = function (e) { return (e && e.target && e.target.value) || 'all'; };
+    out.rfilter = rfilter; out.rcountry = rcountry; out.rdur = rdur;
+    out.pickRegion = function (e) { self.setState({ rfilter: val(e), rcountry: 'all' }); };
+    out.pickCountry = function (e) { self.setState({ rcountry: val(e), rfilter: 'all' }); };
+    out.pickLength = function (e) { self.setState({ rdur: val(e) }); };
+    var rl = chipLook(rfilter !== 'all'), cl = chipLook(rcountry !== 'all'), dl = chipLook(rdur !== 'all');
+    out.rBg = rl.bg; out.rFg = rl.fg; out.rBorder = rl.border;
     out.cBg = cl.bg; out.cFg = cl.fg; out.cBorder = cl.border;
+    out.dBg = dl.bg; out.dFg = dl.fg; out.dBorder = dl.border;
+    out.rFiltered = rfilter !== 'all' || rcountry !== 'all' || rdur !== 'all';
+    out.rClear = function () { self.setState({ rfilter: 'all', rcountry: 'all', rdur: 'all' }); };
     out.rNone = nShown === 0;
     out.rCount = nShown + (nShown === 1 ? ' private journey' : ' private journeys') + (rfilter === 'all' ? '' : ' · ' + RN[rfilter]) + (rcountry === 'all' ? '' : ' · ' + rcountry) + (rdur === 'all' ? '' : ' · ' + band[1]);
 
@@ -3020,7 +3416,7 @@ class Component extends DCLogic {
     R.forEach(function (r) { out.open[r[0]] = openIt(r[0]); });
     // Itinerary addresses: key -> [page, name in the address]
     var links = {};
-    R.forEach(function (r) { links[r[0]] = ['restore', (r[2] + 'd-' + r[1]).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')]; });
+    R.forEach(function (r) { links[r[0]] = ['restore', (r[2] + 'd-' + r[1]).normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')]; });
     ['bhutan', 'srilanka', 'hokkaido', 'jiangxi', 'fujian', 'gorges', 'puer'].forEach(function (k) { links[k] = ['relate', k]; });
     ['taiwan', 'jingdezhen', 'footsteps', 'penang', 'roots'].forEach(function (k) { links[k] = ['partners', k]; });
     this._links = links;
