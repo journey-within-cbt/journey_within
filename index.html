@@ -377,7 +377,10 @@ html{scroll-behavior:auto}
 <p style="margin: 0; font-size: 12px; font-weight: 700; letter-spacing: 2px; color: #7a6222">LATE APR 2027 · NORTH EAST ASIA · 8 DAYS</p>
 <h3 style="margin: 0; font-size: 26px; font-weight: 700; line-height: 1.2">Yunnan · Pu’er</h3>
 <p style="margin: 0; font-size: 17px; font-style: italic; font-weight: 500; line-height: 1.5; color: #567542">“We travel to make new friends, one cup of tea and one cup of coffee at a time.”</p>
-<button type="button" class="pill" onClick="{{ open.puer }}" style="margin: auto 0 0; align-self: flex-start">View itinerary</button>
+<div style="margin: auto 0 0; display: flex; flex-wrap: wrap; gap: 10px">
+<button type="button" class="pill" onClick="{{ open.puer }}">View itinerary</button>
+<button type="button" class="pill ol" lang="zh-Hans" onClick="{{ open.puerZh }}" aria-label="中文行程 (itinerary in Chinese)">中文行程</button>
+</div>
 </div>
 </article>
 
@@ -387,7 +390,10 @@ html{scroll-behavior:auto}
 <p style="margin: 0; font-size: 12px; font-weight: 700; letter-spacing: 2px; color: #7a6222">MAY 2027 · NORTH EAST ASIA · 8 DAYS</p>
 <h3 style="margin: 0; font-size: 26px; font-weight: 700; line-height: 1.2">Yangtze Three Gorges</h3>
 <p style="margin: 0; font-size: 17px; font-style: italic; font-weight: 500; line-height: 1.5; color: #567542">“We travel because the best gift for Mum is time, side by side.”</p>
-<button type="button" class="pill" onClick="{{ open.gorges }}" style="margin: auto 0 0; align-self: flex-start">View itinerary</button>
+<div style="margin: auto 0 0; display: flex; flex-wrap: wrap; gap: 10px">
+<button type="button" class="pill" onClick="{{ open.gorges }}">View itinerary</button>
+<button type="button" class="pill ol" lang="zh-Hans" onClick="{{ open.gorgesZh }}" aria-label="中文行程 (itinerary in Chinese)">中文行程</button>
+</div>
 </div>
 </article>
 
@@ -427,7 +433,10 @@ html{scroll-behavior:auto}
 <p style="margin: 0; font-size: 12px; font-weight: 700; letter-spacing: 2px; color: #7a6222">OCT 2027 · NORTH EAST ASIA · 8 DAYS</p>
 <h3 style="margin: 0; font-size: 26px; font-weight: 700; line-height: 1.2">Jiangxi · Wuyuan</h3>
 <p style="margin: 0; font-size: 17px; font-style: italic; font-weight: 500; line-height: 1.5; color: #567542">“We travel because the true beauty of life is found in patience, simplicity and reverence.”</p>
-<button type="button" class="pill" onClick="{{ open.jiangxi }}" style="margin: auto 0 0; align-self: flex-start">View itinerary</button>
+<div style="margin: auto 0 0; display: flex; flex-wrap: wrap; gap: 10px">
+<button type="button" class="pill" onClick="{{ open.jiangxi }}">View itinerary</button>
+<button type="button" class="pill ol" lang="zh-Hans" onClick="{{ open.jiangxiZh }}" aria-label="中文行程 (itinerary in Chinese)">中文行程</button>
+</div>
 </div>
 </article>
 
@@ -457,7 +466,10 @@ html{scroll-behavior:auto}
 <p style="margin: 0; font-size: 12px; font-weight: 700; letter-spacing: 2px; color: #7a6222">NOV 2027 · NORTH EAST ASIA · 8 DAYS</p>
 <h3 style="margin: 0; font-size: 26px; font-weight: 700; line-height: 1.2">Fujian · Chaoshan</h3>
 <p style="margin: 0; font-size: 17px; font-style: italic; font-weight: 500; line-height: 1.5; color: #567542">“We travel not to go to more places, but to sit together again.”</p>
-<button type="button" class="pill" onClick="{{ open.fujian }}" style="margin: auto 0 0; align-self: flex-start">View itinerary</button>
+<div style="margin: auto 0 0; display: flex; flex-wrap: wrap; gap: 10px">
+<button type="button" class="pill" onClick="{{ open.fujian }}">View itinerary</button>
+<button type="button" class="pill ol" lang="zh-Hans" onClick="{{ open.fujianZh }}" aria-label="中文行程 (itinerary in Chinese)">中文行程</button>
+</div>
 </div>
 </article>
 
@@ -2447,15 +2459,39 @@ html{scroll-behavior:auto}
 </sc-if>
 
 <sc-if value="{{ vJiangxi }}" hint-placeholder-val="{{ false }}">
-<img src="./assets/3c5bd6ee223d1d0d98c8131a33cc8835.webp" width="1655" height="7020" alt="8D Jiangxi, Journey Within Relate itinerary, part 1 of 3" style="width: 100%; height: auto; display: block; background: #fcf8f3">
-<img loading="lazy" src="./assets/4bca17685c255536bf49d0e1c22ba574.webp" width="1655" height="7020" alt="8D Jiangxi, Journey Within Relate itinerary, part 2 of 3" style="width: 100%; height: auto; display: block; background: #fcf8f3">
-<img loading="lazy" src="./assets/6356572e208bbdffb6f49fdce048ab99.webp" width="1655" height="4680" alt="8D Jiangxi, Journey Within Relate itinerary, part 3 of 3" style="width: 100%; height: auto; display: block; background: #fcf8f3">
+<img src="./assets/bd73900557298c959d1ce9f1b8e2bd42.webp" width="1655" height="7020" alt="8D Jiangxi, Journey Within Relate itinerary, part 1 of 3" style="width: 100%; height: auto; display: block; background: #fcf8f3">
+<img loading="lazy" src="./assets/3f7d1aa2a5cdc21af136bb518105e915.webp" width="1655" height="7020" alt="8D Jiangxi, Journey Within Relate itinerary, part 2 of 3" style="width: 100%; height: auto; display: block; background: #fcf8f3">
+<img loading="lazy" src="./assets/263cc3ac49ba3d736e0c3a3ce68ada36.webp" width="1655" height="4680" alt="8D Jiangxi, Journey Within Relate itinerary, part 3 of 3" style="width: 100%; height: auto; display: block; background: #fcf8f3">
 </sc-if>
 
 <sc-if value="{{ vFujian }}" hint-placeholder-val="{{ false }}">
 <img src="./assets/eef1bbee2eba7cf7310434b57dd2b895.webp" width="1655" height="7020" alt="8D Fujian · Chaoshan, Journey Within Relate itinerary, part 1 of 3" style="width: 100%; height: auto; display: block; background: #fcf8f3">
 <img loading="lazy" src="./assets/af0dbc5e0efa8430230faf8b72fc3af5.webp" width="1655" height="7020" alt="8D Fujian · Chaoshan, Journey Within Relate itinerary, part 2 of 3" style="width: 100%; height: auto; display: block; background: #fcf8f3">
 <img loading="lazy" src="./assets/4e5e298354e1a25c92a26ba7cf500ab6.webp" width="1655" height="4680" alt="8D Fujian · Chaoshan, Journey Within Relate itinerary, part 3 of 3" style="width: 100%; height: auto; display: block; background: #fcf8f3">
+</sc-if>
+
+<sc-if value="{{ vPuerZh }}" hint-placeholder-val="{{ false }}">
+<img src="./assets/644c192d5ca2b7704d8913ab42ce136b.webp" width="1655" height="7020" lang="zh-Hans" alt="8天 云南普洱 心旅行程（中文版），第 1 部分，共 3 部分" style="width: 100%; height: auto; display: block; background: #fcf8f3">
+<img loading="lazy" src="./assets/9f4a330a9514c9f12a23ab6bf182ab9d.webp" width="1655" height="7020" lang="zh-Hans" alt="8天 云南普洱 心旅行程（中文版），第 2 部分，共 3 部分" style="width: 100%; height: auto; display: block; background: #fcf8f3">
+<img loading="lazy" src="./assets/bb48025632246c3cd6d7476e838bcf7a.webp" width="1655" height="4680" lang="zh-Hans" alt="8天 云南普洱 心旅行程（中文版），第 3 部分，共 3 部分" style="width: 100%; height: auto; display: block; background: #fcf8f3">
+</sc-if>
+
+<sc-if value="{{ vGorgesZh }}" hint-placeholder-val="{{ false }}">
+<img src="./assets/db5c7a84fd2afcdc72976f029ff111a5.webp" width="1655" height="7020" lang="zh-Hans" alt="8天 长江三峡 心旅行程（中文版），第 1 部分，共 3 部分" style="width: 100%; height: auto; display: block; background: #fcf8f3">
+<img loading="lazy" src="./assets/4172618979d3f98d52345ce226c38aae.webp" width="1655" height="7020" lang="zh-Hans" alt="8天 长江三峡 心旅行程（中文版），第 2 部分，共 3 部分" style="width: 100%; height: auto; display: block; background: #fcf8f3">
+<img loading="lazy" src="./assets/9a418d9ace7c017091cbfc154ddfc6ea.webp" width="1655" height="4680" lang="zh-Hans" alt="8天 长江三峡 心旅行程（中文版），第 3 部分，共 3 部分" style="width: 100%; height: auto; display: block; background: #fcf8f3">
+</sc-if>
+
+<sc-if value="{{ vJiangxiZh }}" hint-placeholder-val="{{ false }}">
+<img src="./assets/e40656bc92bd1c7f24425875e95b4ffb.webp" width="1655" height="7020" lang="zh-Hans" alt="8天 江西 心旅行程（中文版），第 1 部分，共 3 部分" style="width: 100%; height: auto; display: block; background: #fcf8f3">
+<img loading="lazy" src="./assets/b0871b807526bfca7e2ecf8bf15343ed.webp" width="1655" height="7020" lang="zh-Hans" alt="8天 江西 心旅行程（中文版），第 2 部分，共 3 部分" style="width: 100%; height: auto; display: block; background: #fcf8f3">
+<img loading="lazy" src="./assets/ab1afceefc76d660518ec0a4fd772c1a.webp" width="1655" height="4680" lang="zh-Hans" alt="8天 江西 心旅行程（中文版），第 3 部分，共 3 部分" style="width: 100%; height: auto; display: block; background: #fcf8f3">
+</sc-if>
+
+<sc-if value="{{ vFujianZh }}" hint-placeholder-val="{{ false }}">
+<img src="./assets/1de09e6127c5a8dfb563bd4675a997cc.webp" width="1655" height="7020" lang="zh-Hans" alt="8天 福建 · 潮汕 心旅行程（中文版），第 1 部分，共 3 部分" style="width: 100%; height: auto; display: block; background: #fcf8f3">
+<img loading="lazy" src="./assets/51e8da8f92a17ccd714a8be9809c8d98.webp" width="1655" height="7020" lang="zh-Hans" alt="8天 福建 · 潮汕 心旅行程（中文版），第 2 部分，共 3 部分" style="width: 100%; height: auto; display: block; background: #fcf8f3">
+<img loading="lazy" src="./assets/5ef7aa7b7c745d0fa47e2cb3b7de49c5.webp" width="1655" height="4680" lang="zh-Hans" alt="8天 福建 · 潮汕 心旅行程（中文版），第 3 部分，共 3 部分" style="width: 100%; height: auto; display: block; background: #fcf8f3">
 </sc-if>
 
 <sc-if value="{{ vHokkaido }}" hint-placeholder-val="{{ false }}">
@@ -3559,6 +3595,10 @@ class Component extends DCLogic {
       fujian: '8D Fujian · Chaoshan · Journey Within Relate',
       gorges: '8D Yangtze Three Gorges · Journey Within Relate',
       puer: '8D Yunnan Pu’er · Journey Within Relate',
+      puerZh: '8天 云南普洱 · 心旅 Relate',
+      gorgesZh: '8天 长江三峡 · 心旅 Relate',
+      jiangxiZh: '8天 江西 · 心旅 Relate',
+      fujianZh: '8天 福建 · 潮汕 · 心旅 Relate',
       taiwan: '5D Taiwan · Father & Child Edition',
       jingdezhen: '9D Jingdezhen · Art & Heritage Edition',
       footsteps: '8D Japan · Footsteps Edition',
@@ -3576,6 +3616,7 @@ class Component extends DCLogic {
     var links = {};
     R.forEach(function (r) { links[r[0]] = ['restore', (r[2] + 'd-' + r[1]).normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')]; });
     ['bhutan', 'srilanka', 'hokkaido', 'jiangxi', 'fujian', 'gorges', 'puer'].forEach(function (k) { links[k] = ['relate', k]; });
+    ['jiangxi', 'fujian', 'gorges', 'puer'].forEach(function (k) { links[k + 'Zh'] = ['relate', k + '-zh']; });
     ['taiwan', 'jingdezhen', 'footsteps', 'penang', 'roots', 'nightingale'].forEach(function (k) { links[k] = ['partners', k]; });
     this._links = links;
     // Addresses used before the journeys were renamed on 19 Nov 2026
@@ -3584,7 +3625,8 @@ class Component extends DCLogic {
     var vTitle = titles[viewer] || (rv ? rv.title : '');
     out.vOpen = !!viewer;
     out.vTitle = vTitle;
-    out.vWa = 'https://wa.me/6581290908?text=' + encodeURIComponent("Hi, I'm interested in the " + (vTitle || 'Journey Within') + ' itinerary.');
+    var vZh = /Zh$/.test(viewer || '') && !!titles[viewer];
+    out.vWa = 'https://wa.me/6581290908?text=' + encodeURIComponent(vZh ? '您好，我想了解「' + vTitle + '」的行程。' : "Hi, I'm interested in the " + (vTitle || 'Journey Within') + ' itinerary.');
     out.closeViewer = function () {
       try { document.body.style.overflow = ''; } catch (err) {}
       self.setState({ viewer: '', zoom: false });
