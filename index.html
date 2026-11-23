@@ -29,7 +29,6 @@ a{color:#567542}a:hover{color:#40461c}
 .band{height:520px}
 .band-img{will-change:transform}
 @media (max-width:720px){.band{height:400px}}
-@media (max-width:1180px){.rail4{grid-template-columns:repeat(2,minmax(0,1fr)) !important}}
 .chips{display:flex;flex-wrap:wrap;gap:8px}
 .menu-btn{display:none}
 .cta-bottom{display:none}
@@ -94,6 +93,7 @@ html{scroll-behavior:auto}
 <span id="nav-now" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap">Menu</span>
 </button>
 <nav id="site-nav" class="navlinks {{ menuCls }}" aria-label="Sections" style="flex: 1 1 auto; min-width: 0">
+<a href="#top" data-spy="top" onClick="{{ nav.top }}">Home</a>
 <a href="#science" class="{{ navc.about }}" onClick="{{ go.about }}">About</a>
 <a href="#restore" class="{{ navc.restore }}" onClick="{{ go.restore }}">Private journeys</a>
 <a href="#journeys" class="{{ navc.relate }}" onClick="{{ go.relate }}">Small group journeys</a>
@@ -147,7 +147,7 @@ html{scroll-behavior:auto}
 
 <div class="rv" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 18px">
 <button class="card" type="button" onClick="{{ go.restore }}" style="text-align: left; font-family: Montserrat, sans-serif; color: #40461c; cursor: pointer; background: #ffffff; border: 1px solid #dcd3bf; border-radius: 14px; padding: 0; overflow: hidden; display: flex; flex-direction: column">
-<img src="./assets/6469105f913e4d75e9064b16f59602f9.jpg" alt="Two travellers beside prayer flags, looking out over a sea of cloud" style="width: 100%; height: 200px; object-fit: cover; display: block; background: #f1eadb">
+<img src="./assets/50f33ce71b383be79be838dacb3d7b5b.jpg" alt="A small camel caravan crossing golden sand dunes" width="1800" height="900" style="width: 100%; height: 210px; object-fit: cover; object-position: 50% 70%; display: block; background: #f1eadb">
 <span style="padding: 22px 24px 24px; display: flex; flex-direction: column; gap: 10px; flex: 1 1 auto">
 <span style="font-size: 34px; font-weight: 700; line-height: 1.1; color: #40461c">Just Us</span>
 <span style="font-family: Caveat, cursive; font-size: 32px; line-height: 0.95; color: #567542">Restore</span>
@@ -157,7 +157,7 @@ html{scroll-behavior:auto}
 </span>
 </button>
 <button class="card" type="button" onClick="{{ go.relate }}" style="text-align: left; font-family: Montserrat, sans-serif; color: #40461c; cursor: pointer; background: #ffffff; border: 1px solid #dcd3bf; border-radius: 14px; padding: 0; overflow: hidden; display: flex; flex-direction: column">
-<img src="./assets/7616e37eb93f2e2bf9a6a29f9c2aca36.jpg" alt="Tiger’s Nest monastery on its cliff in Bhutan" style="width: 100%; height: 200px; object-fit: cover; display: block; background: #f1eadb">
+<img src="./assets/a7aee04a72a0db886d0303bc7d789665.jpg" alt="Three people sharing tea beside a fire in a wooden house in Yunnan" width="1800" height="900" style="width: 100%; height: 210px; object-fit: cover; object-position: 50% 35%; display: block; background: #f1eadb">
 <span style="padding: 22px 24px 24px; display: flex; flex-direction: column; gap: 10px; flex: 1 1 auto">
 <span style="font-size: 34px; font-weight: 700; line-height: 1.1; color: #40461c">Small Group</span>
 <span style="font-family: Caveat, cursive; font-size: 32px; line-height: 0.95; color: #567542">Relate</span>
@@ -167,7 +167,7 @@ html{scroll-behavior:auto}
 </span>
 </button>
 <button class="card" type="button" onClick="{{ go.partners }}" style="text-align: left; font-family: Montserrat, sans-serif; color: #40461c; cursor: pointer; background: #ffffff; border: 1px solid #dcd3bf; border-radius: 14px; padding: 0; overflow: hidden; display: flex; flex-direction: column">
-<img src="./assets/7ca58654392f7843047bb7568aff41d1.jpg" alt="A wooden jetty leading out to a red hut over the sea at sunrise in Penang" style="width: 100%; height: 200px; object-fit: cover; display: block; background: #f1eadb">
+<img src="./assets/d131032e2b5a647e76d6a9c8adf23d44.jpg" alt="A small group in red jackets in a boat beside a blue iceberg arch" width="1800" height="900" style="width: 100%; height: 210px; object-fit: cover; object-position: 40% 60%; display: block; background: #f1eadb">
 <span style="padding: 22px 24px 24px; display: flex; flex-direction: column; gap: 10px; flex: 1 1 auto">
 <span style="font-size: 34px; font-weight: 700; line-height: 1.1; color: #40461c">My Organisation</span>
 <span style="font-family: Caveat, cursive; font-size: 32px; line-height: 0.95; color: #567542">Reveal</span>
@@ -225,11 +225,11 @@ html{scroll-behavior:auto}
 </section>
 
 <!-- Photo band: the page scrolls past it -->
-<section class="band" aria-label="The moments that stay are the ones we share" style="position: relative; overflow: hidden; background: #1d2010; color: #ffffff">
+<section class="band" aria-label="Designed by people, for people" style="position: relative; overflow: hidden; background: #1d2010; color: #ffffff">
 <img class="band-img" loading="lazy" src="./assets/f5d53f2eafb1874e470f401f130d332d.webp" alt="A circle of people, fists touching at the centre" style="position: absolute; left: 0; top: -110px; width: 100%; height: calc(100% + 220px); object-fit: cover; object-position: 40% 50%">
 <div style="position: absolute; left: 0; top: 0; width: 100%; height: 100%; background: rgba(6, 8, 14, 0.46)"></div>
 <div class="wrap" style="position: relative; height: 100%; box-sizing: border-box; display: flex; flex-direction: column; justify-content: center">
-<p class="rv" style="margin: 0; max-width: 640px; font-weight: 500; font-size: clamp(30px, 4.4vw, 54px); line-height: 1.12; text-wrap: balance">The moments that stay are the ones we share.</p>
+<p class="rv" style="margin: 0; max-width: 640px; font-weight: 500; font-size: clamp(30px, 4.4vw, 54px); line-height: 1.12; text-wrap: balance">Designed by people, for people.</p>
 </div>
 </section>
 <!-- Curated by people -->
@@ -266,10 +266,10 @@ html{scroll-behavior:auto}
 <h2 id="why-h" style="margin: 0; font-weight: 500; font-size: clamp(30px, 3.6vw, 46px); line-height: 1.15">Why do you travel?</h2>
 <p style="margin: 0; font-size: 18px; line-height: 1.55">Everyone has a different answer. We ask first, then design the journey around yours.</p>
 </div>
-<div class="rail rail4 rv" style="grid-template-columns: repeat(4, minmax(0, 1fr))">
+<div class="rail rv" style="grid-template-columns: repeat(3, minmax(0, 1fr))">
 
 <article class="card" style="background: #ffffff; border: 1px solid #dcd3bf; border-radius: 14px; overflow: hidden; display: flex; flex-direction: column">
-<img loading="lazy" src="./assets/1f404cf650f637e7c6a01d99ce9db7cf.jpg" alt="Green northern lights over a dark line of trees" style="width: 100%; height: 190px; object-fit: cover; display: block; background: #f1eadb">
+<img loading="lazy" src="./assets/7616e37eb93f2e2bf9a6a29f9c2aca36.jpg" alt="Tiger’s Nest monastery on its cliff in Bhutan" style="width: 100%; height: 200px; object-fit: cover; object-position: 50% 40%; display: block; background: #f1eadb">
 <div style="padding: 20px 22px 22px; display: flex; flex-direction: column; gap: 10px; flex: 1 1 auto">
 <p style="margin: 0; font-size: 12px; font-weight: 700; letter-spacing: 3px; line-height: 1.4; color: #7a6222">AWE</p>
 <p style="margin: 0; font-family: Caveat, cursive; font-size: 24px; line-height: 1; color: #567542">I travel</p>
@@ -280,7 +280,7 @@ html{scroll-behavior:auto}
 </article>
 
 <article class="card" style="background: #ffffff; border: 1px solid #dcd3bf; border-radius: 14px; overflow: hidden; display: flex; flex-direction: column">
-<img loading="lazy" src="./assets/b9b0d06928a083c8790865085f139deb.jpg" alt="A mountain gorilla resting among green leaves" style="width: 100%; height: 190px; object-fit: cover; display: block; background: #f1eadb">
+<img loading="lazy" src="./assets/b9b0d06928a083c8790865085f139deb.jpg" alt="A mountain gorilla resting among green leaves" style="width: 100%; height: 200px; object-fit: cover; object-position: 50% 50%; display: block; background: #f1eadb">
 <div style="padding: 20px 22px 22px; display: flex; flex-direction: column; gap: 10px; flex: 1 1 auto">
 <p style="margin: 0; font-size: 12px; font-weight: 700; letter-spacing: 3px; line-height: 1.4; color: #7a6222">NATURE</p>
 <p style="margin: 0; font-family: Caveat, cursive; font-size: 24px; line-height: 1; color: #567542">I travel</p>
@@ -291,40 +291,40 @@ html{scroll-behavior:auto}
 </article>
 
 <article class="card" style="background: #ffffff; border: 1px solid #dcd3bf; border-radius: 14px; overflow: hidden; display: flex; flex-direction: column">
-<img loading="lazy" src="./assets/8b837fd9bf8102fd29d79c7950886cbf.jpg" alt="Two racing motorcycles at speed on a wet track, spray rising behind them" style="width: 100%; height: 190px; object-fit: cover; display: block; background: #f1eadb">
+<img loading="lazy" src="./assets/8b837fd9bf8102fd29d79c7950886cbf.jpg" alt="Two racing motorcycles at speed on a wet track, spray rising behind them" style="width: 100%; height: 200px; object-fit: cover; object-position: 50% 50%; display: block; background: #f1eadb">
 <div style="padding: 20px 22px 22px; display: flex; flex-direction: column; gap: 10px; flex: 1 1 auto">
 <p style="margin: 0; font-size: 12px; font-weight: 700; letter-spacing: 3px; line-height: 1.4; color: #7a6222">THRILL</p>
 <p style="margin: 0; font-family: Caveat, cursive; font-size: 24px; line-height: 1; color: #567542">I travel</p>
 <h3 style="margin: 0; font-size: 21px; font-weight: 700; line-height: 1.25">To feel my heart race.</h3>
 <p style="margin: 0 0 6px; font-size: 15px; line-height: 1.55; color: #5a5d3c">Race day at Suzuka, trackside, with people who love speed as much as you do.</p>
-<button type="button" class="pill ol" onClick="{{ go.partners }}" aria-label="See Adrenaline Edition" style="margin: auto 0 0; align-self: flex-start">Adrenaline Edition</button>
+<button type="button" class="pill ol" onClick="{{ why.adrenaline }}" aria-label="See Adrenaline Edition" style="margin: auto 0 0; align-self: flex-start">Adrenaline Edition</button>
 </div>
 </article>
 
 <article class="card" style="background: #ffffff; border: 1px solid #dcd3bf; border-radius: 14px; overflow: hidden; display: flex; flex-direction: column">
-<img loading="lazy" src="./assets/5a3af4a646f62a94b4903c9a9804b4b6.jpg" alt="A craftsman painting blue-and-white designs onto porcelain bowls in Jingdezhen" style="width: 100%; height: 190px; object-fit: cover; display: block; background: #f1eadb">
+<img loading="lazy" src="./assets/5a3af4a646f62a94b4903c9a9804b4b6.jpg" alt="A craftsman painting blue-and-white designs onto porcelain bowls in Jingdezhen" style="width: 100%; height: 200px; object-fit: cover; object-position: 50% 50%; display: block; background: #f1eadb">
 <div style="padding: 20px 22px 22px; display: flex; flex-direction: column; gap: 10px; flex: 1 1 auto">
 <p style="margin: 0; font-size: 12px; font-weight: 700; letter-spacing: 3px; line-height: 1.4; color: #7a6222">MAKING</p>
 <p style="margin: 0; font-family: Caveat, cursive; font-size: 24px; line-height: 1; color: #567542">I travel</p>
 <h3 style="margin: 0; font-size: 21px; font-weight: 700; line-height: 1.25">To make something with my own hands.</h3>
 <p style="margin: 0 0 6px; font-size: 15px; line-height: 1.55; color: #5a5d3c">Soba in the Kiso Valley, paper in Samarkand, tea leaves picked in Sri Lanka.</p>
-<button type="button" class="pill ol" onClick="{{ go.partners }}" aria-label="See Art &amp; Heritage Edition" style="margin: auto 0 0; align-self: flex-start">Art &amp; Heritage Edition</button>
+<button type="button" class="pill ol" onClick="{{ why.art }}" aria-label="See Art &amp; Heritage Edition" style="margin: auto 0 0; align-self: flex-start">Art &amp; Heritage Edition</button>
 </div>
 </article>
 
 <article class="card" style="background: #ffffff; border: 1px solid #dcd3bf; border-radius: 14px; overflow: hidden; display: flex; flex-direction: column">
-<img loading="lazy" src="./assets/4feb6ee43437ff20ef27891442cc6739.jpg" alt="A parent and child, hand in hand, in silhouette against an orange evening sky" style="width: 100%; height: 190px; object-fit: cover; object-position: 50% 60%; display: block; background: #f1eadb">
+<img loading="lazy" src="./assets/4feb6ee43437ff20ef27891442cc6739.jpg" alt="A parent and child, hand in hand, in silhouette against an orange evening sky" style="width: 100%; height: 200px; object-fit: cover; object-position: 50% 60%; display: block; background: #f1eadb">
 <div style="padding: 20px 22px 22px; display: flex; flex-direction: column; gap: 10px; flex: 1 1 auto">
 <p style="margin: 0; font-size: 12px; font-weight: 700; letter-spacing: 3px; line-height: 1.4; color: #7a6222">PRESENCE</p>
 <p style="margin: 0; font-family: Caveat, cursive; font-size: 24px; line-height: 1; color: #567542">I travel</p>
 <h3 style="margin: 0; font-size: 21px; font-weight: 700; line-height: 1.25">To be fully there for my child.</h3>
 <p style="margin: 0 0 6px; font-size: 15px; line-height: 1.55; color: #5a5d3c">A few days together, with nothing else asking for your attention.</p>
-<button type="button" class="pill ol" onClick="{{ go.partners }}" aria-label="See Father &amp; Child Edition" style="margin: auto 0 0; align-self: flex-start">Father &amp; Child Edition</button>
+<button type="button" class="pill ol" onClick="{{ why.father }}" aria-label="See Father &amp; Child Edition" style="margin: auto 0 0; align-self: flex-start">Father &amp; Child Edition</button>
 </div>
 </article>
 
 <article class="card" style="background: #ffffff; border: 1px solid #dcd3bf; border-radius: 14px; overflow: hidden; display: flex; flex-direction: column">
-<img loading="lazy" src="./assets/53b35d09b84190f48266f1f98821122b.jpg" alt="An elderly hand resting on younger hands, in black and white" style="width: 100%; height: 190px; object-fit: cover; object-position: 72% 45%; display: block; background: #0c0c0c">
+<img loading="lazy" src="./assets/53b35d09b84190f48266f1f98821122b.jpg" alt="An elderly hand resting on younger hands, in black and white" style="width: 100%; height: 200px; object-fit: cover; object-position: 72% 45%; display: block; background: #0c0c0c">
 <div style="padding: 20px 22px 22px; display: flex; flex-direction: column; gap: 10px; flex: 1 1 auto">
 <p style="margin: 0; font-size: 12px; font-weight: 700; letter-spacing: 3px; line-height: 1.4; color: #7a6222">GRATITUDE</p>
 <p style="margin: 0; font-family: Caveat, cursive; font-size: 24px; line-height: 1; color: #567542">I travel</p>
@@ -335,24 +335,35 @@ html{scroll-behavior:auto}
 </article>
 
 <article class="card" style="background: #ffffff; border: 1px solid #dcd3bf; border-radius: 14px; overflow: hidden; display: flex; flex-direction: column">
-<img loading="lazy" src="./assets/37f4f8fe34d1847ea2876d5ffc388040.jpg" alt="A Hakka village with a round earth building, below green hills in the mist" style="width: 100%; height: 190px; object-fit: cover; display: block; background: #f1eadb">
+<img loading="lazy" src="./assets/37f4f8fe34d1847ea2876d5ffc388040.jpg" alt="A Hakka village with a round earth building, below green hills in the mist" style="width: 100%; height: 200px; object-fit: cover; object-position: 50% 50%; display: block; background: #f1eadb">
 <div style="padding: 20px 22px 22px; display: flex; flex-direction: column; gap: 10px; flex: 1 1 auto">
 <p style="margin: 0; font-size: 12px; font-weight: 700; letter-spacing: 3px; line-height: 1.4; color: #7a6222">BELONGING</p>
 <p style="margin: 0; font-family: Caveat, cursive; font-size: 24px; line-height: 1; color: #567542">I travel</p>
 <h3 style="margin: 0; font-size: 21px; font-weight: 700; line-height: 1.25">To stand where my family’s story began.</h3>
 <p style="margin: 0 0 6px; font-size: 15px; line-height: 1.55; color: #5a5d3c">寻根. Walk the village your grandparents left, and meet the family who stayed.</p>
-<button type="button" class="pill ol" onClick="{{ go.partners }}" aria-label="See Roots Edition" style="margin: auto 0 0; align-self: flex-start">Roots Edition</button>
+<button type="button" class="pill ol" onClick="{{ why.roots }}" aria-label="See Roots Edition" style="margin: auto 0 0; align-self: flex-start">Roots Edition</button>
 </div>
 </article>
 
 <article class="card" style="background: #ffffff; border: 1px solid #dcd3bf; border-radius: 14px; overflow: hidden; display: flex; flex-direction: column">
-<img loading="lazy" src="./assets/d6d75376d3324a4826674f3cb8b165de.jpg" alt="Someone resting under white bedding, glasses still in hand" style="width: 100%; height: 190px; object-fit: cover; display: block; background: #f1eadb">
+<img loading="lazy" src="./assets/7b35cf81f1e586793167d167d105d565.jpg" alt="Two travellers beside prayer flags, looking out over a sea of cloud" style="width: 100%; height: 200px; object-fit: cover; object-position: 50% 100%; display: block; background: #f1eadb">
+<div style="padding: 20px 22px 22px; display: flex; flex-direction: column; gap: 10px; flex: 1 1 auto">
+<p style="margin: 0; font-size: 12px; font-weight: 700; letter-spacing: 3px; line-height: 1.4; color: #7a6222">CONNECTION</p>
+<p style="margin: 0; font-family: Caveat, cursive; font-size: 24px; line-height: 1; color: #567542">I travel</p>
+<h3 style="margin: 0; font-size: 21px; font-weight: 700; line-height: 1.25">To meet others who travel for the same reasons.</h3>
+<p style="margin: 0 0 6px; font-size: 15px; line-height: 1.55; color: #5a5d3c">A small group, a Tour Leader trained in our Journey Within philosophy, and good company along the way.</p>
+<button type="button" class="pill ol" onClick="{{ go.relate }}" aria-label="See Small group journeys" style="margin: auto 0 0; align-self: flex-start">Small group journeys</button>
+</div>
+</article>
+
+<article class="card" style="background: #ffffff; border: 1px solid #dcd3bf; border-radius: 14px; overflow: hidden; display: flex; flex-direction: column">
+<img loading="lazy" src="./assets/d6d75376d3324a4826674f3cb8b165de.jpg" alt="Someone resting under white bedding, glasses still in hand" style="width: 100%; height: 200px; object-fit: cover; object-position: 50% 50%; display: block; background: #f1eadb">
 <div style="padding: 20px 22px 22px; display: flex; flex-direction: column; gap: 10px; flex: 1 1 auto">
 <p style="margin: 0; font-size: 12px; font-weight: 700; letter-spacing: 3px; line-height: 1.4; color: #7a6222">REST</p>
 <p style="margin: 0; font-family: Caveat, cursive; font-size: 24px; line-height: 1; color: #567542">I travel</p>
 <h3 style="margin: 0; font-size: 21px; font-weight: 700; line-height: 1.25">To sleep well again.</h3>
 <p style="margin: 0 0 6px; font-size: 15px; line-height: 1.55; color: #5a5d3c">Days and nights designed for deep rest.</p>
-<button type="button" class="pill ol" onClick="{{ go.partners }}" aria-label="See Sleep Edition" style="margin: auto 0 0; align-self: flex-start">Sleep Edition</button>
+<button type="button" class="pill ol" onClick="{{ why.sleep }}" aria-label="See Sleep Edition" style="margin: auto 0 0; align-self: flex-start">Sleep Edition</button>
 </div>
 </article>
 
@@ -582,7 +593,7 @@ html{scroll-behavior:auto}
 </div>
 <div class="rail rv" style="grid-template-columns: repeat(auto-fill, minmax(258px, 1fr))">
 
-<article class="card" style="display: flex; flex-direction: column; background: #ffffff; border: 1px solid #dcd3bf; border-radius: 14px; overflow: hidden">
+<article class="card" id="ed-roots" style="display: flex; flex-direction: column; background: #ffffff; border: 1px solid #dcd3bf; border-radius: 14px; overflow: hidden; scroll-margin-top: 122px; outline: {{ edr.roots }}; outline-offset: 3px">
 <img src="./assets/37f4f8fe34d1847ea2876d5ffc388040.jpg" alt="A Hakka village with a round earth building, below green hills in the mist" style="width: 100%; height: 190px; object-fit: cover; object-position: 18% 50%; display: block">
 <div style="padding: 20px 22px 18px; display: flex; flex-direction: column; gap: 8px; flex: 1 1 auto">
 <p style="margin: 0; font-size: 12px; font-weight: 700; letter-spacing: 2px; color: #7a6222">ROOTS EDITION</p>
@@ -592,7 +603,7 @@ html{scroll-behavior:auto}
 </div>
 </article>
 
-<article class="card" style="display: flex; flex-direction: column; background: #ffffff; border: 1px solid #dcd3bf; border-radius: 14px; overflow: hidden">
+<article class="card" id="ed-team" style="display: flex; flex-direction: column; background: #ffffff; border: 1px solid #dcd3bf; border-radius: 14px; overflow: hidden; scroll-margin-top: 122px; outline: {{ edr.team }}; outline-offset: 3px">
 <img src="./assets/7ca58654392f7843047bb7568aff41d1.jpg" alt="A wooden jetty leading out to a red hut over the sea at sunrise in Penang" style="width: 100%; height: 190px; object-fit: cover; object-position: 50% 40%; display: block">
 <div style="padding: 20px 22px 18px; display: flex; flex-direction: column; gap: 8px; flex: 1 1 auto">
 <p style="margin: 0; font-size: 12px; font-weight: 700; letter-spacing: 2px; color: #7a6222">TEAM EDITION</p>
@@ -602,7 +613,7 @@ html{scroll-behavior:auto}
 </div>
 </article>
 
-<article class="card" style="display: flex; flex-direction: column; background: #ffffff; border: 1px solid #dcd3bf; border-radius: 14px; overflow: hidden">
+<article class="card" id="ed-father" style="display: flex; flex-direction: column; background: #ffffff; border: 1px solid #dcd3bf; border-radius: 14px; overflow: hidden; scroll-margin-top: 122px; outline: {{ edr.father }}; outline-offset: 3px">
 <img src="./assets/bec3746234cef857884e34acd2673dcc.jpg" alt="A hand lifting a fresh sheet of paper from the press at a paper mill in Puli, Taiwan" style="width: 100%; height: 190px; object-fit: cover; display: block">
 <div style="padding: 20px 22px 18px; display: flex; flex-direction: column; gap: 8px; flex: 1 1 auto">
 <p style="margin: 0; font-size: 12px; font-weight: 700; letter-spacing: 2px; color: #7a6222">FATHER &amp; CHILD EDITION</p>
@@ -612,7 +623,7 @@ html{scroll-behavior:auto}
 </div>
 </article>
 
-<article class="card" style="display: flex; flex-direction: column; background: #ffffff; border: 1px solid #dcd3bf; border-radius: 14px; overflow: hidden">
+<article class="card" id="ed-art" style="display: flex; flex-direction: column; background: #ffffff; border: 1px solid #dcd3bf; border-radius: 14px; overflow: hidden; scroll-margin-top: 122px; outline: {{ edr.art }}; outline-offset: 3px">
 <img src="./assets/5a3af4a646f62a94b4903c9a9804b4b6.jpg" alt="A craftsman painting blue-and-white designs onto porcelain bowls in Jingdezhen" style="width: 100%; height: 190px; object-fit: cover; object-position: 50% 32%; display: block">
 <div style="padding: 20px 22px 18px; display: flex; flex-direction: column; gap: 8px; flex: 1 1 auto">
 <p style="margin: 0; font-size: 12px; font-weight: 700; letter-spacing: 2px; color: #7a6222">ART &amp; HERITAGE EDITION</p>
@@ -622,7 +633,7 @@ html{scroll-behavior:auto}
 </div>
 </article>
 
-<article class="card" style="display: flex; flex-direction: column; background: #ffffff; border: 1px solid #dcd3bf; border-radius: 14px; overflow: hidden">
+<article class="card" id="ed-footsteps" style="display: flex; flex-direction: column; background: #ffffff; border: 1px solid #dcd3bf; border-radius: 14px; overflow: hidden; scroll-margin-top: 122px; outline: {{ edr.footsteps }}; outline-offset: 3px">
 <img src="./assets/f0dc110eee0601f65bc4bef8e47dcdbe.jpg" alt="A lone tree against a glowing sky at first light" style="width: 100%; height: 190px; object-fit: cover; object-position: 50% 62%; display: block">
 <div style="padding: 20px 22px 18px; display: flex; flex-direction: column; gap: 8px; flex: 1 1 auto">
 <p style="margin: 0; font-size: 12px; font-weight: 700; letter-spacing: 2px; color: #7a6222">FOOTSTEPS EDITION</p>
@@ -632,7 +643,7 @@ html{scroll-behavior:auto}
 </div>
 </article>
 
-<article class="card" style="display: flex; flex-direction: column; background: #ffffff; border: 1px solid #dcd3bf; border-radius: 14px; overflow: hidden">
+<article class="card" id="ed-nightingale" style="display: flex; flex-direction: column; background: #ffffff; border: 1px solid #dcd3bf; border-radius: 14px; overflow: hidden; scroll-margin-top: 122px; outline: {{ edr.nightingale }}; outline-offset: 3px">
 <img src="./assets/e8c97222109cd7ae0bc30a6b3c4c9c00.jpg" alt="A striped hammock in a garden in warm afternoon light" style="width: 100%; height: 190px; object-fit: cover; display: block">
 <div style="padding: 20px 22px 18px; display: flex; flex-direction: column; gap: 8px; flex: 1 1 auto">
 <p style="margin: 0; font-size: 12px; font-weight: 700; letter-spacing: 2px; color: #7a6222">NIGHTINGALE EDITION</p>
@@ -642,7 +653,7 @@ html{scroll-behavior:auto}
 </div>
 </article>
 
-<article class="card" style="display: flex; flex-direction: column; background: #ffffff; border: 1px solid #dcd3bf; border-radius: 14px; overflow: hidden">
+<article class="card" id="ed-sleep" style="display: flex; flex-direction: column; background: #ffffff; border: 1px solid #dcd3bf; border-radius: 14px; overflow: hidden; scroll-margin-top: 122px; outline: {{ edr.sleep }}; outline-offset: 3px">
 <div style="position: relative">
 <img src="./assets/d6d75376d3324a4826674f3cb8b165de.jpg" alt="Someone resting under white bedding, glasses still in hand" style="width: 100%; height: 190px; object-fit: cover; object-position: 50% 42%; display: block">
 <span style="position: absolute; left: 12px; top: 12px; background: #40461c; color: #ffffff; font-size: 11px; font-weight: 700; letter-spacing: 1.5px; padding: 6px 10px; border-radius: 999px">IN THE WORKS</span>
@@ -654,7 +665,7 @@ html{scroll-behavior:auto}
 </div>
 </article>
 
-<article class="card" style="display: flex; flex-direction: column; background: #ffffff; border: 1px solid #dcd3bf; border-radius: 14px; overflow: hidden">
+<article class="card" id="ed-education" style="display: flex; flex-direction: column; background: #ffffff; border: 1px solid #dcd3bf; border-radius: 14px; overflow: hidden; scroll-margin-top: 122px; outline: {{ edr.education }}; outline-offset: 3px">
 <div style="position: relative">
 <img src="./assets/92a5f4a14ea63e4cf9d2907934f4af64.jpg" alt="Four small children’s chairs with smiling faces, set out on a lawn" style="width: 100%; height: 190px; object-fit: cover; display: block">
 <span style="position: absolute; left: 12px; top: 12px; background: #40461c; color: #ffffff; font-size: 11px; font-weight: 700; letter-spacing: 1.5px; padding: 6px 10px; border-radius: 999px">IN THE WORKS</span>
@@ -666,7 +677,7 @@ html{scroll-behavior:auto}
 </div>
 </article>
 
-<article class="card" style="display: flex; flex-direction: column; background: #ffffff; border: 1px solid #dcd3bf; border-radius: 14px; overflow: hidden">
+<article class="card" id="ed-adrenaline" style="display: flex; flex-direction: column; background: #ffffff; border: 1px solid #dcd3bf; border-radius: 14px; overflow: hidden; scroll-margin-top: 122px; outline: {{ edr.adrenaline }}; outline-offset: 3px">
 <div style="position: relative">
 <img src="./assets/8b837fd9bf8102fd29d79c7950886cbf.jpg" alt="Two racing motorcycles at speed on a wet track, spray rising behind them" style="width: 100%; height: 190px; object-fit: cover; object-position: 45% 70%; display: block">
 <span style="position: absolute; left: 12px; top: 12px; background: #40461c; color: #ffffff; font-size: 11px; font-weight: 700; letter-spacing: 1.5px; padding: 6px 10px; border-radius: 999px">IN THE WORKS</span>
@@ -3271,7 +3282,7 @@ html{scroll-behavior:auto}
 class Component extends DCLogic {
   constructor(props) {
     super(props);
-    this.state = { view: 'home', filter: 'all', rfilter: 'all', rdur: 'all', rcountry: 'all', rtheme: 'all', rwhy: false, viewer: '', menu: false, zoom: false };
+    this.state = { view: 'home', filter: 'all', rfilter: 'all', rdur: 'all', rcountry: 'all', rtheme: 'all', rwhy: false, viewer: '', menu: false, zoom: false, ed: '' };
   }
 
   componentDidMount() {
@@ -3481,7 +3492,7 @@ class Component extends DCLogic {
         }
         if (e && e.preventDefault) e.preventDefault();
         self._to = id;
-        self.setState({ view: v, menu: false });
+        self.setState({ view: v, menu: false, ed: '' });
         self._go(v, '');
       };
     }
@@ -3492,7 +3503,11 @@ class Component extends DCLogic {
     out.isPartnersPage = view === 'partners';
     out.go = { home: jump('home', 'top'), ways: jump('home', 'ways'), about: jump('about', 'science'), restore: jump('restore', 'restore'), relate: jump('relate', 'journeys'), partners: jump('partners', 'partners') };
     function door(theme) { return function (e) { if (e && e.preventDefault) e.preventDefault(); self._to = 'restore'; self.setState({ view: 'restore', menu: false, rfilter: 'all', rcountry: 'all', rdur: 'all', rtheme: theme }); self._go('restore', ''); }; }
-    out.why = { awe: door('N'), wild: door('A') };
+    function edDoor(key) { return function (e) { if (e && e.preventDefault) e.preventDefault(); self._to = 'ed-' + key; self.setState({ view: 'partners', menu: false, ed: key }); self._go('partners', ''); }; }
+    out.why = { awe: door('N'), wild: door('A'), adrenaline: edDoor('adrenaline'), art: edDoor('art'), father: edDoor('father'), roots: edDoor('roots'), sleep: edDoor('sleep') };
+    var edNow = (self.state || {}).ed || '';
+    out.edr = {};
+    ['roots', 'team', 'father', 'art', 'footsteps', 'nightingale', 'sleep', 'education', 'adrenaline'].forEach(function (k) { out.edr[k] = edNow === k ? '3px solid #8d722b' : 'none'; });
     out.nav = { top: jump('home', 'top'), why: jump('home', 'why'), science: jump('home', 'science'), stories: jump('home', 'stories') };
     out.navc = { about: view === 'about' ? 'on' : '', restore: view === 'restore' ? 'on' : '', relate: view === 'relate' ? 'on' : '', partners: view === 'partners' ? 'on' : '' };
 
