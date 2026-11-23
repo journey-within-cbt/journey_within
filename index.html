@@ -26,6 +26,10 @@ a{color:#567542}a:hover{color:#40461c}
 .navlinks a:hover{background:rgba(255,255,255,.16);color:#ffffff}
 .navlinks a.on{background:#ffffff;color:#40461c;font-weight:700}
 .rail{display:grid;gap:22px}
+.band{height:520px}
+.band-img{will-change:transform}
+@media (max-width:720px){.band{height:400px}}
+@media (max-width:1180px){.rail4{grid-template-columns:repeat(2,minmax(0,1fr)) !important}}
 .chips{display:flex;flex-wrap:wrap;gap:8px}
 .menu-btn{display:none}
 .cta-bottom{display:none}
@@ -142,30 +146,47 @@ html{scroll-behavior:auto}
 </div>
 
 <div class="rv" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 18px">
-<button class="card" type="button" onClick="{{ go.restore }}" style="text-align: left; font-family: Montserrat, sans-serif; color: #40461c; cursor: pointer; background: #ffffff; border: 1px solid #dcd3bf; border-radius: 14px; padding: 26px 24px 24px; display: flex; flex-direction: column; gap: 10px">
+<button class="card" type="button" onClick="{{ go.restore }}" style="text-align: left; font-family: Montserrat, sans-serif; color: #40461c; cursor: pointer; background: #ffffff; border: 1px solid #dcd3bf; border-radius: 14px; padding: 0; overflow: hidden; display: flex; flex-direction: column">
+<img src="./assets/6469105f913e4d75e9064b16f59602f9.jpg" alt="Two travellers beside prayer flags, looking out over a sea of cloud" style="width: 100%; height: 200px; object-fit: cover; display: block; background: #f1eadb">
+<span style="padding: 22px 24px 24px; display: flex; flex-direction: column; gap: 10px; flex: 1 1 auto">
 <span style="font-size: 34px; font-weight: 700; line-height: 1.1; color: #40461c">Just Us</span>
 <span style="font-family: Caveat, cursive; font-size: 32px; line-height: 0.95; color: #567542">Restore</span>
 <span style="font-size: 21px; font-weight: 500; line-height: 1.25">Your people. Your dates. Your reason.</span>
 <span style="font-size: 16px; line-height: 1.55">A private journey for couples, families and friends.</span>
 <span class="pill" style="margin-top: auto; align-self: flex-start">See 122 private journeys</span>
+</span>
 </button>
-<button class="card" type="button" onClick="{{ go.relate }}" style="text-align: left; font-family: Montserrat, sans-serif; color: #40461c; cursor: pointer; background: #ffffff; border: 1px solid #dcd3bf; border-radius: 14px; padding: 26px 24px 24px; display: flex; flex-direction: column; gap: 10px">
+<button class="card" type="button" onClick="{{ go.relate }}" style="text-align: left; font-family: Montserrat, sans-serif; color: #40461c; cursor: pointer; background: #ffffff; border: 1px solid #dcd3bf; border-radius: 14px; padding: 0; overflow: hidden; display: flex; flex-direction: column">
+<img src="./assets/7616e37eb93f2e2bf9a6a29f9c2aca36.jpg" alt="Tiger’s Nest monastery on its cliff in Bhutan" style="width: 100%; height: 200px; object-fit: cover; display: block; background: #f1eadb">
+<span style="padding: 22px 24px 24px; display: flex; flex-direction: column; gap: 10px; flex: 1 1 auto">
 <span style="font-size: 34px; font-weight: 700; line-height: 1.1; color: #40461c">Small Group</span>
 <span style="font-family: Caveat, cursive; font-size: 32px; line-height: 0.95; color: #567542">Relate</span>
 <span style="font-size: 21px; font-weight: 500; line-height: 1.25">Good company makes the journey.</span>
 <span style="font-size: 16px; line-height: 1.55">A set departure, led by a Tour Leader trained in our Journey Within philosophy.</span>
 <span class="pill" style="margin-top: auto; align-self: flex-start">See 2027 Small Group Journeys</span>
+</span>
 </button>
-<button class="card" type="button" onClick="{{ go.partners }}" style="text-align: left; font-family: Montserrat, sans-serif; color: #40461c; cursor: pointer; background: #ffffff; border: 1px solid #dcd3bf; border-radius: 14px; padding: 26px 24px 24px; display: flex; flex-direction: column; gap: 10px">
+<button class="card" type="button" onClick="{{ go.partners }}" style="text-align: left; font-family: Montserrat, sans-serif; color: #40461c; cursor: pointer; background: #ffffff; border: 1px solid #dcd3bf; border-radius: 14px; padding: 0; overflow: hidden; display: flex; flex-direction: column">
+<img src="./assets/7ca58654392f7843047bb7568aff41d1.jpg" alt="A wooden jetty leading out to a red hut over the sea at sunrise in Penang" style="width: 100%; height: 200px; object-fit: cover; display: block; background: #f1eadb">
+<span style="padding: 22px 24px 24px; display: flex; flex-direction: column; gap: 10px; flex: 1 1 auto">
 <span style="font-size: 34px; font-weight: 700; line-height: 1.1; color: #40461c">My Organisation</span>
 <span style="font-family: Caveat, cursive; font-size: 32px; line-height: 0.95; color: #567542">Reveal</span>
 <span style="font-size: 21px; font-weight: 500; line-height: 1.25">One purpose. Your people.</span>
 <span style="font-size: 16px; line-height: 1.55">A journey designed with your community or company.</span>
 <span class="pill" style="margin-top: auto; align-self: flex-start">See partner journeys</span>
+</span>
 </button>
 </div>
 <p class="rv" style="margin: 0; font-size: 17px; line-height: 1.55; display: flex; flex-wrap: wrap; align-items: center; gap: 10px 16px">New to Journey Within? <button type="button" class="pill ol" onClick="{{ go.about }}">Read our philosophy</button></p>
 
+</div>
+</section>
+<!-- Photo band: the page scrolls past it -->
+<section class="band" aria-label="Before where, we ask why" style="position: relative; overflow: hidden; background: #1d2010; color: #ffffff">
+<img class="band-img" loading="lazy" src="./assets/0141d9dd70aff5bdeba0e8b564b4b4ed.webp" alt="Two walkers follow a path through golden grass along a ridge at sunset" style="position: absolute; left: 0; top: -110px; width: 100%; height: calc(100% + 220px); object-fit: cover; object-position: 58% 50%">
+<div style="position: absolute; left: 0; top: 0; width: 100%; height: 100%; background: rgba(6, 8, 14, 0.46)"></div>
+<div class="wrap" style="position: relative; height: 100%; box-sizing: border-box; display: flex; flex-direction: column; justify-content: center">
+<p class="rv" style="margin: 0; max-width: 640px; font-weight: 500; font-size: clamp(30px, 4.4vw, 54px); line-height: 1.12; text-wrap: balance">Before where, we ask why.</p>
 </div>
 </section>
 </sc-if>
@@ -203,6 +224,14 @@ html{scroll-behavior:auto}
 </div>
 </section>
 
+<!-- Photo band: the page scrolls past it -->
+<section class="band" aria-label="The moments that stay are the ones we share" style="position: relative; overflow: hidden; background: #1d2010; color: #ffffff">
+<img class="band-img" loading="lazy" src="./assets/f5d53f2eafb1874e470f401f130d332d.webp" alt="A circle of people, fists touching at the centre" style="position: absolute; left: 0; top: -110px; width: 100%; height: calc(100% + 220px); object-fit: cover; object-position: 40% 50%">
+<div style="position: absolute; left: 0; top: 0; width: 100%; height: 100%; background: rgba(6, 8, 14, 0.46)"></div>
+<div class="wrap" style="position: relative; height: 100%; box-sizing: border-box; display: flex; flex-direction: column; justify-content: center">
+<p class="rv" style="margin: 0; max-width: 640px; font-weight: 500; font-size: clamp(30px, 4.4vw, 54px); line-height: 1.12; text-wrap: balance">The moments that stay are the ones we share.</p>
+</div>
+</section>
 <!-- Curated by people -->
 <section id="people" class="sec" aria-labelledby="ppl-h" style="background: #f1eadb; border-bottom: 1px solid #dcd3bf">
 <div class="wrap" style="display: flex; flex-direction: column; gap: 36px">
@@ -237,51 +266,109 @@ html{scroll-behavior:auto}
 <h2 id="why-h" style="margin: 0; font-weight: 500; font-size: clamp(30px, 3.6vw, 46px); line-height: 1.15">Why do you travel?</h2>
 <p style="margin: 0; font-size: 18px; line-height: 1.55">Everyone has a different answer. We ask first, then design the journey around yours.</p>
 </div>
-<div class="rail rv" style="grid-template-columns: repeat(3, minmax(0, 1fr))">
+<div class="rail rail4 rv" style="grid-template-columns: repeat(4, minmax(0, 1fr))">
 
-<div class="card" style="background: #ffffff; border: 1px solid #dcd3bf; border-radius: 14px; padding: 28px 24px 30px; display: flex; flex-direction: column; gap: 14px">
-<svg aria-hidden="true" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#8d722b" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"></path></svg>
+<article class="card" style="background: #ffffff; border: 1px solid #dcd3bf; border-radius: 14px; overflow: hidden; display: flex; flex-direction: column">
+<img loading="lazy" src="./assets/1f404cf650f637e7c6a01d99ce9db7cf.jpg" alt="Green northern lights over a dark line of trees" style="width: 100%; height: 190px; object-fit: cover; display: block; background: #f1eadb">
+<div style="padding: 20px 22px 22px; display: flex; flex-direction: column; gap: 10px; flex: 1 1 auto">
+<p style="margin: 0; font-size: 12px; font-weight: 700; letter-spacing: 3px; line-height: 1.4; color: #7a6222">AWE</p>
 <p style="margin: 0; font-family: Caveat, cursive; font-size: 24px; line-height: 1; color: #567542">I travel</p>
-<h3 style="margin: 0; font-size: 22px; font-weight: 700; line-height: 1.25">To sleep well again.</h3>
-<p style="margin: 0; font-size: 15px; line-height: 1.55; color: #5a5d3c">Days and nights designed for deep rest.</p>
+<h3 style="margin: 0; font-size: 21px; font-weight: 700; line-height: 1.25">To feel small before something vast.</h3>
+<p style="margin: 0 0 6px; font-size: 15px; line-height: 1.55; color: #5a5d3c">Mountains, temples and open sky that change how you see things.</p>
+<button type="button" class="pill ol" onClick="{{ why.awe }}" aria-label="See Mountains &amp; nature" style="margin: auto 0 0; align-self: flex-start">Mountains &amp; nature</button>
 </div>
+</article>
 
-<div class="card" style="background: #ffffff; border: 1px solid #dcd3bf; border-radius: 14px; padding: 28px 24px 30px; display: flex; flex-direction: column; gap: 14px">
-<svg aria-hidden="true" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#8d722b" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 19.5 9 7l4 7 2.5-4 6 9.5z"></path><circle cx="17.5" cy="5.5" r="1.6"></circle></svg>
+<article class="card" style="background: #ffffff; border: 1px solid #dcd3bf; border-radius: 14px; overflow: hidden; display: flex; flex-direction: column">
+<img loading="lazy" src="./assets/b9b0d06928a083c8790865085f139deb.jpg" alt="A mountain gorilla resting among green leaves" style="width: 100%; height: 190px; object-fit: cover; display: block; background: #f1eadb">
+<div style="padding: 20px 22px 22px; display: flex; flex-direction: column; gap: 10px; flex: 1 1 auto">
+<p style="margin: 0; font-size: 12px; font-weight: 700; letter-spacing: 3px; line-height: 1.4; color: #7a6222">NATURE</p>
 <p style="margin: 0; font-family: Caveat, cursive; font-size: 24px; line-height: 1; color: #567542">I travel</p>
-<h3 style="margin: 0; font-size: 22px; font-weight: 700; line-height: 1.25">To feel small before something vast.</h3>
-<p style="margin: 0; font-size: 15px; line-height: 1.55; color: #5a5d3c">Mountains, temples and open sky that change how you see things.</p>
+<h3 style="margin: 0; font-size: 21px; font-weight: 700; line-height: 1.25">To be close to the wild again.</h3>
+<p style="margin: 0 0 6px; font-size: 15px; line-height: 1.55; color: #5a5d3c">Elephants beneath Kilimanjaro, and one quiet hour with a family of mountain gorillas.</p>
+<button type="button" class="pill ol" onClick="{{ why.wild }}" aria-label="See Wildlife &amp; animals" style="margin: auto 0 0; align-self: flex-start">Wildlife &amp; animals</button>
 </div>
+</article>
 
-<div class="card" style="background: #ffffff; border: 1px solid #dcd3bf; border-radius: 14px; padding: 28px 24px 30px; display: flex; flex-direction: column; gap: 14px">
-<svg aria-hidden="true" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#8d722b" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21V3.5"></path><path d="M5 4.5h13.5l-2.5 4.5 2.5 4.5H5"></path><path d="M9.5 4.5v9"></path><path d="M14 4.5v9"></path><path d="M5 9h11"></path></svg>
+<article class="card" style="background: #ffffff; border: 1px solid #dcd3bf; border-radius: 14px; overflow: hidden; display: flex; flex-direction: column">
+<img loading="lazy" src="./assets/8b837fd9bf8102fd29d79c7950886cbf.jpg" alt="Two racing motorcycles at speed on a wet track, spray rising behind them" style="width: 100%; height: 190px; object-fit: cover; display: block; background: #f1eadb">
+<div style="padding: 20px 22px 22px; display: flex; flex-direction: column; gap: 10px; flex: 1 1 auto">
+<p style="margin: 0; font-size: 12px; font-weight: 700; letter-spacing: 3px; line-height: 1.4; color: #7a6222">THRILL</p>
 <p style="margin: 0; font-family: Caveat, cursive; font-size: 24px; line-height: 1; color: #567542">I travel</p>
-<h3 style="margin: 0; font-size: 22px; font-weight: 700; line-height: 1.25">To feel my heart race.</h3>
-<p style="margin: 0; font-size: 15px; line-height: 1.55; color: #5a5d3c">Race day at Suzuka, trackside, with people who love speed as much as you do.</p>
+<h3 style="margin: 0; font-size: 21px; font-weight: 700; line-height: 1.25">To feel my heart race.</h3>
+<p style="margin: 0 0 6px; font-size: 15px; line-height: 1.55; color: #5a5d3c">Race day at Suzuka, trackside, with people who love speed as much as you do.</p>
+<button type="button" class="pill ol" onClick="{{ go.partners }}" aria-label="See Adrenaline Edition" style="margin: auto 0 0; align-self: flex-start">Adrenaline Edition</button>
 </div>
+</article>
 
-<div class="card" style="background: #ffffff; border: 1px solid #dcd3bf; border-radius: 14px; padding: 28px 24px 30px; display: flex; flex-direction: column; gap: 14px">
-<svg aria-hidden="true" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#8d722b" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="5.5" r="2.4"></circle><path d="M4 21v-7a4 4 0 0 1 8 0v7"></path><circle cx="17" cy="11" r="1.8"></circle><path d="M14 21v-4a3 3 0 0 1 6 0v4"></path></svg>
+<article class="card" style="background: #ffffff; border: 1px solid #dcd3bf; border-radius: 14px; overflow: hidden; display: flex; flex-direction: column">
+<img loading="lazy" src="./assets/5a3af4a646f62a94b4903c9a9804b4b6.jpg" alt="A craftsman painting blue-and-white designs onto porcelain bowls in Jingdezhen" style="width: 100%; height: 190px; object-fit: cover; display: block; background: #f1eadb">
+<div style="padding: 20px 22px 22px; display: flex; flex-direction: column; gap: 10px; flex: 1 1 auto">
+<p style="margin: 0; font-size: 12px; font-weight: 700; letter-spacing: 3px; line-height: 1.4; color: #7a6222">MAKING</p>
 <p style="margin: 0; font-family: Caveat, cursive; font-size: 24px; line-height: 1; color: #567542">I travel</p>
-<h3 style="margin: 0; font-size: 22px; font-weight: 700; line-height: 1.25">To be fully there for my child.</h3>
-<p style="margin: 0; font-size: 15px; line-height: 1.55; color: #5a5d3c">A few days together, with nothing else asking for your attention.</p>
+<h3 style="margin: 0; font-size: 21px; font-weight: 700; line-height: 1.25">To make something with my own hands.</h3>
+<p style="margin: 0 0 6px; font-size: 15px; line-height: 1.55; color: #5a5d3c">Soba in the Kiso Valley, paper in Samarkand, tea leaves picked in Sri Lanka.</p>
+<button type="button" class="pill ol" onClick="{{ go.partners }}" aria-label="See Art &amp; Heritage Edition" style="margin: auto 0 0; align-self: flex-start">Art &amp; Heritage Edition</button>
 </div>
+</article>
 
-<div class="card" style="background: #ffffff; border: 1px solid #dcd3bf; border-radius: 14px; padding: 28px 24px 30px; display: flex; flex-direction: column; gap: 14px">
-<svg aria-hidden="true" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#8d722b" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20.5s-7.5-4.6-7.5-10.2A4.3 4.3 0 0 1 12 7.6a4.3 4.3 0 0 1 7.5 2.7c0 5.6-7.5 10.2-7.5 10.2z"></path></svg>
+<article class="card" style="background: #ffffff; border: 1px solid #dcd3bf; border-radius: 14px; overflow: hidden; display: flex; flex-direction: column">
+<img loading="lazy" src="./assets/4feb6ee43437ff20ef27891442cc6739.jpg" alt="A parent and child, hand in hand, in silhouette against an orange evening sky" style="width: 100%; height: 190px; object-fit: cover; object-position: 50% 60%; display: block; background: #f1eadb">
+<div style="padding: 20px 22px 22px; display: flex; flex-direction: column; gap: 10px; flex: 1 1 auto">
+<p style="margin: 0; font-size: 12px; font-weight: 700; letter-spacing: 3px; line-height: 1.4; color: #7a6222">PRESENCE</p>
 <p style="margin: 0; font-family: Caveat, cursive; font-size: 24px; line-height: 1; color: #567542">I travel</p>
-<h3 style="margin: 0; font-size: 22px; font-weight: 700; line-height: 1.25">To take Mum where she has always dreamed of going.</h3>
-<p style="margin: 0; font-size: 15px; line-height: 1.55; color: #5a5d3c">The place at the top of her list, made easy for her, while you can still go together.</p>
+<h3 style="margin: 0; font-size: 21px; font-weight: 700; line-height: 1.25">To be fully there for my child.</h3>
+<p style="margin: 0 0 6px; font-size: 15px; line-height: 1.55; color: #5a5d3c">A few days together, with nothing else asking for your attention.</p>
+<button type="button" class="pill ol" onClick="{{ go.partners }}" aria-label="See Father &amp; Child Edition" style="margin: auto 0 0; align-self: flex-start">Father &amp; Child Edition</button>
 </div>
+</article>
 
-<div class="card" style="background: #ffffff; border: 1px solid #dcd3bf; border-radius: 14px; padding: 28px 24px 30px; display: flex; flex-direction: column; gap: 14px">
-<svg aria-hidden="true" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#8d722b" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="5"></circle><path d="M12 13v6"></path><path d="M12 19l-4.5 2.5"></path><path d="M12 19l4.5 2.5"></path><path d="M12 19v3"></path></svg>
+<article class="card" style="background: #ffffff; border: 1px solid #dcd3bf; border-radius: 14px; overflow: hidden; display: flex; flex-direction: column">
+<img loading="lazy" src="./assets/53b35d09b84190f48266f1f98821122b.jpg" alt="An elderly hand resting on younger hands, in black and white" style="width: 100%; height: 190px; object-fit: cover; object-position: 72% 45%; display: block; background: #0c0c0c">
+<div style="padding: 20px 22px 22px; display: flex; flex-direction: column; gap: 10px; flex: 1 1 auto">
+<p style="margin: 0; font-size: 12px; font-weight: 700; letter-spacing: 3px; line-height: 1.4; color: #7a6222">GRATITUDE</p>
 <p style="margin: 0; font-family: Caveat, cursive; font-size: 24px; line-height: 1; color: #567542">I travel</p>
-<h3 style="margin: 0; font-size: 22px; font-weight: 700; line-height: 1.25">To stand where my family’s story began.</h3>
-<p style="margin: 0; font-size: 15px; line-height: 1.55; color: #5a5d3c">寻根. Walk the village your grandparents left, and meet the family who stayed.</p>
+<h3 style="margin: 0; font-size: 21px; font-weight: 700; line-height: 1.25">To take Mum where she has always dreamed of going.</h3>
+<p style="margin: 0 0 6px; font-size: 15px; line-height: 1.55; color: #5a5d3c">The place at the top of her list, made easy for her, while you can still go together.</p>
+<button type="button" class="pill ol" onClick="{{ go.restore }}" aria-label="See Private journeys" style="margin: auto 0 0; align-self: flex-start">Private journeys</button>
 </div>
+</article>
+
+<article class="card" style="background: #ffffff; border: 1px solid #dcd3bf; border-radius: 14px; overflow: hidden; display: flex; flex-direction: column">
+<img loading="lazy" src="./assets/37f4f8fe34d1847ea2876d5ffc388040.jpg" alt="A Hakka village with a round earth building, below green hills in the mist" style="width: 100%; height: 190px; object-fit: cover; display: block; background: #f1eadb">
+<div style="padding: 20px 22px 22px; display: flex; flex-direction: column; gap: 10px; flex: 1 1 auto">
+<p style="margin: 0; font-size: 12px; font-weight: 700; letter-spacing: 3px; line-height: 1.4; color: #7a6222">BELONGING</p>
+<p style="margin: 0; font-family: Caveat, cursive; font-size: 24px; line-height: 1; color: #567542">I travel</p>
+<h3 style="margin: 0; font-size: 21px; font-weight: 700; line-height: 1.25">To stand where my family’s story began.</h3>
+<p style="margin: 0 0 6px; font-size: 15px; line-height: 1.55; color: #5a5d3c">寻根. Walk the village your grandparents left, and meet the family who stayed.</p>
+<button type="button" class="pill ol" onClick="{{ go.partners }}" aria-label="See Roots Edition" style="margin: auto 0 0; align-self: flex-start">Roots Edition</button>
+</div>
+</article>
+
+<article class="card" style="background: #ffffff; border: 1px solid #dcd3bf; border-radius: 14px; overflow: hidden; display: flex; flex-direction: column">
+<img loading="lazy" src="./assets/d6d75376d3324a4826674f3cb8b165de.jpg" alt="Someone resting under white bedding, glasses still in hand" style="width: 100%; height: 190px; object-fit: cover; display: block; background: #f1eadb">
+<div style="padding: 20px 22px 22px; display: flex; flex-direction: column; gap: 10px; flex: 1 1 auto">
+<p style="margin: 0; font-size: 12px; font-weight: 700; letter-spacing: 3px; line-height: 1.4; color: #7a6222">REST</p>
+<p style="margin: 0; font-family: Caveat, cursive; font-size: 24px; line-height: 1; color: #567542">I travel</p>
+<h3 style="margin: 0; font-size: 21px; font-weight: 700; line-height: 1.25">To sleep well again.</h3>
+<p style="margin: 0 0 6px; font-size: 15px; line-height: 1.55; color: #5a5d3c">Days and nights designed for deep rest.</p>
+<button type="button" class="pill ol" onClick="{{ go.partners }}" aria-label="See Sleep Edition" style="margin: auto 0 0; align-self: flex-start">Sleep Edition</button>
+</div>
+</article>
 
 </div>
+<p class="rv" style="margin: 0; font-size: 17px; font-weight: 500; display: flex; flex-wrap: wrap; align-items: center; gap: 10px 16px">Yours may be none of these. <a class="pill" href="https://wa.me/6581290908?text=Hi,%20I%27d%20like%20to%20tell%20you%20why%20I%20want%20to%20travel."><img src="./assets/2cf815ab8705d37a00a5a0904d21d035.svg" alt="" width="20" height="20" style="display: inline-block; vertical-align: -4px; margin-right: 0">Tell us your story</a></p>
+</div>
+</section>
+
+<!-- Heritage strip: Chan Brothers Travel, since 1965 -->
+<section aria-labelledby="since-h" style="background: #40461c; color: #ffffff">
+<div class="wrap rv" style="padding-top: 34px; padding-bottom: 34px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 18px 32px">
+<div style="display: flex; flex-direction: column; gap: 8px; flex: 1 1 420px; max-width: 760px">
+<p style="margin: 0; font-size: 12px; font-weight: 700; letter-spacing: 3px; color: #e9dfc4">SINCE 1965</p>
+<h2 id="since-h" style="margin: 0; font-size: clamp(19px, 2vw, 23px); font-weight: 500; line-height: 1.4">Journey Within is by Chan Brothers Travel. We have taken Singapore travellers to the world since 1965.</h2>
+</div>
+<a class="pill lt" href="https://vimeo.com/1104397924" target="_blank" rel="noopener" aria-label="Watch our 60-year story, a short film on Vimeo (opens in a new tab)">Watch our 60-year story</a>
 </div>
 </section>
 
@@ -607,7 +694,7 @@ html{scroll-behavior:auto}
 <div style="display: flex; flex-direction: column; gap: 12px; max-width: 760px">
 <p style="margin: 0; display: flex; align-items: center; gap: 12px; font-size: 12px; font-weight: 700; letter-spacing: 3px; color: #7a6222"><span style="width: 40px; height: 2px; background: #8d722b"></span>RESTORE · A PRIVATE JOURNEY</p>
 <h2 id="res-h" style="margin: 0; font-weight: 500; font-size: clamp(30px, 3.6vw, 46px); line-height: 1.15">Your people. Your dates. Your reason.</h2>
-<p style="margin: 0; font-size: 18px; line-height: 1.55">A private journey for couples, families and friends, anywhere you can dream of, at any time of year. These are sample journeys, each shaped by our Journey Within philosophy and the science behind it. Tell us what you hope for, and we shape every day around it.</p>
+<p style="margin: 0; font-size: 18px; line-height: 1.55">A private journey for couples, families and friends, anywhere you can dream of, at any time of year. Every journey here comes from one we have planned for real travellers, shaped by our Journey Within philosophy and the science behind it. Tell us what you hope for, and we shape every day around it.</p>
 <div style="display: flex; flex-wrap: wrap; gap: 12px; margin-top: 8px">
 <a class="btn" href="https://wa.me/6581290908?text=Hi,%20I%27m%20interested%20in%20Journey%20Within%20Restore%20(private%20journey)." style="background: #567542; color: #ffffff; text-decoration: none; font-weight: 700; font-size: 16px; padding: 14px 26px; border-radius: 999px"><img src="./assets/2cf815ab8705d37a00a5a0904d21d035.svg" alt="" width="20" height="20" style="display: inline-block; vertical-align: -4px; margin-right: 8px">WhatsApp us about Restore</a>
 </div>
@@ -756,11 +843,11 @@ html{scroll-behavior:auto}
 <li><strong>What is inside.</strong> Cruise nights, scenic trains, safari drives and included meals add to the land price. Flights are not included.</li>
 <li><strong>The length.</strong> A shorter journey costs more per day, because the arrival, the departure and the special experiences are shared over fewer days.</li>
 </ol>
-<p style="margin: 0; font-size: 16px; line-height: 1.55">Every journey is a sample. Tell us what matters to you and we will adjust the route, the hotels and the price.</p>
+<p style="margin: 0; font-size: 16px; line-height: 1.55">Every journey is a starting point. Tell us what matters to you and we will adjust the route, the hotels and the price.</p>
 </div>
 </sc-if>
 <sc-if value="{{ rNone }}" hint-placeholder-val="{{ false }}">
-<p style="margin: 0; font-size: 17px; line-height: 1.55">No sample journey fits these choices yet. Tell us what you have in mind and we will shape one for you.</p>
+<p style="margin: 0; font-size: 17px; line-height: 1.55">No journey here fits these choices yet. Tell us what you have in mind and we will shape one for you.</p>
 </sc-if>
 </div>
 
@@ -2393,7 +2480,7 @@ html{scroll-behavior:auto}
 <!-- Price note -->
 <div style="border-top: 1px solid #dcd3bf; padding-top: 22px; max-width: 760px; display: flex; flex-direction: column; gap: 10px">
 <p style="margin: 0; font-size: 15px; font-weight: 700; line-height: 1.6">Every itinerary here is curated by our planners. Every photo is real, none AI-generated.</p>
-<p style="margin: 0; font-size: 15px; line-height: 1.6">* Land price in Singapore dollars, per person, twin sharing, based on two travelling. These are sample itineraries. The final itinerary, hotels and price are confirmed at booking.</p>
+<p style="margin: 0; font-size: 15px; line-height: 1.6">* Land price in Singapore dollars, per person, twin sharing, based on two travelling. Each itinerary is a starting point. The final itinerary, hotels and price are confirmed at booking.</p>
 <p style="margin: 0; font-size: 15px; font-weight: 700; line-height: 1.6">The following costs are excluded:</p>
 <ul style="margin: 0; padding-left: 20px; font-size: 15px; line-height: 1.7">
 <li>Airfares and airport taxes</li>
@@ -3205,6 +3292,29 @@ class Component extends DCLogic {
         document.head.appendChild(vp);
       }
     } catch (err) {}
+    // Photo bands: the photo moves less than the page, so the page seems to pass over it
+    try {
+      var calm = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (!calm) {
+        this._par = function () {
+          try {
+            var els = document.querySelectorAll('.band-img');
+            var vh = window.innerHeight || 800;
+            for (var i = 0; i < els.length; i++) {
+              var r = els[i].parentNode.getBoundingClientRect();
+              if (r.bottom < -150 || r.top > vh + 150) continue;
+              var p = (r.top + r.height / 2 - vh / 2) / (vh / 2 + r.height / 2);
+              if (p > 1) p = 1;
+              if (p < -1) p = -1;
+              els[i].style.transform = 'translate3d(0,' + (-p * 100).toFixed(1) + 'px,0)';
+            }
+          } catch (err) {}
+        };
+        window.addEventListener('scroll', this._par, { passive: true });
+        window.addEventListener('resize', this._par);
+        this._par();
+      }
+    } catch (err) {}
     try {
       if (!('IntersectionObserver' in window)) return;
       // Sections rise into view as you scroll
@@ -3240,6 +3350,7 @@ class Component extends DCLogic {
 
   componentDidUpdate() {
     this._scan();
+    if (this._par) this._par();
     try {
       var view = (this.state || {}).view || 'home';
       var labels = { about: 'About', restore: 'Private journeys', relate: 'Small group journeys', partners: 'Partner journeys' };
@@ -3272,6 +3383,7 @@ class Component extends DCLogic {
       if (this._io) this._io.disconnect();
       if (this._spy) this._spy.disconnect();
       if (this._t) clearTimeout(this._t);
+      if (this._par) { window.removeEventListener('scroll', this._par); window.removeEventListener('resize', this._par); }
       if (this._onHash) {
         window.removeEventListener('hashchange', this._onHash);
         window.removeEventListener('popstate', this._onHash);
@@ -3379,6 +3491,8 @@ class Component extends DCLogic {
     out.isRelatePage = view === 'relate';
     out.isPartnersPage = view === 'partners';
     out.go = { home: jump('home', 'top'), ways: jump('home', 'ways'), about: jump('about', 'science'), restore: jump('restore', 'restore'), relate: jump('relate', 'journeys'), partners: jump('partners', 'partners') };
+    function door(theme) { return function (e) { if (e && e.preventDefault) e.preventDefault(); self._to = 'restore'; self.setState({ view: 'restore', menu: false, rfilter: 'all', rcountry: 'all', rdur: 'all', rtheme: theme }); self._go('restore', ''); }; }
+    out.why = { awe: door('N'), wild: door('A') };
     out.nav = { top: jump('home', 'top'), why: jump('home', 'why'), science: jump('home', 'science'), stories: jump('home', 'stories') };
     out.navc = { about: view === 'about' ? 'on' : '', restore: view === 'restore' ? 'on' : '', relate: view === 'relate' ? 'on' : '', partners: view === 'partners' ? 'on' : '' };
 
