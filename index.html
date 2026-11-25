@@ -414,12 +414,12 @@ html{scroll-behavior:auto}
 <span style="font-size: 12px; font-weight: 700; letter-spacing: 2px; color: #7a6222">MONTH</span>
 <span style="position: relative; display: block">
 <select class="pick" aria-label="Filter small group journeys by month" value="{{ fMonth }}" onChange="{{ pickMonth }}" style="font-family: Montserrat, sans-serif; font-size: 14px; font-weight: 700; cursor: pointer; width: 100%; min-height: 46px; padding: 8px 42px 8px 18px; border-radius: 999px; border: 2px solid {{ mBorder }}; background-color: {{ mBg }}; color: {{ mFg }}">
-<option value="all">All 2027 (11)</option>
+<option value="all">All 2027 (12)</option>
 <option value="mar">March · Bhutan</option>
 <option value="apr">April · Sri Lanka, Pu’er</option>
 <option value="may">May · Three Gorges</option>
 <option value="jun">June · Switzerland</option>
-<option value="sep">September · Hokkaido, Norway</option>
+<option value="sep">September · Vietnam, Hokkaido, Norway</option>
 <option value="oct">October · Jiangxi, New Zealand</option>
 <option value="nov">November · Jeolla, Fujian</option>
 </select>
@@ -432,6 +432,7 @@ html{scroll-behavior:auto}
 <select class="pick" aria-label="Filter small group journeys by region" value="{{ fRegion }}" onChange="{{ pickFRegion }}" style="font-family: Montserrat, sans-serif; font-size: 14px; font-weight: 700; cursor: pointer; width: 100%; min-height: 46px; padding: 8px 42px 8px 18px; border-radius: 999px; border: 2px solid {{ gBorder }}; background-color: {{ gBg }}; color: {{ gFg }}">
 <option value="all">All regions</option>
 <option value="nea">North East Asia (6)</option>
+<option value="sea">South East Asia (1)</option>
 <option value="him">Himalayan &amp; Indian Subcontinent (2)</option>
 <option value="eur">Europe (2)</option>
 <option value="oce">Oceania (1)</option>
@@ -505,6 +506,16 @@ html{scroll-behavior:auto}
 </div>
 </article>
 
+<article class="card" style="display: {{ sVietnam }}; flex-direction: column; background: #ffffff; border: 1px solid #dcd3bf; border-radius: 14px; overflow: hidden">
+<img src="./assets/806ef23bd6e1676b04d461af6471f35a.jpg" alt="Limestone islands of Ha Long Bay at dusk, with small boats on calm water" style="width: 100%; height: 210px; object-fit: cover; object-position: 50% 55%; display: block">
+<div style="padding: 22px 24px 20px; display: flex; flex-direction: column; gap: 10px; flex: 1 1 auto">
+<p style="margin: 0; font-size: 12px; font-weight: 700; letter-spacing: 2px; color: #7a6222">SEP 2027 · SOUTH EAST ASIA · 8 DAYS</p>
+<h3 style="margin: 0; font-size: 26px; font-weight: 700; line-height: 1.2">Vietnam · Sapa &amp; Ha Long Bay</h3>
+<p style="margin: 0; font-size: 17px; font-style: italic; font-weight: 500; line-height: 1.5; color: #567542">“We travel to learn by hand from the people of the north, share their table, and come home closer to the ones we love.”</p>
+<button type="button" class="pill" onClick="{{ open.vietnam }}" style="margin: auto 0 0; align-self: flex-start">View itinerary</button>
+</div>
+</article>
+
 <article class="card" style="display: {{ sHokkaido }}; flex-direction: column; background: #ffffff; border: 1px solid #dcd3bf; border-radius: 14px; overflow: hidden">
 <img src="./assets/5e608e668ca09e9cb0289a73a8424a8c.jpg" alt="The Blue Pond in Hokkaido in autumn, red larches reflected in turquoise water" style="width: 100%; height: 210px; object-fit: cover; display: block">
 <div style="padding: 22px 24px 20px; display: flex; flex-direction: column; gap: 10px; flex: 1 1 auto">
@@ -551,10 +562,10 @@ html{scroll-behavior:auto}
 <article class="card" style="display: {{ sJeolla }}; flex-direction: column; background: #ffffff; border: 1px solid #dcd3bf; border-radius: 14px; overflow: hidden">
 <img src="./assets/e3ae085151e2bc4a8e749756ff601f4b.jpg" alt="Red maple leaves over a pond, with a blue-roofed pavilion behind, in autumn in Korea" style="width: 100%; height: 210px; object-fit: cover; object-position: 50% 45%; display: block">
 <div style="padding: 22px 24px 20px; display: flex; flex-direction: column; gap: 10px; flex: 1 1 auto">
-<p style="margin: 0; font-size: 12px; font-weight: 700; letter-spacing: 2px; color: #7a6222">EARLY NOV 2027 · NORTH EAST ASIA</p>
+<p style="margin: 0; font-size: 12px; font-weight: 700; letter-spacing: 2px; color: #7a6222">EARLY NOV 2027 · NORTH EAST ASIA · 8 DAYS</p>
 <h3 style="margin: 0; font-size: 26px; font-weight: 700; line-height: 1.2">Korea · Jeolla</h3>
-<p style="margin: 0; font-size: 17px; font-style: italic; font-weight: 500; line-height: 1.5; color: #567542">“We travel because we want a night in a mountain temple, and a clearer mind in the morning.”</p>
-<p style="margin: auto 0 0; padding-top: 18px; font-size: 15px; font-weight: 700; color: #5a5d3c">Itinerary coming soon</p>
+<p style="margin: 0; font-size: 17px; font-style: italic; font-weight: 500; line-height: 1.5; color: #567542">“We travel to taste the season, learn the patient crafts of Korea’s south-west, and come home knowing how to savour.”</p>
+<button type="button" class="pill" onClick="{{ open.korea }}" style="margin: auto 0 0; align-self: flex-start">View itinerary</button>
 </div>
 </article>
 
@@ -2620,6 +2631,18 @@ html{scroll-behavior:auto}
 <img loading="lazy" src="./assets/5ef7aa7b7c745d0fa47e2cb3b7de49c5.webp" width="1655" height="4680" lang="zh-Hans" alt="8天 福建 · 潮汕 心旅行程（中文版），第 3 部分，共 3 部分" style="width: 100%; height: auto; display: block; background: #fcf8f3">
 </sc-if>
 
+<sc-if value="{{ vVietnam }}" hint-placeholder-val="{{ false }}">
+<img src="./assets/f5aa4c04bf2409fac276d40a33bd3de0.webp" width="1655" height="7020" alt="8D Northern Vietnam, Journey Within Relate itinerary, part 1 of 3" style="width: 100%; height: auto; display: block; background: #fcf8f3">
+<img loading="lazy" src="./assets/1fc3a3dacbd45ec9704271583fe1da5e.webp" width="1655" height="7020" alt="8D Northern Vietnam, Journey Within Relate itinerary, part 2 of 3" style="width: 100%; height: auto; display: block; background: #fcf8f3">
+<img loading="lazy" src="./assets/f5e0141f752256524cf085cef58c63d5.webp" width="1655" height="4680" alt="8D Northern Vietnam, Journey Within Relate itinerary, part 3 of 3" style="width: 100%; height: auto; display: block; background: #fcf8f3">
+</sc-if>
+
+<sc-if value="{{ vKorea }}" hint-placeholder-val="{{ false }}">
+<img src="./assets/b3ba947bb14f71dd6cb1ccde97c80c86.webp" width="1655" height="7020" alt="8D Southwest Korea, Journey Within Relate itinerary, part 1 of 3" style="width: 100%; height: auto; display: block; background: #fcf8f3">
+<img loading="lazy" src="./assets/d423b5ddf23618c5e786d287a31c53ca.webp" width="1655" height="7020" alt="8D Southwest Korea, Journey Within Relate itinerary, part 2 of 3" style="width: 100%; height: auto; display: block; background: #fcf8f3">
+<img loading="lazy" src="./assets/92c45dcf3a1479f9c7c57d664946c6f5.webp" width="1655" height="4680" alt="8D Southwest Korea, Journey Within Relate itinerary, part 3 of 3" style="width: 100%; height: auto; display: block; background: #fcf8f3">
+</sc-if>
+
 <sc-if value="{{ vHokkaido }}" hint-placeholder-val="{{ false }}">
 <img src="./assets/2534f43be4ec1611d25a59d6e3bc0809.webp" width="1655" height="7020" alt="8D Hokkaido, Journey Within Relate itinerary, part 1 of 3" style="width: 100%; height: auto; display: block; background: #fcf8f3">
 <img loading="lazy" src="./assets/75f7e65cd7662e8b8406ed5373a95eb8.webp" width="1655" height="7020" alt="8D Hokkaido, Journey Within Relate itinerary, part 2 of 3" style="width: 100%; height: auto; display: block; background: #fcf8f3">
@@ -3518,7 +3541,7 @@ class Component extends DCLogic {
     };
 
     // 2027 Small Group Journeys: one filter at a time, by month or by region
-    var names = { all: '2027', mar: 'March', apr: 'April', may: 'May', jun: 'June', sep: 'September', oct: 'October', nov: 'November', nea: RN.nea, him: RN.him, eur: RN.eur, oce: RN.oce };
+    var names = { all: '2027', mar: 'March', apr: 'April', may: 'May', jun: 'June', sep: 'September', oct: 'October', nov: 'November', nea: RN.nea, sea: RN.sea, him: RN.him, eur: RN.eur, oce: RN.oce };
     out.fb = {};
     Object.keys(names).forEach(function (k) {
       var on = filter === k;
@@ -3534,7 +3557,7 @@ class Component extends DCLogic {
     });
     var cards = [
       ['Bhutan', 'mar', 'him'], ['SriLanka', 'apr', 'him'], ['Puer', 'apr', 'nea'], ['Gorges', 'may', 'nea'],
-      ['Swiss', 'jun', 'eur'], ['Hokkaido', 'sep', 'nea'], ['Norway', 'sep', 'eur'], ['Wuyuan', 'oct', 'nea'],
+      ['Swiss', 'jun', 'eur'], ['Vietnam', 'sep', 'sea'], ['Hokkaido', 'sep', 'nea'], ['Norway', 'sep', 'eur'], ['Wuyuan', 'oct', 'nea'],
       ['Nz', 'oct', 'oce'], ['Jeolla', 'nov', 'nea'], ['Fujian', 'nov', 'nea']
     ];
     var count = 0;
@@ -3760,6 +3783,8 @@ class Component extends DCLogic {
       bhutan: '7D Bhutan · Journey Within Relate',
       srilanka: '9D Sri Lanka · Journey Within Relate',
       hokkaido: '8D Hokkaido · Journey Within Relate',
+      vietnam: '8D Northern Vietnam · Journey Within Relate',
+      korea: '8D Southwest Korea · Journey Within Relate',
       jiangxi: '8D Jiangxi · Journey Within Relate',
       fujian: '8D Fujian · Chaoshan · Journey Within Relate',
       gorges: '8D Yangtze Three Gorges · Journey Within Relate',
@@ -3784,7 +3809,7 @@ class Component extends DCLogic {
     // Itinerary addresses: key -> [page, name in the address]
     var links = {};
     R.forEach(function (r) { links[r[0]] = ['restore', (r[2] + 'd-' + r[1]).normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')]; });
-    ['bhutan', 'srilanka', 'hokkaido', 'jiangxi', 'fujian', 'gorges', 'puer'].forEach(function (k) { links[k] = ['relate', k]; });
+    ['bhutan', 'srilanka', 'hokkaido', 'jiangxi', 'fujian', 'gorges', 'puer', 'vietnam', 'korea'].forEach(function (k) { links[k] = ['relate', k]; });
     ['jiangxi', 'fujian', 'gorges', 'puer'].forEach(function (k) { links[k + 'Zh'] = ['relate', k + '-zh']; });
     ['taiwan', 'jingdezhen', 'footsteps', 'penang', 'roots', 'nightingale'].forEach(function (k) { links[k] = ['partners', k]; });
     this._links = links;
